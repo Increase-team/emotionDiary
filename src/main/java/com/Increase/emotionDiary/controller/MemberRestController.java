@@ -18,13 +18,13 @@ public class MemberRestController {
 	private MemberService memberService;
 	
 	@CrossOrigin
-	@PostMapping("/member")
-	public int callSaveMember(@RequestBody MemberVO vo) {
-		return memberService.insertMember(vo);
+	@PostMapping("/members")
+	public int callSaveMembers(@RequestBody MemberVO vo) {
+		return memberService.setMembers(vo);
 	}
 	@CrossOrigin
 	@PostMapping("/login")
-	public boolean callisLogin(@RequestBody MemberVO vo, HttpSession httpSession) {
+	public boolean  callLogin(@RequestBody MemberVO vo, HttpSession httpSession) {
 		boolean isLogin = memberService.isMember(vo, httpSession);
 		return isLogin;
 	}

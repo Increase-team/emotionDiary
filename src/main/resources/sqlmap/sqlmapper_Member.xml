@@ -2,14 +2,15 @@
 <!--Mybatis에게 Mapper 경로를 적어야 한다. -->
 <mapper namespace="com.Increase.emotionDiary.mapper.MemberMapper">
 	<insert id="insertMember">
-	INSERT into member(
-		Member_name,
-		Member_password
+	INSERT INTO member
+	(
+		member_name,
+		member_password
 	)
 	VALUES
 	(
-		#{MemberName},
-		#{MemberPassword}
+		#{memberName},
+		#{memberPassword}
 	)
 	</insert>
 	
