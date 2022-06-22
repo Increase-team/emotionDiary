@@ -1,13 +1,9 @@
--- DW라는 데이터베이스가 없으면 만드는 방법
---CREATE database IF NOT EXISTS DW DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
---USE DW;
-
 -- 회원 테이블
 CREATE TABLE IF NOT EXISTS member(
-    member_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '회원 아이디',
-    member_name VARCHAR(20) COMMENT '회원 이름',
-    member_password VARCHAR(200) COMMENT '회원 비밀번호',
-    create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '가입 날짜',
+	member_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '회원 아이디',
+	member_name VARCHAR(20) COMMENT '회원 이름',
+	member_password VARCHAR(200) COMMENT '회원 비밀번호',
+	 create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '가입 날짜',
     ismember BOOLEAN COMMENT '회원 탈퇴여부 (true: 탈퇴, false: 미탈퇴)'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

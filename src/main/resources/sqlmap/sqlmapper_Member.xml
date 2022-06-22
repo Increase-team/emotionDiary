@@ -1,5 +1,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--Mybatis에게 Mapper 경로를 적어야 한다. -->
 <mapper namespace="com.Increase.emotionDiary.mapper.MemberMapper">
-
+	<insert id="insertMember">
+	INSERT into member(
+		Member_name,
+		Member_password
+	)
+	VALUES
+	(
+		#{MemberName},
+		#{MemberPassword}
+	)
+	</insert>
+	
+	<select id="selectLoginMember" resultType="MemberVO">
+	select
+		member_id AS memberId,
+		member_name AS memberName,
+		member_password AS memberPassword,
+		date_format(create_at,'%Y-%m-%d') AS createAt
+	FROM member
+	WHERE Member_name = #{memberName}
+	</select>
 </mapper>

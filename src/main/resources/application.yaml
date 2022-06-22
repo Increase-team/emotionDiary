@@ -1,7 +1,7 @@
 #제목과 버전 설정
 application:
    version: v0.0.1
-   title: Increase
+   title: LeeSuengSub
 ## 포트 수정
 server:
    port: 8080
@@ -15,13 +15,6 @@ spring:
 mybatis:
    mapper-locations: classpath:/sqlmap/sqlmapper_*.xml
    type-aliases-package: com.Increase.emotionDiary.VO
-
-#페이징 처리      
-pagehelper:
-   #helper-dialect : 사용할 데이터베이스
-   helper-dialect: mysql
-   #0페이지 요청이 들어오면 자동으로 1페이지로, 13페이지까지 있는데 14페이지 요청이 들어오면 자동으로 13페이지로 반환. 
-   reasonable: true
 
 #MySQL 접속정보 설정
 ---
