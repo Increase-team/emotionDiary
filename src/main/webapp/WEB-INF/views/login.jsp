@@ -37,10 +37,10 @@
 
       //버튼을 클릭할 때 실행
       $("#loginbtn").click(function () {
-        var memeberId = $("#userId").val();
+        var memberId = $("#userId").val();
         var memberPassword = $("#userPassword").val();
 
-        if (memeberId == "") {
+        if (memberId == "") {
         	alert("아이디를 입력하세요");
           $("#userId").focus();
           return false;
@@ -52,7 +52,7 @@
         }
 
         var jsonData = {
-          memberName: memeberId,
+          memberName: memberId,
           memberPassword: memberPassword,
         };
         

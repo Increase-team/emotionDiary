@@ -14,19 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class Interceptor implements HandlerInterceptor{
 
 	private static final Logger logger = LoggerFactory.getLogger(Interceptor.class);
-	
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("memberId") != null) {
-			int memberId = (int)session.getAttribute("memberId");
-			String memberName = (String)session.getAttribute("memberName");
-			System.out.println("세션에서 가져온 id ==> "+memberId );
-			System.out.println("세션에서 가져온 Name ==> "+memberName);
-		}
-		if(session.getAttribute("memberId") == null) {
-			logger.info("session memberId:"+session.getAttribute("memberId"));
+
+		if(session.getAttribute("MemberId") == null) {
+			logger.info("session MemberId: "+session.getAttribute("MemberId"));
 			response.sendRedirect("/login");
 			return false;
 		}
@@ -43,6 +38,5 @@ public class Interceptor implements HandlerInterceptor{
 			throws Exception {
 	}
 
-	
-	
+
 }

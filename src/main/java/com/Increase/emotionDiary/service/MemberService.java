@@ -35,8 +35,8 @@ public class MemberService {
 		if(!passwordEncoder.matches(htmlPassword, password)) {
 			return false;
 		}
-		httpSession.setAttribute("memberName", member.getMemberName());
-		httpSession.setAttribute("memberPassword", member.getMemberPassword());
+		httpSession.setAttribute("MemberId", member.getMemberId());
+		httpSession.setAttribute("MemberPassword", member.getMemberPassword());
 		return true;
 	}
 }

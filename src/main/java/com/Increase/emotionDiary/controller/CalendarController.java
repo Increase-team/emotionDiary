@@ -14,6 +14,6 @@ public class CalendarController {
 	
 	@GetMapping("/calendar")
 	public String callCalendar() {
-		return "cal";
+		return "calendar";
 	}
 }

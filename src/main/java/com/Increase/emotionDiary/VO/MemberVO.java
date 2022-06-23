@@ -12,5 +12,4 @@ public class MemberVO {
 	private String MemberPassword;
 	private String CreateAt;
 	private boolean isMember;
-	private int test;
 }

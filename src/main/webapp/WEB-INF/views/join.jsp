@@ -31,7 +31,7 @@
           class="login-btn"
           id="loginbtn"
           type="butten"
-          value="로그인"
+          value="회원가입"
           onclick="join()"
         />
       </div>
