@@ -22,4 +22,8 @@ public class LoginController {
 		httpSession.removeAttribute("memberPassword");
 		return "login";
 	}
+	@GetMapping("/main")
+	public String callMainPage() {
+		return "clock";
+	}
 }

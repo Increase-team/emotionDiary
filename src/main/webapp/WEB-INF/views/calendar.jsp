@@ -55,7 +55,7 @@
           <a href="#">도움말</a>
         </div>
         <div class="logout">
-          <a href="/logout">Logout</a>
+          <a href="/main">Logout</a>
         </div>
       </div>
     </div>

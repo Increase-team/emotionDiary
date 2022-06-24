@@ -1,0 +1,48 @@
+* {
+  font-family: "Lucida Sans";
+  text-align: center;
+  position: relative;
+}
+
+body {
+  background-image: url(../images/pexels-quang-nguyen-vinh-2132008.jpg);
+  background-position: auto;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+}
+
+.date {
+  position: relative;
+  top: 170px;
+  font-size: 50px;
+  color: rgb(255, 255, 255); /* 흰색 */
+}
+
+.time {
+  position: relative;
+  top: 180px;
+  font-size: 150px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.menu ul li {
+  list-style: none;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: dodgerblue;
+}
+.menu ul li a:hover {
+  color: darkorange;
+  transition: 1.8s;
+}
