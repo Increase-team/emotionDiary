@@ -5,12 +5,14 @@
 	INSERT INTO member
 	(
 		member_name,
-		member_password
+		member_password,
+		ismember
 	)
 	VALUES
 	(
 		#{memberName},
-		#{memberPassword}
+		#{memberPassword},
+		true
 	)
 	</insert>
 	

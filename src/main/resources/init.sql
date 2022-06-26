@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS member(
 	member_name VARCHAR(20) COMMENT '회원 이름',
 	member_password VARCHAR(200) COMMENT '회원 비밀번호',
 	 create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '가입 날짜',
-    ismember BOOLEAN COMMENT '회원 탈퇴여부 (true: 탈퇴, false: 미탈퇴)'
+    ismember BOOLEAN COMMENT '회원 탈퇴여부 (1: 탈퇴, 0: 미탈퇴)'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- 캘린더 테이블
