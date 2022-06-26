@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS calendar
 (
     calendar_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '캘린더 아이디',
     member_id INTEGER(4) COMMENT '회원 아이디',
-    calendar_emotion VARCHAR(30) CHECK(calendar_emotion IN ('분노','행복','보통','슬픔','짜증','설렘')) COMMENT '감정',
+    calendar_emotion VARCHAR(30) CHECK(calendar_emotion IN ('angry','happy','soso','sad','petulance','flutter')) COMMENT '감정',
     create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '작성 날짜',
     CONSTRAINT calendar_member_id_fk FOREIGN KEY (member_id) REFERENCES member(member_id) on DELETE set NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
