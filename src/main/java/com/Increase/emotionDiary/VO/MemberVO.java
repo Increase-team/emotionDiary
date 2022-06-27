@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 public class MemberVO {
 
-	private int MemberId;
-	private String MemberName;
-	private String MemberPassword;
-	private String CreateAt;
+	private int memberId;
+	private String memberName;
+	private String memberPassword;
+	private String createAt;
 	private boolean isMember;
 }

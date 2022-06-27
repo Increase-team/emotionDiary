@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,26 +21,35 @@ public class CalendarRestController {
 
 	@Autowired
 	private CalendarService calendarService;
-
+	//달력호출
 	@CrossOrigin
-	@GetMapping("/calendar/list")
-	public List<Map<String,Object>> callCalendar(){
-		return calendarService.selectList();
+	@GetMapping("/calendar/{memberid}")
+	public List<Map<String,Object>> callCalendar(@PathVariable("memberid") int memberId){
+		return calendarService.selectList(memberId);
 	}
+	//개인 달력 기록 확인
 	@CrossOrigin
-	@GetMapping("calendar/id/{calendarid}")
+	@GetMapping("/calendar/id/{calendarid}")
 	public CalendarVO callOneCalendar(@PathVariable("calendarid") int calendarId) {
 		return calendarService.selectOne(calendarId);
 	}
+	//달력 저장
 	@CrossOrigin
-	@PostMapping("/calender/save")
+	@PostMapping("/calendar/save")
 	public int callInsertCalendar(@RequestBody CalendarVO vo) {
 		return calendarService.setCalendar(vo);
 	}
+	//달력 삭제
 	@CrossOrigin
-	@PatchMapping("/calender/update/{id}")
-	public int callUpdateCalendar(@PathVariable("calendarid") int calendarId, CalendarVO vo) {
-		return calendarService.updateCalendar(calendarId, vo);
+	@DeleteMapping("/calendar/delete/{calendarid}")
+	public int callDeleteCalendar(@PathVariable("calendarid")int calendarId) {
+		return calendarService.deleteCalendar(calendarId);
+	}
+	//통계
+	@CrossOrigin
+	@GetMapping("/calendar/statistics/{memberid}")
+	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId){
+		return calendarService.selectstatistics(memberId);
 	}
 	
 }

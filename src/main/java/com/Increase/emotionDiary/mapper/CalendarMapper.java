@@ -10,11 +10,14 @@ import com.Increase.emotionDiary.VO.CalendarVO;
 @Mapper
 public interface CalendarMapper {
 
-	public List<Map<String,Object>> selectList();
+	public List<Map<String,Object>> selectList(int memberId);
 	
 	public CalendarVO selectOne(int calendarId);
 	
 	public int insertEmotion(CalendarVO vo);
 	
-	public int updateCalendar(CalendarVO vo);
+	public int deleteCalendar(int calendarId);
+	
+	public Map<String, Object> selectstatistics(int memberId);
+	
 }

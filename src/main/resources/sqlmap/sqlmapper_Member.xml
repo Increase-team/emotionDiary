@@ -23,7 +23,7 @@
 		member_password AS memberPassword,
 		date_format(create_at,'%Y-%m-%d') AS createAt
 	FROM member
-	WHERE Member_name = #{memberName}
+	WHERE member_name = #{memberName}
 	</select>
 	
 	<delete id="deleteMember">

@@ -5,10 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CalendarVO {
+public class CalendarVO extends MemberVO{
 
-	private int CalendarId;
-	private int MemberId;
-	private String emotion;
-	private String CreateAt;
+	private int calendarId;
+	private String calendarEmotion;
+	private String content;
+	private String createAt;
 }

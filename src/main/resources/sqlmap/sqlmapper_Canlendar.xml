@@ -1,43 +1,89 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--Mybatis에게 Mapper 경로를 적어야 한다. -->
-<mapper namespace="com.Increase.emotionDiary.mapper.CalendarMapper">
-	
-	<select id="selectList" resultType="List">
-	SELECT
-		calendar_id AS calendarId,
-		member_id AS memberId,
-		calendar_emotion AS calendarEmotion,
-		create_at AS createAt
-	FROM calendar
-	
+<mapper
+	namespace="com.Increase.emotionDiary.mapper.CalendarMapper">
+
+	<select id="selectList" resultType="Map">
+		SELECT
+		c.calendar_id AS calendarId,
+		c.member_id AS memberId,
+		c.calendar_emotion AS calendarEmotion,
+		c.create_at AS createAt,
+		m.member_name AS memberName
+		FROM calendar AS c
+		INNER JOIN member AS m
+		ON c.member_id = m.member_id
+		WHERE c.member_id = #{memberId}
 	</select>
 
 	<select id="selectOne" resultType="CalendarVO">
-	SELECT
-		calendar_id AS calendarId,
-		member_id AS memberId,
-		calendar_emotion AS calendarEmotion,
-		create_at AS createAt
-	FROM calendar
-	WHERE calendar_id = #{calendarId}
-	</select>
-	
-	<insert id="insertEmotion">
-	INSERT INTO calendar
-	(
-		member_id AS memberId,
-		calendar_emotion AS calendarEmotion
-	)
-	VALUES
-	(
-		#{memberId},
-		#{calendarEmotion}
-	)
-	</insert>
-	<update id="updateCalendar">
-		UPDATE calendar
-			SET  calendar_emotion= #{title}
+		SELECT
+		c.calendar_id AS calendarId,
+		c.member_id AS memberId,
+		c.calendar_emotion AS calendarEmotion,
+		c.content,
+		c.create_at AS
+		createAt,
+		m.member_name AS memberName
+		FROM calendar AS c
+		INNER JOIN member AS m
+		ON c.member_id = m.member_id
 		WHERE calendar_id = #{calendarId}
-	</update>
-	
+	</select>
+
+	<insert id="insertEmotion">
+		INSERT INTO calendar
+		(
+		member_id,
+		calendar_emotion,
+		content
+		)
+		VALUES
+		(
+		#{memberId},
+		#{calendarEmotion},
+		#{content}
+		)
+	</insert>
+	<delete id="deleteCalendar">
+		DELETE FROM calendar
+		WHERE calendar_id = #{calendarId}
+	</delete>
+
+	<select id="selectstatistics" resultType="map">
+
+		SELECT
+		count(*) as 총합,
+		(select
+		count(*)
+		from calendar c7
+		where calendar_emotion="happy") as happy,
+		(select
+		count(*)
+		from calendar c2
+		where calendar_emotion ="soso"
+		) as soso,
+		(select
+		count(*)
+		from calendar c3
+		where calendar_emotion="romance"
+		) as romance,
+		(select
+		count(*)
+		from calendar c4
+		where calendar_emotion ="angry"
+		) as angry,
+		(select
+		count(*)
+		from calendar c5
+		where calendar_emotion="sad"
+		) as sad,
+		(select
+		count(*)
+		from calendar c6
+		where calendar_emotion="issitation"
+		) as issitation
+		from calendar c
+		WHERE member_id =#{memberId}
+	</select>
 </mapper>
