@@ -20,12 +20,12 @@ public class CalendarController {
 	
 	@GetMapping("/calendar")
 	public String callCalendar() {
-		return "calendar";
+		return "calendar2";
 	}
 	@GetMapping("/calendar/list")
-	public String callSearchBoard(ModelMap map, @RequestParam("writer") String writer) {
-		List<Map<String, Object>> list = calendarService.selectList(writer);
+	public String callSearchBoard(ModelMap map, @RequestParam("memberid") String memberId) {
+		List<Map<String, Object>> list = calendarService.selectList(memberId);
 		map.addAttribute("list", list);
-		return "calendar";
+		return "calendar2";
 	}
 }

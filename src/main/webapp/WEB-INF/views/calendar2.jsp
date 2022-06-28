@@ -1,0 +1,356 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/resources/static/css/calendar.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 팝업창 -->
+      <div class="write-popup">
+        <div class="editor">
+          <h3 id="selected-color" style="text-align: center">선택하신 감정은</h3>
+          <div class="color-select">
+            <input id="hidden" type="hidden" val="" />
+            <div id="positive">
+              <button id="happy" value="happy"></button>
+              <button id="soso" value="soso"></button>
+              <button id="romance" value="romance"></button>
+            </div>
+            <div id="negetive">
+              <button id="angry" value="angry"></button>
+              <button id="sad" value="sad"></button>
+              <button id="irritation" value="irritation"></button>
+            </div>
+          </div>
+          <div class="input-box">
+            <textarea
+              id="content"
+              rows="7"
+              cols="50"
+              placeholder="내용을 간단히 적어주세요..."
+            ></textarea>
+          </div>
+          <div class="btn-area">
+            <input id="boardIdHidden" type="hidden" />
+            <a href="#" class="cancel">취소</a>
+            <a href="#" class="update">수정</a>
+            <a id="contentSubmit" href="#" class="success">등록</a>
+          </div>
+        </div>
+      </div>
+      <!-- 통계 팝업 -->
+      <div id="layer">
+        <div class="inner">
+          <div class="cont">
+            <iframe
+              id="player"
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/Uy7Sm7_A70M"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <a href="#none" class="close">close</a>
+        </div>
+      </div>
+      <div class="dim"></div>
+      <!-- 사이드 헤더 -->
+      <div class="sideheader">
+        <div class="hello">
+          <input id="memberId" type="hidden" value="${list[0].memberName}">memberId님환영</input>
+        </div>
+        <div class="emotion">
+          <div class="positive">
+            <div class="happy">
+              <p>기쁨</p>
+              <div class="happy-color"></div>
+            </div>
+            <div class="soso">
+              <p>보통</p>
+              <div class="soso-color"></div>
+            </div>
+            <div class="romance">
+              <p>설렘</p>
+              <div class="romance-color"></div>
+            </div>
+          </div>
+          <div class="negetive">
+            <div class="angry">
+              <p>분노</p>
+              <div class="angry-color"></div>
+            </div>
+            <div class="sad">
+              <p>슬픔</p>
+              <div class="sad-color"></div>
+            </div>
+            <div class="irritation">
+              <p>짜증</p>
+              <div class="irritation-color"></div>
+            </div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="picture">
+            <a href="#">시작화면</a>
+          </div>
+          <div class="statistics">
+            <a href="#layer" id="player" class="status">통계</a>
+          </div>
+          <div class="question">
+            <a href="#">도움말</a>
+          </div>
+          <div class="logout">
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="calendarbox">
+        <div class="calendar">
+          <div class="header">
+            <button class="calendar_btn" onclick="prevCal();">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="title">
+              <span class="year"></span><span class="month"></span>
+            </div>
+            <button class="calendar_btn" onclick="nextCal();">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="day">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="dates"></div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/7f3a427fdf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var CDate = new Date();
+      var today = new Date();
+      var selectCk = 0;
+
+      var buildcalendar = function () {
+        var htmlDates = "";
+        var prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0); //지난 달의 마지막 날
+        var thisFirst = new Date(CDate.getFullYear(), CDate.getMonth(), 1); //이번 달의 첫쨰 날
+        var thisLast = new Date(CDate.getFullYear(), CDate.getMonth() + 1, 0); //이번 달의 마지막 날
+        document.querySelector(".year").innerHTML = CDate.getFullYear() + "년"; // year에 년도 출력
+        document.querySelector(".month").innerHTML =
+          CDate.getMonth() + 1 + "월"; //month에 월 출력
+        const dates = [];
+        if (thisFirst.getDay() != 0) {
+          for (var i = 0; i < thisFirst.getDay(); i++) {
+            dates.unshift(prevLast.getDate() - i); // 지난 달 날짜 채우기
+          }
+        }
+        for (var i = 1; i <= thisLast.getDate(); i++) {
+          dates.push(i); // 이번 달 날짜 채우기
+        }
+        for (var i = 1; i <= 13 - thisLast.getDay(); i++) {
+          dates.push(i); // 다음 달 날짜 채우기 (나머지 다 채운 다음 출력할 때 42개만 출력함)
+        }
+
+        for (var i = 0; i < 42; i++) {
+          valueDate = dates[i];
+          if (i < thisFirst.getDay()) {
+            htmlDates += '<div class="date last">' + dates[i] + "</div>";
+          } else if (
+            today.getDate() == dates[i] &&
+            today.getMonth() == CDate.getMonth() &&
+            today.getFullYear() == CDate.getFullYear()
+          ) {
+            htmlDates += '<div id="date_>' +dates[i] + '" class="date today" onclick="xx()"">' +dates[i] + "</div>" + "</div>";
+          } else if (i >= thisFirst.getDay() + thisLast.getDate()) {
+            htmlDates += '<div class="date next">' + dates[i] + "</div>";
+          } else if (
+            i <= thisFirst.getDay() + thisLast.getDate() &&
+            dates[i] < today.getDate()
+          ) {
+            htmlDates +=
+              '<div id="date_' +
+              dates[i] +
+              '" class="date" onclick="yy()">' +
+              dates[i] +
+              "</div>";
+          } else if (
+            i <= thisFirst.getDay() + thisLast.getDate() &&
+            dates[i] > today.getDate()
+          ) {
+            htmlDates +=
+              '<div id="date_' +
+              dates[i] +
+              '" class="date">' +
+              dates[i] +
+              "</div>";
+          }
+        }
+
+        document.querySelector(".dates").innerHTML = htmlDates;
+      };
+
+      function prevCal() {
+        CDate.setMonth(CDate.getMonth() - 1);
+        buildcalendar();
+      }
+      function nextCal() {
+        CDate.setMonth(CDate.getMonth() + 1);
+        buildcalendar();
+      }
+
+      buildcalendar();
+
+      $(function () {
+        var embed = $("#player"); //동영상 코드
+
+        $(".status").on("click", function () {
+          //레이어 열때
+          var path = $(this).attr("href");
+          $(".cont").append(embed);
+          $(path).show();
+          $(".dim").show();
+        });
+
+        $(".close").on("click", function () {
+          //레이어 닫을때
+          $(this).parents("#layer").hide();
+          $(".dim").hide();
+          $(".cont").empty();
+        });
+
+        $(".dim").on("click", function () {
+          $(this).hide();
+          $("#layer").hide();
+          $(".cont").empty();
+        });
+      });
+
+      //팝업관련
+      // $('.space').click(function(){
+      // $('.write-popup').css('display', 'block');
+      // });
+      // $('.cancel').click(function(){
+      // $('.write-popup').css('display', 'none');
+      // });
+
+      function xx() {
+        $(".write-popup").css("display", "block");
+        $(".cancel").click(function () {
+          $(".write-popup").css("display", "none");
+          location.reload();
+        });
+      }
+
+      function yy() {
+        $(".write-popup").css("display", "block");
+        $(".cancel").click(function () {
+          $(".write-popup").css("display", "none");
+        });
+        $(".update").click(function () {
+          alert("수정불가능");
+          location.reload();
+        });
+      }
+    </script>
+    <script>
+      $("#happy").click(function () {
+        var plate = $("#happy").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+      // console.log($("#selected-color")[0].innerHTML);
+      $("#soso").click(function () {
+        var plate = $("#soso").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+      $("#romance").click(function () {
+        var plate = $("#romance").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+      $("#angry").click(function () {
+        var plate = $("#angry").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+      $("#sad").click(function () {
+        var plate = $("#sad").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+      $("#irritation").click(function () {
+        var plate = $("#irritation").val();
+        $("#selected-color")[0].innerHTML = plate;
+      });
+
+      //달력 저장
+      var time = new Date(+new Date() + 3240 * 10000)
+        .toISOString()
+        .split("T")[0]
+        .replace("-", "")
+        .replace("-", "");
+      console.log(time);
+      
+      $("#contentSubmit").click(function () {
+
+        var content = $("#content").val();
+        var calendarEmotion = $("#selected-color")[0].innerHTML;
+        var memberId = $("#memberId").val();
+
+        var jsonData = {
+          memberId : memberId,
+          calendarEmotion: calendarEmotion,
+          calendarCode: time,
+          content: content,
+        };
+        
+        // AJAX 세팅
+        $.ajax({
+          url: "/calendar/save",
+          type: "POST",
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify(jsonData),
+          success: function (response) {
+            if (response) {
+              alert("등록되었습니다.")
+            } else {
+              alert("이미 오늘은 등록을 하였습니다.");
+            }
+          },
+        });
+      });
+      //달력 조회
+      function getCalendarList(memberId) {
+        $.ajax({
+          url: "/calendar/" + memberId,
+          type: "GET",
+          dataType: "json",
+          success: (response) => {
+            console.log(response);
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
