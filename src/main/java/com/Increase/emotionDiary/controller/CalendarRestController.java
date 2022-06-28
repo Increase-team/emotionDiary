@@ -23,9 +23,9 @@ public class CalendarRestController {
 	private CalendarService calendarService;
 	//달력호출
 	@CrossOrigin
-	@GetMapping("/calendar/{memberid}")
-	public List<Map<String,Object>> callCalendar(@PathVariable("memberid") int memberId){
-		return calendarService.selectList(memberId);
+	@GetMapping("/calendar/{memberName}")
+	public List<Map<String,Object>> callCalendar(@PathVariable("memberName") String memberName){
+		return calendarService.selectList(memberName);
 	}
 	//개인 달력 기록 확인
 	@CrossOrigin

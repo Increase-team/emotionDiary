@@ -11,8 +11,9 @@ CREATE TABLE IF NOT EXISTS member(
 CREATE TABLE IF NOT EXISTS calendar
 (
     calendar_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '캘린더 아이디',
+    calendar_code INTEGER(6) COMMENT '캘린더 코드',
     member_id INTEGER(4) COMMENT '회원 아이디',
-    calendar_emotion VARCHAR(30) CHECK(calendar_emotion IN ('angry','happy','soso','sad','romance','irritation')) COMMENT '감정',
+    calendar_emotion VARCHAR(30) COMMENT '감정',
    	content VARCHAR(100) COMMENT '내용',
     create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '작성 날짜',
     CONSTRAINT calendar_member_id_fk FOREIGN KEY (member_id) REFERENCES member(member_id) on DELETE set NULL

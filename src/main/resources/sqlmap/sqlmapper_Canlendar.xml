@@ -8,12 +8,13 @@
 		c.calendar_id AS calendarId,
 		c.member_id AS memberId,
 		c.calendar_emotion AS calendarEmotion,
-		c.create_at AS createAt,
-		m.member_name AS memberName
+		date_format(c.create_at, '%Y-%m-%d')as createAt,
+		m.member_name AS memberName,
+		c.content
 		FROM calendar AS c
 		INNER JOIN member AS m
 		ON c.member_id = m.member_id
-		WHERE c.member_id = #{memberId}
+		WHERE m.member_name = #{memberName}
 	</select>
 
 	<select id="selectOne" resultType="CalendarVO">
@@ -35,12 +36,14 @@
 		INSERT INTO calendar
 		(
 		member_id,
+		calendar_code,
 		calendar_emotion,
 		content
 		)
 		VALUES
 		(
 		#{memberId},
+		#{calendarCode},
 		#{calendarEmotion},
 		#{content}
 		)

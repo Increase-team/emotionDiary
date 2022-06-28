@@ -16,15 +16,21 @@ public class CalendarService {
 	@Autowired
 	private  CalendarMapper calendarMapper;
 	
-	public List<Map<String,Object>> selectList(int memberId){
-		return calendarMapper.selectList(memberId);
+	public List<Map<String,Object>> selectList(String memberName){
+		return calendarMapper.selectList(memberName);
 	}
 	public CalendarVO selectOne(int calendarId) {
 		return calendarMapper.selectOne(calendarId);
 	}
 	
 	public int setCalendar(CalendarVO vo) {
+//		int count = 0;
+//		if(count <=2) {
+//			return 0;
+//		}
+//		++count;
 		return calendarMapper.insertEmotion(vo);
+		
 	}
 	@Transactional(rollbackFor = Exception.class)
 	public int deleteCalendar(int calendarId) {

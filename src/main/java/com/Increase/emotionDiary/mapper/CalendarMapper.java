@@ -10,7 +10,7 @@ import com.Increase.emotionDiary.VO.CalendarVO;
 @Mapper
 public interface CalendarMapper {
 
-	public List<Map<String,Object>> selectList(int memberId);
+	public List<Map<String,Object>> selectList(String member);
 	
 	public CalendarVO selectOne(int calendarId);
 	
