@@ -44,4 +44,8 @@ public class MemberService {
 	public int deleteMember(int memberId) {
 		return memberMapper.deleteMember(memberId);
 	}
+	public MemberVO selectMember(MemberVO vo) {
+		 return memberMapper.selectLoginMember(vo);
+
+	}
 }

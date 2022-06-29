@@ -39,5 +39,10 @@ public class CalendarService {
 	public Map<String,Object> selectstatistics(int memberId){
 		return calendarMapper.selectstatistics(memberId);
 	}
+	
+	public int updateCalendar(int calendarId, CalendarVO vo) {
+		vo.setCalendarId(calendarId);
+		return calendarMapper.updateCalendar(vo);
+	}
 
 }

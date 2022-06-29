@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Increase.emotionDiary.VO.CalendarVO;
 import com.Increase.emotionDiary.service.CalendarService;
+import com.Increase.emotionDiary.service.MemberService;
 
 @RestController
 public class CalendarRestController {
 
 	@Autowired
 	private CalendarService calendarService;
+	@Autowired
+	private MemberService memberService;
+	
 	//달력호출
 	@CrossOrigin
 	@GetMapping("/calendar/{memberName}")
@@ -39,6 +43,13 @@ public class CalendarRestController {
 	public int callInsertCalendar(@RequestBody CalendarVO vo) {
 		return calendarService.setCalendar(vo);
 	}
+	//달력 수정
+	@CrossOrigin
+	@PatchMapping("/calendar/update/{id}")
+	public int callUpdateCalendar(@PathVariable("id") int calendarId, @RequestBody CalendarVO vo) {
+		return calendarService.updateCalendar(calendarId, vo);
+	}
+	
 	//달력 삭제
 	@CrossOrigin
 	@DeleteMapping("/calendar/delete/{calendarid}")

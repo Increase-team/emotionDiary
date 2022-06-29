@@ -17,18 +17,18 @@
       <!-- 팝업창 -->
       <div class="write-popup">
         <div class="editor">
-          <h3 id="selected-color" style="text-align: center">선택하신 감정은</h3>
+          <h3 id="selected-color" style="text-align: center"></h3>
           <div class="color-select">
             <input id="hidden" type="hidden" val="" />
             <div id="positive">
-              <button id="happy" value="happy"></button>
-              <button id="soso" value="soso"></button>
-              <button id="romance" value="romance"></button>
+              <button id="happy" value="행복"></button>
+              <button id="soso" value="보통"></button>
+              <button id="romance" value="설렘"></button>
             </div>
             <div id="negetive">
-              <button id="angry" value="angry"></button>
-              <button id="sad" value="sad"></button>
-              <button id="irritation" value="irritation"></button>
+              <button id="angry" value="분노"></button>
+              <button id="sad" value="슬픔"></button>
+              <button id="irritation" value="짜증"></button>
             </div>
           </div>
           <div class="input-box">
@@ -65,10 +65,13 @@
       </div>
       <div class="dim"></div>
       <!-- 사이드 헤더 -->
-      <div class="sideheader">
+            <div class="sideheader">
+        <!-- 시간 및 날짜 -->
+        <div id="date" class="date"></div>
+        <div id="time" class="time"></div>
         <div class="hello">
-          <input id="memberId" type="hidden" value="${list[0].memberName}">memberId님환영</input>
-        </div>
+         	<input id="memberId" type="hidden" value="${list[0].memberName}"></input>
+      	</div>
         <div class="emotion">
           <div class="positive">
             <div class="happy">
@@ -99,20 +102,20 @@
             </div>
           </div>
         </div>
-        <div class="list">
-          <div class="picture">
-            <a href="#">시작화면</a>
-          </div>
-          <div class="statistics">
+        <ul class="list">
+          <li class="picture">
+            <a href="/calendar/diary?memberid=${list[0].memberName}">일기장</a>
+          </li>
+          <li class="statistics">
             <a href="#layer" id="player" class="status">통계</a>
-          </div>
-          <div class="question">
+          </li>
+          <li class="question">
             <a href="#">도움말</a>
-          </div>
-          <div class="logout">
-            <a href="#">Logout</a>
-          </div>
-        </div>
+          </li>
+          <li class="logout">
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
       </div>
       <div class="calendarbox">
         <div class="calendar">
@@ -184,7 +187,7 @@
             today.getMonth() == CDate.getMonth() &&
             today.getFullYear() == CDate.getFullYear()
           ) {
-            htmlDates += '<div id="date_>' +dates[i] + '" class="date today" onclick="xx()"">' +dates[i] + "</div>" + "</div>";
+        	  htmlDates += '<div id="date_' + dates[i] + '" class="date today" onclick="xx()"><div style="background-color: #f2cfa5; height: 100%;">' + dates[i] + "</div></div>";
           } else if (i >= thisFirst.getDay() + thisLast.getDate()) {
             htmlDates += '<div class="date next">' + dates[i] + "</div>";
           } else if (
@@ -248,6 +251,29 @@
           $(".cont").empty();
         });
       });
+      //시계 함수
+      function setClock(){
+          var dateInfo = new Date(); 
+          var hour = modifyNumber(dateInfo.getHours());
+          var min = modifyNumber(dateInfo.getMinutes());
+          var sec = modifyNumber(dateInfo.getSeconds());
+          var year = dateInfo.getFullYear();
+          var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+          var date = dateInfo.getDate();
+          document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+          document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+          }
+          function modifyNumber(time){
+              if(parseInt(time)<10){
+                  return "0"+ time;
+              }
+              else
+                  return time;
+          }
+          window.onload = function(){
+              setClock();
+              setInterval(setClock,1000); //1초마다 setClock 함수 실행
+          }
 
       //팝업관련
       // $('.space').click(function(){
@@ -310,6 +336,9 @@
         .replace("-", "")
         .replace("-", "");
       console.log(time);
+      
+      var memberId = $("#memberId").val();
+      console.log(memberId)
       
       $("#contentSubmit").click(function () {
 

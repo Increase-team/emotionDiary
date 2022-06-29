@@ -6,14 +6,17 @@
 	<select id="selectList" resultType="Map">
 		SELECT
 		c.calendar_id AS calendarId,
-		c.member_id AS memberId,
+		m.member_id AS memberId,
+		c.calendar_code AS calendarCode,
 		c.calendar_emotion AS calendarEmotion,
 		date_format(c.create_at, '%Y-%m-%d')as createAt,
 		m.member_name AS memberName,
 		c.content
-		FROM calendar AS c
-		INNER JOIN member AS m
+		FROM calendar AS c 
+		right JOIN member AS m
 		ON c.member_id = m.member_id
+		left join member as mm
+		on c.member_id = mm.member_id
 		WHERE m.member_name = #{memberName}
 	</select>
 
@@ -84,9 +87,18 @@
 		(select
 		count(*)
 		from calendar c6
-		where calendar_emotion="issitation"
-		) as issitation
+		where calendar_emotion="irritation"
+		) as irritation
 		from calendar c
 		WHERE member_id =#{memberId}
 	</select>
+	
+	<update id="updateCalendar">
+	UPDATE calendar 
+	SET 
+		calendar_emotion = #{calendarEmotion},
+		content = #{content}
+	WHERE
+		calendar_id = #{calendarId}
+	</update>
 </mapper>

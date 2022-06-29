@@ -20,4 +20,6 @@ public interface CalendarMapper {
 	
 	public Map<String, Object> selectstatistics(int memberId);
 	
+	public int updateCalendar(CalendarVO vo);
+	
 }

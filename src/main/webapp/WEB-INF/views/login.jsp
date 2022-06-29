@@ -66,7 +66,7 @@
           data: JSON.stringify(jsonData),
           success: function (response) {
             if (response) {
-            	location.href = "/calendar"; //페이지 이동!
+            	location.href = "/calendar/list?memberid="+memberId; //페이지 이동!
             } else {
             	alert("비밀번호 혹은 이름이 틀렸습니다.");
             	$("#userPassword").val('');
