@@ -510,6 +510,18 @@
     align-items: center;
     cursor: pointer;
   }
+  .calendar > .dates > .date-today {
+    position: relative;
+    text-align: center;
+    width: calc(100% / 7);
+    height: 100px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 3px;
+    font-size: 30px;
+    align-items: center;
+    cursor: pointer;
+  }
 
   .calendar > .dates > .date:nth-child(7n) {
     color: blue;

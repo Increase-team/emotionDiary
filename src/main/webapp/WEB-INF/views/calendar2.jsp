@@ -21,7 +21,7 @@
           <div class="color-select">
             <input id="hidden" type="hidden" val="" />
             <div id="positive">
-              <button id="happy" value="행복"></button>
+              <button id="happy" value="기쁨"></button>
               <button id="soso" value="보통"></button>
               <button id="romance" value="설렘"></button>
             </div>
@@ -212,8 +212,7 @@
         var thisFirst = new Date(CDate.getFullYear(), CDate.getMonth(), 1); //이번 달의 첫쨰 날
         var thisLast = new Date(CDate.getFullYear(), CDate.getMonth() + 1, 0); //이번 달의 마지막 날
         document.querySelector(".year").innerHTML = CDate.getFullYear() + "년"; // year에 년도 출력
-        document.querySelector(".month").innerHTML =
-          CDate.getMonth() + 1 + "월"; //month에 월 출력
+        document.querySelector(".month").innerHTML = CDate.getMonth() + 1 + "월"; //month에 월 출력
         const dates = [];
         if (thisFirst.getDay() != 0) {
           for (var i = 0; i < thisFirst.getDay(); i++) {
@@ -236,7 +235,25 @@
             today.getMonth() == CDate.getMonth() &&
             today.getFullYear() == CDate.getFullYear()
           ) {
-        	  htmlDates += '<div id="date_' + dates[i] + '" class="date today" onclick="xx()"><div style="background-color: #f2cfa5; height: 100%;">' + dates[i] + "</div></div>";
+        	  htmlDates += '<div id="date_' + dates[i] + '" class="date-today" onclick="xx()">' + dates[i] + "</div>";
+        	  $("#happy").click(function () {
+                  $(".date-today").css("background-color", "yellow");
+                });
+                $("#soso").click(function () {
+                  $(".date-today").css("background-color", "silver");
+                });
+                $("#romance").click(function () {
+                  $(".date-today").css("background-color", "pink");
+                });
+                $("#angry").click(function () {
+                  $(".date-today").css("background-color", "red");
+                });
+                $("#sad").click(function () {
+                  $(".date-today").css("background-color", "blue");
+                });
+                $("#irritation").click(function () {
+                  $(".date-today").css("background-color", "orangered");
+                });
           } else if (i >= thisFirst.getDay() + thisLast.getDate()) {
             htmlDates += '<div class="date next">' + dates[i] + "</div>";
           } else if (
@@ -292,6 +309,7 @@
           $(this).parents("#layer").hide();
           $(".dim").hide();
           $(".cont").empty();
+          location.reload();
         });
 
         $(".dim").on("click", function () {
