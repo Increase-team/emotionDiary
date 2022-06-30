@@ -58,39 +58,41 @@
 
 	<select id="selectstatistics" resultType="map">
 
-		SELECT
-		count(*) as 총합,
+	select
+		count(*) as happy,
 		(select
-		count(*)
+			count(*)
 		from calendar c7
-		where calendar_emotion="happy") as happy,
-		(select
-		count(*)
+		where member_id = #{memberId}
+		and calendar_emotion = "보통") as soso,
+		(
+		select
+			count(*)
 		from calendar c2
-		where calendar_emotion ="soso"
-		) as soso,
-		(select
-		count(*)
-		from calendar c3
-		where calendar_emotion="romance"
+		where member_id = #{memberId}
+		and calendar_emotion = "설렘"
 		) as romance,
 		(select
-		count(*)
-		from calendar c4
-		where calendar_emotion ="angry"
+			count(*)
+		from calendar c3
+		where member_id = #{memberId}
+		and calendar_emotion = "분노"
 		) as angry,
 		(select
-		count(*)
-		from calendar c5
-		where calendar_emotion="sad"
+			count(*)
+		from calendar c4
+		where member_id = #{memberId}
+		and calendar_emotion = "슬픔"
 		) as sad,
 		(select
-		count(*)
-		from calendar c6
-		where calendar_emotion="irritation"
+			count(*)
+		from calendar c5
+		where member_id = #{memberId}
+		and calendar_emotion = "짜증"
 		) as irritation
-		from calendar c
-		WHERE member_id =#{memberId}
+	from calendar c
+	where member_id = #{memberId}
+	and calendar_emotion = "기쁨"
 	</select>
 	
 	<update id="updateCalendar">

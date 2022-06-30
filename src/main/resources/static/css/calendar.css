@@ -171,10 +171,30 @@
     right: 0;
     margin: 40px auto;
     width: 700px;
-    height: 500px;
+    height: 600px;
     border-radius: 5px;
   }
-
+  #upt-title{
+  	text-align: center;
+    font-size: 24px;
+    border: none;
+    outline: none;
+  }
+  #selected-color{
+    text-align: center;
+    font-size: 24px;
+    border: none;
+    outline: none;
+  }
+  #DBemotion{
+  	text-align: center;
+    font-size: 24px;
+    border: none;
+    outline: none;
+}
+.changeEmotion{
+	text-align: right;
+}
   .editor {
     position: relative;
     display: flex;
@@ -246,6 +266,8 @@
 
   .btn-area {
     text-align: center;
+    padding-top: 5px;
+    padding-bottom: 15px;
   }
 
   .cancel {
@@ -286,8 +308,8 @@
     position: absolute;
     top: 35%;
     left: 28.7%;
-    width: 600px;
-    height: 376px;
+    width: 750px;
+    height: 500px;
     margin: -188px 0 0 -300px;
     padding: 20px;
     background: #eee;
@@ -307,7 +329,7 @@
 
   #layer .inner .close {
     position: absolute;
-    top: -30px;
+    top: -10px;
     right: 0;
     display: block;
     width: 20px;
@@ -332,6 +354,50 @@
     -moz-opacity: 0.4;
     z-index: 20;
   }
+  .cardBox{
+    position: relative;
+    width: 95%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,2fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card{
+    position: relative;
+    background-color: snow;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardBox .card .numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: aquamarine;
+}
+
+.cardBox .card .cardName{
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+.cardBox .card .iconBx{
+    font-size: 3.5em;
+    color: grey;
+}
+
+.cardBox .card:hover{
+    background-color: aquamarine;
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx{
+    color: snow;
+}
 
   /* 달력 css */
 
@@ -343,18 +409,33 @@
     align-items: center;
     min-height: 100vh;
     background-color: #bfc0cb;
+    height: 750px;
   }
 
   /* 달력 세부사항 */
+  .calender-picutre{
+    position: relative;
+    left: 5%;
+    width: 500px;
+    height: 745px;
+    background-image: url(/File/img/back.png);
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 0;
+    outline: 0;
+  }
   .calendar {
     position: relative;
-    left: 8%;
+    left: 5%;
     width: 1000px;
     height: auto;
     box-sizing: border-box;
     border: 0;
     outline: 0;
-    border-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     background-color: steelblue;
   }
 
@@ -362,7 +443,7 @@
     text-align: center;
     padding-top: 15px;
     padding-bottom: 30px;
-    border-radius: 15px;
+    border-top-right-radius: 15px;
     color: azure;
   }
 
@@ -413,7 +494,7 @@
     flex-wrap: wrap;
     width: 100%;
     background-color: whitesmoke;
-    border-bottom-left-radius: 15px;
+   
     border-bottom-right-radius: 15px;
   }
 
@@ -510,7 +591,7 @@
       right: 0; 
       margin : 40px auto;
       width: 700px;
-      height: 500px;
+      height: 550px;
       background-color: white;
       box-shadow: 0 7px 25px rgba(0,0,0,0.3);
       border-radius: 5px;
@@ -534,17 +615,44 @@
       color: snow;
       border-radius: 3px;
   }
-  .close{
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      right: -10px;
-  }
+  
   .btn-close{
       font-size: 18px;
       background-color: #5a5c69;
       padding: 2%;
+      margin-right: 10px;
       text-decoration: none;
       color: white;
       border-radius: 3px;
   }
+  .input-box{
+    display: flex;
+    justify-content: space-around;
+}
+.input-box label{
+    padding: 1%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.input-box input{
+    border: solid 2px #1E90FF;
+    border-radius: 5px;
+    padding: 1%;
+    font-size: 18px;
+    width: 60%;
+}
+
+.input-box textarea{
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    width: 90%;
+    border: solid 2px #1E90FF;
+    border-radius: 5px;
+}
+
+.btn-area{
+    text-align: center;
+}

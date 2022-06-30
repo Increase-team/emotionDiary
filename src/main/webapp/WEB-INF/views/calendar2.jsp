@@ -17,7 +17,7 @@
       <!-- 팝업창 -->
       <div class="write-popup">
         <div class="editor">
-          <h3 id="selected-color" style="text-align: center"></h3>
+          <input type="text" id="selected-color" readonly value="아래 버튼을 클릭해주세요.">
           <div class="color-select">
             <input id="hidden" type="hidden" val="" />
             <div id="positive">
@@ -42,23 +42,72 @@
           <div class="btn-area">
             <input id="boardIdHidden" type="hidden" />
             <a href="#" class="cancel">취소</a>
-            <a href="#" class="update">수정</a>
             <a id="contentSubmit" href="#" class="success">등록</a>
           </div>
         </div>
       </div>
-      <!-- 통계 팝업 -->
+<!-- 통계 팝업 -->
       <div id="layer">
         <div class="inner">
           <div class="cont">
-            <iframe
-              id="player"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/Uy7Sm7_A70M"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
+            <div id="estimate">
+                <div class="cardBox">
+                  <div class="card">
+                      <div>
+                        <div id="happycnt" class="numbers">1,400</div>
+                        <div class="cardName">기쁨</div>
+                      </div>
+                      <div class="iconBx">
+                        <ion-icon name="school-outline"></ion-icon>
+                      </div>
+                  </div>
+                  <div class="card">
+                    <div>
+                        <div id="sosocnt" class="numbers">500</div>
+                        <div class="cardName">보통</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div id="romancecnt" class="numbers">300</div>
+                        <div class="cardName">설렘</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="code-slash-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div id="angrycnt" class="numbers">2,800</div>
+                        <div class="cardName">분노</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                  <div>
+                      <div id="sadcnt" class="numbers">2,800</div>
+                      <div class="cardName">슬픔</div>
+                  </div>
+                  <div class="iconBx">
+                      <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+              </div>
+              <div class="card">
+                <div>
+                    <div id="irritationcnt" class="numbers">2,800</div>
+                    <div class="cardName">짜증</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+              </div>
+            </div>
           </div>
           <a href="#none" class="close">close</a>
         </div>
@@ -70,7 +119,7 @@
         <div id="date" class="date"></div>
         <div id="time" class="time"></div>
         <div class="hello">
-         	<input id="memberId" type="hidden" value="${list[0].memberName}"></input>
+         	<input id="memberId" type="hidden" value="${list[0].memberId}"></input>
       	</div>
         <div class="emotion">
           <div class="positive">
@@ -107,7 +156,7 @@
             <a href="/calendar/diary?memberid=${list[0].memberName}">일기장</a>
           </li>
           <li class="statistics">
-            <a href="#layer" id="player" class="status">통계</a>
+            <a href="#layer" id="estimate" class="status">통계</a>
           </li>
           <li class="question">
             <a href="#">도움말</a>
@@ -197,7 +246,7 @@
             htmlDates +=
               '<div id="date_' +
               dates[i] +
-              '" class="date" onclick="yy()">' +
+              '" class="date" >' +
               dates[i] +
               "</div>";
           } else if (
@@ -291,44 +340,42 @@
         });
       }
 
-      function yy() {
-        $(".write-popup").css("display", "block");
-        $(".cancel").click(function () {
-          $(".write-popup").css("display", "none");
-        });
-        $(".update").click(function () {
-          alert("수정불가능");
-          location.reload();
-        });
-      }
     </script>
     <script>
       $("#happy").click(function () {
         var plate = $("#happy").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
-      // console.log($("#selected-color")[0].innerHTML);
+      //console.log($("#selected-color")[0].innerHTML);
       $("#soso").click(function () {
         var plate = $("#soso").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
       $("#romance").click(function () {
         var plate = $("#romance").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
       $("#angry").click(function () {
         var plate = $("#angry").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
       $("#sad").click(function () {
         var plate = $("#sad").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
       $("#irritation").click(function () {
         var plate = $("#irritation").val();
-        $("#selected-color")[0].innerHTML = plate;
+        $('#selected-color')[0].defaultValue = plate;
       });
 
+   // 클릭시 사이드헤더 색 변경
+      let list = document.querySelectorAll('.list li');
+      function activeLink(){
+        list.forEach((item) => {item.classList.remove('hovered')});
+        this.classList.add('hovered');
+      }
+      list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
+      
       //달력 저장
       var time = new Date(+new Date() + 3240 * 10000)
         .toISOString()
@@ -343,7 +390,7 @@
       $("#contentSubmit").click(function () {
 
         var content = $("#content").val();
-        var calendarEmotion = $("#selected-color")[0].innerHTML;
+        var calendarEmotion = $("#selected-color")[0].defaultValue;
         var memberId = $("#memberId").val();
 
         var jsonData = {
@@ -363,6 +410,7 @@
           success: function (response) {
             if (response) {
               alert("등록되었습니다.")
+              $(".write-popup").css("display","none");
             } else {
               alert("이미 오늘은 등록을 하였습니다.");
             }
@@ -379,6 +427,24 @@
             console.log(response);
           },
         });
+      }
+      getcalendarEmotion(${list[0].memberId});
+
+      function getcalendarEmotion(memberId){
+        $.ajax({
+          url: "/calendar/statistics/"+memberId,
+          type:"GET",
+          dataType:"json",
+          success: (data) =>{
+            console.log(data)
+            $('#happycnt').text(data.happy);
+            $('#sosocnt').text(data.soso);
+            $('#romancecnt').text(data.romance);
+            $('#angrycnt').text(data.angry);
+            $('#sadcnt').text(data.sad);
+            $('#irritationcnt').text(data.irritation);
+          }
+        })
       }
     </script>
   </body>

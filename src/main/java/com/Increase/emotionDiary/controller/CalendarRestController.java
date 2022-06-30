@@ -49,7 +49,6 @@ public class CalendarRestController {
 	public int callUpdateCalendar(@PathVariable("id") int calendarId, @RequestBody CalendarVO vo) {
 		return calendarService.updateCalendar(calendarId, vo);
 	}
-	
 	//달력 삭제
 	@CrossOrigin
 	@DeleteMapping("/calendar/delete/{calendarid}")

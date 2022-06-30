@@ -13,6 +13,73 @@
 </head>
 <body>
     <div class="container">
+           <!-- 통계 팝업 -->
+      <div id="layer">
+        <div class="inner">
+          <div class="cont">
+            <div id="estimate">
+                <div class="cardBox">
+                  <div class="card">
+                      <div>
+                        <div id="happycnt" class="numbers">1,400</div>
+                        <div class="cardName">기쁨</div>
+                      </div>
+                      <div class="iconBx">
+                        <ion-icon name="school-outline"></ion-icon>
+                      </div>
+                  </div>
+                  <div class="card">
+                    <div>
+                        <div id="sosocnt" class="numbers">500</div>
+                        <div class="cardName">보통</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div id="romancecnt" class="numbers">300</div>
+                        <div class="cardName">설렘</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="code-slash-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div id="angrycnt" class="numbers">2,800</div>
+                        <div class="cardName">분노</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                  <div>
+                      <div id="sadcnt" class="numbers">2,800</div>
+                      <div class="cardName">슬픔</div>
+                  </div>
+                  <div class="iconBx">
+                      <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+              </div>
+              <div class="card">
+                <div>
+                    <div id="irritationcnt" class="numbers">2,800</div>
+                    <div class="cardName">짜증</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+              </div>
+            </div>
+          </div>
+          <a href="#none" class="close">close</a>
+        </div>
+      </div>
+      <div class="dim"></div>
 		<!-- 사이드 헤더 -->
        	<div class="sideheader">
             <!-- 시간 및 날짜 -->
@@ -66,26 +133,38 @@
                 </li>
             </ul>
         </div>
-        <!-- 글 작성 수정 -->
         <div class="update-popup">
             <div class="editor">
-                <div class="close">
-                    <a href="#" class="btn-close">닫기</a>
-                </div>
-                <div class="input-box">
-                    <label for="title">감정 : </label>
-                    <input id="upt-title" type="text" placeholder="제목을 입력하세요...">
+            <h3 class="changeEmotion">변경전
+                <input id="DBemotion" readonly value="">
+            </h3>
+            <h3 class="changeEmotion">변경후
+                <input type="text" id="upt-title" readonly value="">
+            </h3> 
+                <div class="color-select">
+                    <input id="inputHidden" type="hidden" val="" />
+                    <div id="positive">
+                        <button id="happy" value="기쁨"></button>
+                      <button id="soso" value="보통"></button>
+                      <button id="romance" value="설렘"></button>
+                    </div>
+                    <div id="negetive">
+                        <button id="angry" value="분노"></button>
+                        <button id="sad" value="슬픔"></button>
+                        <button id="irritation" value="짜증"></button>
+                    </div>
                 </div>
                 <div class="input-box">
                     <textarea id="upt-content" rows="10" cols="65" placeholder="내용을 간단히 적어주세요..."></textarea>
                 </div>
-                <div class="btn-area">
-                	<input id="inputHidden" type=hidden>
+                <div class="btn-area">          
+                    <a id="contentClose" href="#" class="btn-close">닫기</a>
                     <a id="contentUpdate" href="#" class="btn-update">수정</a>
                     <a id="contentDelete" href="#" class="btn-delete">삭제</a>
                 </div>
             </div>
         </div>
+        
         <main>
             <div class="diary">
                 <div class="diary-title">
@@ -161,7 +240,66 @@
           $('.update-popup').css('display', 'none');
       })
 
+$('.btn-close').click(function(){
+        $('.update-popup').css('display', 'none');
+    })
 
+    $("#data").click(function(){
+        $('.update-popup').css('display', 'block');
+    })
+
+    //버튼클릭시 감정확인
+    $("#happy").click(function () {
+        var plate = $("#happy").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+      $("#soso").click(function () {
+        var plate = $("#soso").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+      $("#romance").click(function () {
+        var plate = $("#romance").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+      $("#angry").click(function () {
+        var plate = $("#angry").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+      $("#sad").click(function () {
+        var plate = $("#sad").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+      $("#irritation").click(function () {
+        var plate = $("#irritation").val();
+        $('#upt-title')[0].defaultValue = plate;
+      });
+
+      $(function () {
+          var embed = $("#estimate"); //팝업 코드
+
+          $(".status").on("click", function () {
+            //레이어 열때
+            var path = $(this).attr("href");
+            $(".cont").append(embed);
+            $(path).show();
+            $(".dim").show();
+          });
+
+          $(".close").on("click", function () {
+            //레이어 닫을때
+            $(this).parents("#layer").hide();
+            $(".dim").hide();
+            $(".cont").empty();
+          });
+
+          $(".dim").on("click", function () {
+            $(this).hide();
+            $("#layer").hide();
+            $(".cont").empty();
+          });
+        });
+
+   
     </script>
         <script>
 
@@ -196,7 +334,7 @@
                 type: "Get",
                 dataType: "json",
                 success: (response) => {
-                    $('#upt-title').val(response.calendarEmotion);
+                    $('#DBemotion').val(response.calendarEmotion);
                     $('#upt-content').val(response.content);
                     $('#inputHidden').val(response.calendarId);
                 }
@@ -238,6 +376,24 @@
                 }
             })
         })
+              getcalendarEmotion(${list[0].memberId});
+
+      function getcalendarEmotion(memberId){
+        $.ajax({
+          url: "/calendar/statistics/"+memberId,
+          type:"GET",
+          dataType:"json",
+          success: (data) =>{
+            console.log(data)
+            $('#happycnt').text(data.happy);
+            $('#sosocnt').text(data.soso);
+            $('#romancecnt').text(data.romance);
+            $('#angrycnt').text(data.angry);
+            $('#sadcnt').text(data.sad);
+            $('#irritationcnt').text(data.irritation);
+          }
+        })
+      }
     </script>
 </body>
 </html>
