@@ -24,6 +24,6 @@ public class LoginController {
 	}
 	@GetMapping("/main")
 	public String callMainPage() {
-		return "clock";
+		return "index";
 	}
 }
