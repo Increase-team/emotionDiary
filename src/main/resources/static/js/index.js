@@ -248,21 +248,27 @@ function checkList(e){
 //클릭시 색 넣기
 $("#happy").click(function () {
     $(".active").css("background-color", "yellow");
+    $(".active").attr("class","test1")
   });
   $("#soso").click(function () {
     $(".active").css("background-color", "silver");
+    $(".active").attr("class","test2")
   });
   $("#romance").click(function () {
     $(".active").css("background-color", "pink");
+    $(".active").attr("class","romance")
   });
   $("#angry").click(function () {
     $(".active").css("background-color", "red");
+    $(".active").attr("class","angry")
   });
   $("#sad").click(function () {
     $(".active").css("background-color", "blue");
+    $(".active").attr("class","sad")
   });
-  $("#issitation").click(function () {
+  $("#irritation").click(function () {
     $(".active").css("background-color", "orangered");
+    $(".active").attr("class","irritation")
   });
 
   //버튼클릭시 감정확인
@@ -287,8 +293,8 @@ $("#happy").click(function () {
     var plate = $("#sad").val();
     $("#selected-color")[0].innerHTML = plate;
   });
-  $("#issitation").click(function () {
-    var plate = $("#issitation").val();
+  $("#irritation").click(function () {
+    var plate = $("#irritation").val();
     $("#selected-color")[0].innerHTML = plate;
   });
   

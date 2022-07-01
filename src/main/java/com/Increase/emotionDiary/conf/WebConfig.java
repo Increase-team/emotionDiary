@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 				"/resources/static/images/*",
 				"/resources/static/video/*",
 				"/members", "/member/id/*",
-				"/calendar/id/*","/calendar/statistics/*", "/calendar/save","/calendar/*");
+				"/calendar/id/*","/calendar/statistics/*", "/calendar/save","/calendar/*", "/calendar/delete/*");
 	}
 
 }
