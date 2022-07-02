@@ -51,11 +51,11 @@
 			</div>
 		</div>
 		<ul class="list">
-			<li class="picture"><a href="#">일기장</a></li>
+			<li class="picture"><a href="/calendar/diary?memberid=${list[0].memberName}">일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
 				class="status">통계</a></li>
 			<li class="question"><a href="#">도움말</a></li>
-			<li class="logout"><a href="#">Logout</a></li>
+			<li class="logout"><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
 	<div class="main">

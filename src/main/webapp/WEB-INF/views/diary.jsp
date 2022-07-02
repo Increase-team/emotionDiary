@@ -129,7 +129,7 @@
                     <a href="#">도움말</a>
                 </li>
                 <li class="logout">
-                    <a href="/main">Logout</a>
+                    <a href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
