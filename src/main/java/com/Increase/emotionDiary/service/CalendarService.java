@@ -44,5 +44,8 @@ public class CalendarService {
 		vo.setCalendarId(calendarId);
 		return calendarMapper.updateCalendar(vo);
 	}
-
+	
+	public List<Map<String, Object>> selectMonth(String memberName, int calendarMonthFirstDay, int calendarCode){
+		return calendarMapper.selectMonth(memberName, calendarMonthFirstDay, calendarCode);
+	}
 }

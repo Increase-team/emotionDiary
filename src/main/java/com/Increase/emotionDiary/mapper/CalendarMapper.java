@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.Increase.emotionDiary.VO.CalendarVO;
 
@@ -21,5 +22,7 @@ public interface CalendarMapper {
 	public Map<String, Object> selectstatistics(int memberId);
 	
 	public int updateCalendar(CalendarVO vo);
+	
+	public List<Map<String, Object>> selectMonth(@Param("memberName") String memberName, @Param("calendarMonthFirstDay") int calendarMonthFirstDay, @Param("calendarCode") int calendarCode);
 	
 }

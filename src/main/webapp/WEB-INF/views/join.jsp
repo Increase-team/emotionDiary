@@ -4,44 +4,35 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/resources/static/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>회원가입</h1>
-      <div class="login-form">
-        <div class="txt-field">
-          <input id="userId" type="text" required />
-          <label>아이디</label>
-        </div>
-        <div class="txt-field">
-          <input id="userPassword" type="password" required />
-          <label>비밀번호</label>
-        </div>
-        <div class="txt-field">
-          <input id="userrePassword" type="password" required />
-          <label>비밀번호 재확인</label>
-        </div>
-        <input
-          class="login-btn"
-          id="loginbtn"
-          type="butten"
-          value="회원가입"
-          onclick="join()"
-        />
-      </div>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="/resources/static/css/style.css" />
+</head>
+<body>
+	<div class="container">
+		<h1>회원가입</h1>
+		<div class="login-form">
+			<div class="txt-field">
+				<input id="userId" type="text" required /> <label>아이디</label>
+			</div>
+			<div class="txt-field">
+				<input id="userPassword" type="password" required /> <label>비밀번호</label>
+			</div>
+			<div class="txt-field">
+				<input id="userrePassword" type="password" required /> <label>비밀번호
+					재확인</label>
+			</div>
+			<input class="login-btn" id="loginbtn" type="butten" value="회원가입"
+				onclick="join()" />
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script>
       function join() {
         var password = $("#userPassword").val();
         var rePassword = $("#userrePassword").val();
@@ -79,5 +70,5 @@
         });
       }
     </script>
-  </body>
+</body>
 </html>

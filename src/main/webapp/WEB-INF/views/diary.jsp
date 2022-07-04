@@ -5,183 +5,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/resources/static/css/calendar.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="/resources/static/css/calendar.css">
 </head>
 <body>
-    <div class="container">
-           <!-- 통계 팝업 -->
-      <div id="layer">
-        <div class="inner">
-          <div class="cont">
-            <div id="estimate">
-                <div class="cardBox">
-                  <div class="card">
-                      <div>
-                        <div id="happycnt" class="numbers">1,400</div>
-                        <div class="cardName">기쁨</div>
-                      </div>
-                      <div class="iconBx">
-                        <ion-icon name="school-outline"></ion-icon>
-                      </div>
-                  </div>
-                  <div class="card">
-                    <div>
-                        <div id="sosocnt" class="numbers">500</div>
-                        <div class="cardName">보통</div>
-                    </div>
-                    <div class="iconBx">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div id="romancecnt" class="numbers">300</div>
-                        <div class="cardName">설렘</div>
-                    </div>
-                    <div class="iconBx">
-                        <ion-icon name="code-slash-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div id="angrycnt" class="numbers">2,800</div>
-                        <div class="cardName">분노</div>
-                    </div>
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                  <div>
-                      <div id="sadcnt" class="numbers">2,800</div>
-                      <div class="cardName">슬픔</div>
-                  </div>
-                  <div class="iconBx">
-                      <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-              </div>
-              <div class="card">
-                <div>
-                    <div id="irritationcnt" class="numbers">2,800</div>
-                    <div class="cardName">짜증</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-            </div>
-              </div>
-            </div>
-          </div>
-          <a href="#none" class="close">close</a>
-        </div>
-      </div>
-      <div class="dim"></div>
+	<div class="container">
+		<!-- 통계 팝업 -->
+		<div id="layer">
+			<div class="inner">
+				<div class="cont">
+					<div id="estimate">
+						<div class="cardBox">
+							<div class="card">
+								<div>
+									<div id="happycnt" class="numbers">1,400</div>
+									<div class="cardName">기쁨</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="school-outline"></ion-icon>
+								</div>
+							</div>
+							<div class="card">
+								<div>
+									<div id="sosocnt" class="numbers">500</div>
+									<div class="cardName">보통</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="book-outline"></ion-icon>
+								</div>
+							</div>
+							<div class="card">
+								<div>
+									<div id="romancecnt" class="numbers">300</div>
+									<div class="cardName">설렘</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="code-slash-outline"></ion-icon>
+								</div>
+							</div>
+							<div class="card">
+								<div>
+									<div id="angrycnt" class="numbers">2,800</div>
+									<div class="cardName">분노</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="eye-outline"></ion-icon>
+								</div>
+							</div>
+							<div class="card">
+								<div>
+									<div id="sadcnt" class="numbers">2,800</div>
+									<div class="cardName">슬픔</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="eye-outline"></ion-icon>
+								</div>
+							</div>
+							<div class="card">
+								<div>
+									<div id="irritationcnt" class="numbers">2,800</div>
+									<div class="cardName">짜증</div>
+								</div>
+								<div class="iconBx">
+									<ion-icon name="eye-outline"></ion-icon>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a href="#none" class="close">close</a>
+			</div>
+		</div>
+		<div class="dim"></div>
 		<!-- 사이드 헤더 -->
-       	<div class="sideheader">
-            <!-- 시간 및 날짜 -->
-            <div id="date" class="date"></div>
-            <div id="time" class="time"></div>
-            <div class="hello">
-          		<input id="memberId" type="hidden" value="${list[0].memberName}"></input>
-        	</div>
-            <div class="emotion">
-            <div class="positive">
-                <div class="happy">
-                <p>기쁨</p>
-                <div class="happy-color"></div>
-                </div>
-                <div class="soso">
-                <p>보통</p>
-                <div class="soso-color"></div>
-                </div>
-                <div class="romance">
-                <p>설렘</p>
-                <div class="romance-color"></div>
-                </div>
-            </div>
-            <div class="negetive">
-                <div class="angry">
-                <p>분노</p>
-                <div class="angry-color"></div>
-                </div>
-                <div class="sad">
-                <p>슬픔</p>
-                <div class="sad-color"></div>
-                </div>
-                <div class="irritation">
-                <p>짜증</p>
-                <div class="irritation-color"></div>
-                </div>
-            </div>
-            </div>
-            <ul class="list">
-                <li class="picture">
-                    <a href="/calendar/list?memberid=${list[0].memberName}">달력</a>
-                </li>
-                <li class="statistics">
-                    <a href="#layer" id="player" class="status">통계</a>
-                </li>
-                <li class="question">
-                    <a href="#">도움말</a>
-                </li>
-                <li class="logout">
-                    <a href="/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-        <div class="update-popup">
-            <div class="editor">
-            <h3 class="changeEmotion">변경전
-                <input id="DBemotion" readonly value="">
-            </h3>
-            <h3 class="changeEmotion">변경후
-                <input type="text" id="upt-title" readonly value="">
-            </h3> 
-                <div class="color-select">
-                    <input id="inputHidden" type="hidden" val="" />
-                    <div id="positive">
-                        <button id="happy" value="기쁨"></button>
-                      <button id="soso" value="보통"></button>
-                      <button id="romance" value="설렘"></button>
-                    </div>
-                    <div id="negetive">
-                        <button id="angry" value="분노"></button>
-                        <button id="sad" value="슬픔"></button>
-                        <button id="irritation" value="짜증"></button>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <textarea id="upt-content" rows="10" cols="65" placeholder="내용을 간단히 적어주세요..."></textarea>
-                </div>
-                <div class="btn-area">          
-                    <a id="contentClose" href="#" class="btn-close">닫기</a>
-                    <a id="contentUpdate" href="#" class="btn-update">수정</a>
-                    <a id="contentDelete" href="#" class="btn-delete">삭제</a>
-                </div>
-            </div>
-        </div>
-        
-        <main>
-            <div class="diary">
-                <div class="diary-title">
-                    <h2>Diary-List</h2>
-                </div>
-                <div class="diary-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>코드번호</th>
-                                <th>감정</th>
-                                <th>내용</th>
-                                <th>작성날짜</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <!-- 
+		<div class="sideheader">
+			<!-- 시간 및 날짜 -->
+			<div id="date" class="date"></div>
+			<div id="time" class="time"></div>
+			<div class="hello">
+				<input id="memberId" type="hidden" value="${list[0].memberName}"></input>
+			</div>
+			<div class="emotion">
+				<div class="positive">
+					<div class="happy">
+						<p>기쁨</p>
+						<div class="happy-color"></div>
+					</div>
+					<div class="soso">
+						<p>보통</p>
+						<div class="soso-color"></div>
+					</div>
+					<div class="romance">
+						<p>설렘</p>
+						<div class="romance-color"></div>
+					</div>
+				</div>
+				<div class="negetive">
+					<div class="angry">
+						<p>분노</p>
+						<div class="angry-color"></div>
+					</div>
+					<div class="sad">
+						<p>슬픔</p>
+						<div class="sad-color"></div>
+					</div>
+					<div class="irritation">
+						<p>짜증</p>
+						<div class="irritation-color"></div>
+					</div>
+				</div>
+			</div>
+			<ul class="list">
+				<li class="picture"><a
+					href="/calendar/list?memberid=${list[0].memberName}">달력</a></li>
+				<li class="statistics"><a href="#layer" id="player"
+					class="status">통계</a></li>
+				<li class="logout"><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+		<div class="update-popup">
+			<div class="editor">
+				<h3 class="changeEmotion">
+					변경전 <input id="DBemotion" readonly value="">
+				</h3>
+				<h3 class="changeEmotion">
+					변경후 <input type="text" id="upt-title" readonly value="">
+				</h3>
+				<div class="color-select">
+					<input id="inputHidden" type="hidden" val="" />
+					<div id="positive">
+						<button id="happy" value="기쁨"></button>
+						<button id="soso" value="보통"></button>
+						<button id="romance" value="설렘"></button>
+					</div>
+					<div id="negetive">
+						<button id="angry" value="분노"></button>
+						<button id="sad" value="슬픔"></button>
+						<button id="irritation" value="짜증"></button>
+					</div>
+				</div>
+				<div class="input-box">
+					<textarea id="upt-content" rows="10" cols="65"
+						placeholder="내용을 간단히 적어주세요..."></textarea>
+				</div>
+				<div class="btn-area">
+					<a id="contentClose" href="#" class="btn-close">닫기</a> <a
+						id="contentUpdate" href="#" class="btn-update">수정</a> <a
+						id="contentDelete" href="#" class="btn-delete">삭제</a>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<div class="diary">
+				<div class="diary-title">
+					<h2>Diary-List</h2>
+				</div>
+				<div class="diary-content">
+					<table>
+						<thead>
+							<tr>
+								<th>코드번호</th>
+								<th>감정</th>
+								<th>내용</th>
+								<th>작성날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- 
                             <tr>
                                 <td>1</td>
                                 <td>설렘</td>
@@ -201,18 +195,16 @@
                                 <td>2022-06-25</td>
                             </tr>
                              		-->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
-        <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script>
   		//시계 함수
       function setClock(){
       var dateInfo = new Date(); 
@@ -301,7 +293,7 @@ $('.btn-close').click(function(){
 
    
     </script>
-        <script>
+	<script>
 
 		var memberName = $("#memberId").val();
         

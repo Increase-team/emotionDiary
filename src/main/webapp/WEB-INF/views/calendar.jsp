@@ -14,12 +14,78 @@
 <title>calendar todo</title>
 </head>
 <body>
+	<!-- 통계 팝업 -->
+	<div id="layer">
+		<div class="inner">
+			<div class="cont">
+				<div id="estimate">
+					<div class="cardBox">
+						<div class="card">
+							<div>
+								<div id="happycnt" class="numbers">1,400</div>
+								<div class="cardName">기쁨</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="school-outline"></ion-icon>
+							</div>
+						</div>
+						<div class="card">
+							<div>
+								<div id="sosocnt" class="numbers">500</div>
+								<div class="cardName">보통</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="book-outline"></ion-icon>
+							</div>
+						</div>
+						<div class="card">
+							<div>
+								<div id="romancecnt" class="numbers">300</div>
+								<div class="cardName">설렘</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="code-slash-outline"></ion-icon>
+							</div>
+						</div>
+						<div class="card">
+							<div>
+								<div id="angrycnt" class="numbers">2,800</div>
+								<div class="cardName">분노</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="eye-outline"></ion-icon>
+							</div>
+						</div>
+						<div class="card">
+							<div>
+								<div id="sadcnt" class="numbers">2,800</div>
+								<div class="cardName">슬픔</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="eye-outline"></ion-icon>
+							</div>
+						</div>
+						<div class="card">
+							<div>
+								<div id="irritationcnt" class="numbers">2,800</div>
+								<div class="cardName">짜증</div>
+							</div>
+							<div class="iconBx">
+								<ion-icon name="eye-outline"></ion-icon>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#none" class="close">close</a>
+		</div>
+	</div>
 	<div class="sideheader">
 		<!-- 시간 및 날짜 -->
 		<div id="date" class="date"></div>
 		<div id="time" class="time"></div>
-		<input id="hidden" type="hidden" val="" />
-		<input id="memberName" type="hidden" val="${list[0].memberName}" />
+		<input id="hidden" type="hidden" value="" /> <input id="memberName"
+			type="hidden" value="${list[0].memberName}" />
 		<div class="emotion">
 			<div class="positive">
 				<div class="happy">
@@ -51,10 +117,10 @@
 			</div>
 		</div>
 		<ul class="list">
-			<li class="picture"><a href="/calendar/diary?memberid=${list[0].memberName}">일기장</a></li>
+			<li class="picture"><a
+				href="/calendar/diary?memberid=${list[0].memberName}">일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
 				class="status">통계</a></li>
-			<li class="question"><a href="#">도움말</a></li>
 			<li class="logout"><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
@@ -85,7 +151,7 @@
 					<div class="todo-title">그날의 기분을 적어보세요</div>
 					<div class="input-wrap">
 						<input type="text" placeholder="please write here!!"
-							id="input-box" class="input-box" value=""/>
+							id="input-box" class="input-box" value="" />
 						<button type="button" id="input-data" class="input-data">
 							등록</button>
 						<div id="input-list" class="input-list"></div>
@@ -124,31 +190,31 @@
 	crossorigin="anonymous"></script>
 <script src="/resources/static/js/index.js"></script>
 <script type="text/javascript">
-  $("#happy").click(function () {
-      var plate = $("#happy").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
-    //console.log($("#selected-color")[0].innerHTML);
-    $("#soso").click(function () {
-      var plate = $("#soso").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
-    $("#romance").click(function () {
-      var plate = $("#romance").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
-    $("#angry").click(function () {
-      var plate = $("#angry").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
-    $("#sad").click(function () {
-      var plate = $("#sad").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
-    $("#irritation").click(function () {
-      var plate = $("#irritation").val();
-      $('#selected-color')[0].defaultValue = plate;
-    });
+//버튼클릭시 감정확인
+	$("#happy").click(function () {
+  		var plate = $("#happy").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
+	$("#soso").click(function () {
+  		var plate = $("#soso").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
+	$("#romance").click(function () {
+ 		var plate = $("#romance").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
+	$("#angry").click(function () {
+  		var plate = $("#angry").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
+	$("#sad").click(function () {
+  		var plate = $("#sad").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
+	$("#irritation").click(function () {
+  		var plate = $("#irritation").val();
+  		$("#selected-color")[0].defaultValue = plate;
+	});
 
   //달력 저장
   var time = new Date(+new Date() + 3240 * 10000)
@@ -157,6 +223,13 @@
     .replace("-", "")
     .replace("-", "");
   console.log(time);
+  var monthFirstday = time.slice(0,6) + "01";
+  console.log(monthFirstday);
+  var day = new Date()
+  console.log(day)
+  day = "00"+day.getDate();
+  var dayslice =  day.slice(1,3);
+  console.log(dayslice)
   
   var memberId = $("#memberId").val();
   console.log("==>"+memberId)
@@ -165,7 +238,7 @@
   
   $("#input-data").click(function () {
 	  
-    var content = $("#input-box")[0].defaultValue;
+    var content = $("#input-box").val();
     var calendarEmotion = $("#selected-color")[0].defaultValue;
     var memberId = $("#memberId").val();
     
@@ -178,6 +251,7 @@
       memberId : memberId,
       calendarEmotion: calendarEmotion,
       calendarCode: time,
+      calendarMonthFirstDay : monthFirstday,
       content: content
     };
     
@@ -202,17 +276,39 @@
   function getCalendarList(memberName) {
 	  var calendarList = '';
     $.ajax({
-      url: "/calendar/" + memberName,
+      url: "/calendar/" + memberName+"/"+monthFirstday+"/"+time,
       type: "GET",
       dataType: "json",
       success: (response) => {
         console.log("---->"+response[0].calendarEmotion);
-        if(response[0].calendarEmotion == "짜증"){
-        	$("#1").attr("id","soso")
-        }
+		for(i=0; i<2; i++){ //나중에 dayslice 사용.
+			console.log(response[i].calendarEmotion)
+		if(response[i].calendarEmotion == "기쁨"){
+			$("#"+i).css('background-color',"yellow")
+		}
+		if(response[i].calendarEmotion == "보통"){
+			$("#"+i).css('background-color',"silver")
+		}
+		if(response[i].calendarEmotion == "설렘"){
+			$("#"+i).css('background-color',"pink")
+		}
+		if(response[i].calendarEmotion == "분노"){
+			$("#"+i).css('background-color',"red")
+		}
+		if(response[i].calendarEmotion == "슬픔"){
+			$("#"+i).css('background-color',"blue")
+		}
+		if(response[i].calendarEmotion == "짜증"){
+			$("#"+i).css('background-color',"orengered")
+		}
+		
+		}
       },
     });
   }
+  
+  
+  
   getcalendarEmotion(${list[0].memberId});
 
   function getcalendarEmotion(memberId){
@@ -232,5 +328,30 @@
     })
   }
   
+  $(function () {
+      var embed = $("#player"); //동영상 코드
+
+      $(".status").on("click", function () {
+        //레이어 열때
+        var path = $(this).attr("href");
+        $(".cont").append(embed);
+        $(path).show();
+        $(".dim").show();
+      });
+
+      $(".close").on("click", function () {
+        //레이어 닫을때
+        $(this).parents("#layer").hide();
+        $(".dim").hide();
+        $(".cont").empty();
+        location.reload();
+      });
+
+      $(".dim").on("click", function () {
+        $(this).hide();
+        $("#layer").hide();
+        $(".cont").empty();
+      });
+    });
   </script>
 </html>

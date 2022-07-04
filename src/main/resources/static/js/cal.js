@@ -1,73 +1,73 @@
 let date = new Date();
 
 const renderCalender = () => {
-  const viewYear = date.getFullYear();
-  const viewMonth = date.getMonth();
+	const viewYear = date.getFullYear();
+	const viewMonth = date.getMonth();
 
-  document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
- 
+	document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
 
-  
-  const prevLast = new Date(viewYear, viewMonth, 0);
-  const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
-  const PLDate = prevLast.getDate();
-  const PLDay = prevLast.getDay();
 
-  const TLDate = thisLast.getDate();
-  const TLDay = thisLast.getDay();
+	const prevLast = new Date(viewYear, viewMonth, 0);
+	const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
-  const prevDates = [];
-  const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-  const nextDates = [];
+	const PLDate = prevLast.getDate();
+	const PLDay = prevLast.getDay();
 
-  if (PLDay !== 6) {
-    for (let i = 0; i < PLDay + 1; i++) {
-      prevDates.unshift(PLDate - i);
-    }
-  }
+	const TLDate = thisLast.getDate();
+	const TLDay = thisLast.getDay();
 
-  for (let i = 1; i < 7 - TLDay; i++) {
-    nextDates.push(i);
-  }
+	const prevDates = [];
+	const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+	const nextDates = [];
 
-  const dates = prevDates.concat(thisDates, nextDates);
-  const firstDateIndex = dates.indexOf(1);
-  const lastDateIndex = dates.lastIndexOf(TLDate);
+	if (PLDay !== 6) {
+		for (let i = 0; i < PLDay + 1; i++) {
+			prevDates.unshift(PLDate - i);
+		}
+	}
 
-  dates.forEach((date, i) => {
-    const condition = i >= firstDateIndex && i < lastDateIndex + 1
-                      ? 'this'
-                      : 'other';
-    dates[i] = `<div class="date"><span class=${condition}>${date}<div class="space"></div></span></div>`;
-  });
+	for (let i = 1; i < 7 - TLDay; i++) {
+		nextDates.push(i);
+	}
 
-  document.querySelector('.dates').innerHTML = dates.join('');
+	const dates = prevDates.concat(thisDates, nextDates);
+	const firstDateIndex = dates.indexOf(1);
+	const lastDateIndex = dates.lastIndexOf(TLDate);
 
-  const today = new Date();
-  if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
-    for (let date of document.querySelectorAll('.this')) {
-      if (+date.innerText === today.getDate()) {
-        date.classList.add('today');
-        break;
-      }
-    }
-  }
+	dates.forEach((date, i) => {
+		const condition = i >= firstDateIndex && i < lastDateIndex + 1
+			? 'this'
+			: 'other';
+		dates[i] = `<div class="date"><span class=${condition}>${date}<div class="space"></div></span></div>`;
+	});
+
+	document.querySelector('.dates').innerHTML = dates.join('');
+
+	const today = new Date();
+	if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
+		for (let date of document.querySelectorAll('.this')) {
+			if (+date.innerText === today.getDate()) {
+				date.classList.add('today');
+				break;
+			}
+		}
+	}
 };
 
 renderCalender();
 
 const prevMonth = () => {
-  date.setMonth(date.getMonth() - 1);
-  renderCalender();
+	date.setMonth(date.getMonth() - 1);
+	renderCalender();
 };
 
 const nextMonth = () => {
-  date.setMonth(date.getMonth() + 1);
-  renderCalender();
+	date.setMonth(date.getMonth() + 1);
+	renderCalender();
 };
 
 const goToday = () => {
-  date = new Date();
-  renderCalender();
+	date = new Date();
+	renderCalender();
 };

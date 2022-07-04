@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS calendar
 (
     calendar_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '캘린더 아이디',
     calendar_code INTEGER(6) COMMENT '캘린더 코드',
+--    calendar_month_first_day INTEGER(8) COMMET '캘린더 월별 1일',
     member_id INTEGER(4) COMMENT '회원 아이디',
     calendar_emotion VARCHAR(30) COMMENT '감정',
    	content VARCHAR(100) COMMENT '내용',

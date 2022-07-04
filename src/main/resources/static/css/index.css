@@ -40,8 +40,8 @@ html, body {
 .emotion {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 15px;
-	font-size: 20px;
+	grid-gap: 20px;
+	font-size: 30px;
 	margin-bottom: 20px;
 	background-color: antiquewhite;
 	border-radius: 5px;
@@ -57,8 +57,8 @@ html, body {
 
 .happy-color {
 	background-color: yellow;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .soso {
@@ -68,8 +68,8 @@ html, body {
 
 .soso-color {
 	background-color: silver;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .romance {
@@ -79,8 +79,8 @@ html, body {
 
 .romance-color {
 	background-color: pink;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .angry {
@@ -90,8 +90,8 @@ html, body {
 
 .angry-color {
 	background-color: red;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .sad {
@@ -101,8 +101,8 @@ html, body {
 
 .sad-color {
 	background-color: blue;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .irritation {
@@ -112,8 +112,8 @@ html, body {
 
 .irritation-color {
 	background-color: orangered;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 }
 
 .header {
@@ -130,6 +130,7 @@ html, body {
 
 .list li {
 	padding: 10%;
+	font-size: 24px;
 	list-style: none;
 }
 
@@ -186,7 +187,6 @@ html, body {
 	text-align: center;
 	background: #0b0809;
 	color: #ddaf35;
-	float: left;
 	width: 100%;
 	padding: 30px;
 }
@@ -277,7 +277,6 @@ html, body {
 }
 
 .content-right {
-	float: left;
 	width: 90%;
 	padding: 10px;
 }
@@ -300,52 +299,54 @@ html, body {
 }
 
 #happy {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: yellow;
 	cursor: pointer;
 }
 
 #soso {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: silver;
 	cursor: pointer;
 }
 
 #romance {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: pink;
 	cursor: pointer;
 }
 
 #angry {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: red;
 	cursor: pointer;
 }
 
 #sad {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: blue;
 	cursor: pointer;
 }
 
 #irritation {
-	width: 15px;
-	height: 15px;
+	width: 45px;
+	height: 45px;
 	background-color: orangered;
 	cursor: pointer;
 }
 
 .color-select {
+	position: relative;
+	left: 6%;
 	display: grid;
 	justify-content: center;
 	padding: 15px;
-	width: 300px;
+	width: 500px;
 }
 
 #negetive {
@@ -362,8 +363,11 @@ html, body {
 		background: #ababab;
 	}
 	.content-wrap {
-		width: 800px;
-		height: 600px;
+		display: flex;
+		position: relative;
+		left: 6%;
+		width: 1580px;
+		height: 930px;
 		margin: 0 auto;
 		border: 4px solid rgba(161, 161, 161, 0.5);
 		border-radius: 20px;
@@ -373,9 +377,8 @@ html, body {
 	.content-left {
 		background: #0b0809;
 		color: #ddaf35;
-		float: left;
-		width: 360px;
-		height: 600px;
+		width: 600px;
+		height: 930px;
 		padding: 90px 20px 20px 0;
 	}
 	.main-wrap {
@@ -438,7 +441,6 @@ html, body {
 	.del-data {
 		display: block;
 		color: #ddaf35;
-		float: left;
 		width: 10%;
 		cursor: pointer;
 		font-size: 10px;
@@ -448,9 +450,11 @@ html, body {
 		border-radius: 10px;
 	}
 	.content-right {
-		float: left;
-		width: 360px;
-		height: 600px;
+		position: relative;
+		left: 6.5%;
+		top: -9%;
+		width: 800px;
+		height: 930px;
 		padding: 100px 20px 20px 20px;
 	}
 	.sun {
@@ -460,19 +464,107 @@ html, body {
 		color: #2107e0;
 	}
 	.content-right table tr td {
-		width: 50px;
-		height: 50px;
+		width: 120px;
+		height: 110px;
 		text-align: center;
-		font-size: 20px;
+		font-size: 25px;
 		font-weight: bold;
 		cursor: pointer;
 	}
 	#selected-color {
 		text-align: center;
-		font-size: 24px;
+		font-size: 30px;
 		border: none;
 		outline: none;
 		color: white;
 		background-color: black;
+	}
+	/* 통계 팝업 */
+	#layer {
+		display: none;
+		position: absolute;
+		top: 35%;
+		left: 28.7%;
+		width: 750px;
+		height: 500px;
+		margin: -188px 0 0 -300px;
+		padding: 20px;
+		background: #eee;
+		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+		border: 1px solid #dadada;
+		z-index: 21;
+	}
+	#layer #player {
+		display: block;
+		margin: 20px auto 0;
+	}
+	#layer .inner {
+		position: relative;
+	}
+	#layer .inner .close {
+		position: absolute;
+		top: -10px;
+		right: 0;
+		display: block;
+		width: 20px;
+		height: 20px;
+		background:
+			url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt18SOam3wUX0wExC6ji5-lY732vA2fEPBscikPQaLbT_tJd7Y7g")
+			no-repeat 0 0;
+		text-indent: -999em;
+		background-size: 20px 20px;
+	}
+	.dim {
+		display: none;
+		position: fixed;
+		_position: absolute;
+		top: 0;
+		left: 0;
+		background: #000;
+		width: 100%;
+		height: 100%;
+		filter: Alpha(opacity = 40);
+		opacity: 0.4;
+		-moz-opacity: 0.4;
+		z-index: 20;
+	}
+	.cardBox {
+		position: relative;
+		width: 95%;
+		padding: 20px;
+		display: grid;
+		grid-template-columns: repeat(3, 2fr);
+		grid-gap: 30px;
+	}
+	.cardBox .card {
+		position: relative;
+		background-color: snow;
+		padding: 30px;
+		border-radius: 20px;
+		display: flex;
+		justify-content: space-between;
+		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+	}
+	.cardBox .card .numbers {
+		position: relative;
+		font-weight: 500;
+		font-size: 2.5em;
+		color: aquamarine;
+	}
+	.cardBox .card .cardName {
+		color: var(- -black2);
+		font-size: 1.1em;
+		margin-top: 5px;
+	}
+	.cardBox .card .iconBx {
+		font-size: 3.5em;
+		color: grey;
+	}
+	.cardBox .card:hover {
+		background-color: aquamarine;
+	}
+	.cardBox .card:hover .numbers, .cardBox .card:hover .cardName, .cardBox .card:hover .iconBx
+		{
+		color: snow;
 	}
 }

@@ -15,22 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Increase.emotionDiary.VO.CalendarVO;
 import com.Increase.emotionDiary.service.CalendarService;
-import com.Increase.emotionDiary.service.MemberService;
 
 @RestController
 public class CalendarRestController {
 
 	@Autowired
 	private CalendarService calendarService;
-	@Autowired
-	private MemberService memberService;
 	
-	//달력호출
+	//일기장호출
 	@CrossOrigin
 	@GetMapping("/calendar/{memberName}")
 	public List<Map<String,Object>> callCalendar(@PathVariable("memberName") String memberName){
 		return calendarService.selectList(memberName);
 	}
+	//월별 정보호출
+	@CrossOrigin
+	@GetMapping("/calendar/{memberName}/{calendarMonthFirstDay}/{calendarCode}")
+	public List<Map<String,Object>> callCalendarMonth(@PathVariable("memberName") String memberName, @PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay, @PathVariable("calendarCode") int calendarCode){
+		return calendarService.selectMonth(memberName, calendarMonthFirstDay, calendarCode);
+	}
+	
 	//개인 달력 기록 확인
 	@CrossOrigin
 	@GetMapping("/calendar/id/{calendarid}")
