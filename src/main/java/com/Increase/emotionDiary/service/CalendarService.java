@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Increase.emotionDiary.VO.CalendarVO;
 import com.Increase.emotionDiary.mapper.CalendarMapper;
+import com.github.pagehelper.PageHelper;
 
 @Service
 public class CalendarService {
@@ -47,5 +48,13 @@ public class CalendarService {
 	
 	public List<Map<String, Object>> selectMonth(String memberName, int calendarMonthFirstDay, int calendarCode){
 		return calendarMapper.selectMonth(memberName, calendarMonthFirstDay, calendarCode);
+	}
+	
+	public Map<String, Object> calendarStatistics(int memberId, int calendarMonthFirstDay, int calendarCode){
+		return calendarMapper.calendarStatistics(memberId, calendarMonthFirstDay, calendarCode);
+	}
+	public List<Map<String, Object>> pagingSelect(String memberName, int pageNum, int pageSize){
+		PageHelper.startPage(pageNum, pageSize);
+		return calendarMapper.pagingSelect(memberName);
 	}
 }

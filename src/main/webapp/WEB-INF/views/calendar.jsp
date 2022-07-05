@@ -7,10 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" href="/resources/static/css/index.css" />
-<link rel="stylesheet" href="/resources/static/css/index.css" />
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-	rel="stylesheet" />
+<link rel="stylesheet" href="/resources/static/css/index.css"/>
 <title>calendar todo</title>
 </head>
 <body>
@@ -118,69 +115,69 @@
 		</div>
 		<ul class="list">
 			<li class="picture"><a
-				href="/calendar/diary?memberid=${list[0].memberName}">일기장</a></li>
+				href="/calendar/diary?membername=${list[0].memberName}&pageNum=1&pageSize=20">일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
 				class="status">통계</a></li>
 			<li class="logout"><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
 	<div class="main">
-		<div class="content-wrap">
-			<div class="content-left">
-				<div class="main-wrap">
-					<div id="main-day" class="main-day"></div>
-					<div id="main-date" class="main-date"></div>
+		<div class=calendar-box>
+			<div class="content-wrap">
+				<div class="content-left">
+					<div class="main-wrap">
+						<div id="main-day" class="main-day"></div>
+						<div id="main-date" class="main-date"></div>
+					</div>
+					<input type="text" id="selected-color" readonly
+						value="아래 버튼을 클릭해주세요.">
+					<div class="color-select">
+						<input id="hidden" type="hidden" val="" />
+						<div id="positive">
+							<button id="happy" value="기쁨"></button>
+							<button id="soso" value="보통"></button>
+							<button id="romance" value="설렘"></button>
+						</div>
+						<div id="negetive">
+							<button id="angry" value="분노"></button>
+							<button id="sad" value="슬픔"></button>
+							<button id="irritation" value="짜증"></button>
+						</div>
+					</div>
+					<div class="todo-wrap">
+						<input id="boardIdHidden" type="hidden" />
+						<div class="todo-title">그날의 기분을 적어보세요</div>
+						<div class="input-wrap">
+							<input type="text" placeholder="please write here!!"
+								id="input-box" class="input-box" value="" />
+							<button type="button" id="input-data" class="input-data">
+								등록</button>
+							<div id="input-list" class="input-list"></div>
+						</div>
+					</div>
 				</div>
-				<input type="text" id="selected-color" readonly
-					value="아래 버튼을 클릭해주세요.">
-				<div class="color-select">
-					<input id="hidden" type="hidden" val="" />
-					<div id="positive">
-						<button id="happy" value="기쁨"></button>
-						<button id="soso" value="보통"></button>
-						<button id="romance" value="설렘"></button>
-					</div>
-					<div id="negetive">
-						<button id="angry" value="분노"></button>
-						<button id="sad" value="슬픔"></button>
-						<button id="irritation" value="짜증"></button>
-					</div>
+				<div class="content-right">
+					<table id="calendar" align="center">
+						<div class="hello">
+							<input id="memberId" type="hidden" value="${list[0].memberId}"></input>
+						</div>
+						<thead>
+							<tr class="btn-wrap clearfix">
+								<td align="center" id="current-year-month" colspan="5"></td>
+							</tr>
+							<tr>
+								<td class="sun" align="center">Sun</td>
+								<td align="center">Mon</td>
+								<td align="center">Tue</td>
+								<td align="center">Wed</td>
+								<td align="center">Thu</td>
+								<td align="center">Fri</td>
+								<td class="sat" align="center">Sat</td>
+							</tr>
+						</thead>
+						<tbody id="calendar-body" class="calendar-body"></tbody>
+					</table>
 				</div>
-				<div class="todo-wrap">
-					<input id="boardIdHidden" type="hidden" />
-					<div class="todo-title">그날의 기분을 적어보세요</div>
-					<div class="input-wrap">
-						<input type="text" placeholder="please write here!!"
-							id="input-box" class="input-box" value="" />
-						<button type="button" id="input-data" class="input-data">
-							등록</button>
-						<div id="input-list" class="input-list"></div>
-					</div>
-				</div>
-			</div>
-			<div class="content-right">
-				<table id="calendar" align="center">
-					<div class="hello">
-						<input id="memberId" type="hidden" value="${list[0].memberId}"></input>
-					</div>
-					<thead>
-						<tr class="btn-wrap clearfix">
-							<td><label id="prev"> &#60; </label></td>
-							<td align="center" id="current-year-month" colspan="5"></td>
-							<td><label id="next"> &#62; </label></td>
-						</tr>
-						<tr>
-							<td class="sun" align="center">Sun</td>
-							<td align="center">Mon</td>
-							<td align="center">Tue</td>
-							<td align="center">Wed</td>
-							<td align="center">Thu</td>
-							<td align="center">Fri</td>
-							<td class="sat" align="center">Sat</td>
-						</tr>
-					</thead>
-					<tbody id="calendar-body" class="calendar-body"></tbody>
-				</table>
 			</div>
 		</div>
 	</div>
@@ -228,7 +225,7 @@
   var day = new Date()
   console.log(day)
   day = "00"+day.getDate();
-  var dayslice =  day.slice(1,3);
+  var dayslice =  day.slice(-2);
   console.log(dayslice)
   
   var memberId = $("#memberId").val();
@@ -271,6 +268,10 @@
       },
     });
   });
+  
+  
+	
+	
   getCalendarList(${list[0].memberName})
   //달력 조회
   function getCalendarList(memberName) {
@@ -281,27 +282,583 @@
       dataType: "json",
       success: (response) => {
         console.log("---->"+response[0].calendarEmotion);
-		for(i=0; i<2; i++){ //나중에 dayslice 사용.
+		for(i=0; i<=31; i++){
 			console.log(response[i].calendarEmotion)
+			var code = response[i].calendarCode;
+			console.log(code)
+			code = code.toString().slice(-2);
+			console.log(code);
 		if(response[i].calendarEmotion == "기쁨"){
-			$("#"+i).css('background-color',"yellow")
+			if(code == "01"){				
+			$("#1").css('background-color',"yellow")				
+			}
+			if(code == "02"){				
+				$("#2").css('background-color',"yellow")				
+				}
+			if(code == "03"){				
+				$("#3").css('background-color',"yellow")				
+				}
+			if(code == "04"){				
+				$("#4").css('background-color',"yellow")				
+				}
+			if(code == "05"){				
+				$("#5").css('background-color',"yellow")				
+				}
+			if(code == "06"){				
+				$("#6").css('background-color',"yellow")				
+				}
+			if(code == "07"){				
+				$("#7").css('background-color',"yellow")				
+				}
+			if(code == "08"){				
+				$("#8").css('background-color',"yellow")				
+				}
+			if(code == "09"){				
+				$("#9").css('background-color',"yellow")				
+				}
+			if(code == "10"){				
+				$("#10").css('background-color',"yellow")				
+				}
+			if(code == "11"){				
+				$("#11").css('background-color',"yellow")				
+				}
+			if(code == "12"){				
+				$("#12").css('background-color',"yellow")				
+				}
+			if(code == "13"){				
+				$("#13").css('background-color',"yellow")				
+				}
+			if(code == "14"){				
+				$("#14").css('background-color',"yellow")				
+				}
+			if(code == "15"){				
+				$("#15").css('background-color',"yellow")				
+				}
+			if(code == "16"){				
+				$("#16").css('background-color',"yellow")				
+				}
+			if(code == "17"){				
+				$("#17").css('background-color',"yellow")				
+				}
+			if(code == "18"){				
+				$("#18").css('background-color',"yellow")				
+				}
+			if(code == "19"){				
+				$("#19").css('background-color',"yellow")				
+				}
+			if(code == "20"){				
+				$("#20").css('background-color',"yellow")				
+				}
+			if(code == "21"){				
+				$("#21").css('background-color',"yellow")				
+				}
+			if(code == "22"){				
+				$("#22").css('background-color',"yellow")				
+				}
+			if(code == "23"){				
+				$("#23").css('background-color',"yellow")				
+				}
+			if(code == "24"){				
+				$("#24").css('background-color',"yellow")				
+				}
+			if(code == "25"){				
+				$("#25").css('background-color',"yellow")				
+				}
+			if(code == "26"){				
+				$("#26").css('background-color',"yellow")				
+				}
+			if(code == "27"){				
+				$("#27").css('background-color',"yellow")				
+				}
+			if(code == "28"){				
+				$("#28").css('background-color',"yellow")				
+				}
+			if(code == "29"){				
+				$("#29").css('background-color',"yellow")				
+				}
+			if(code == "30"){				
+				$("#30").css('background-color',"yellow")				
+				}
+			if(code == "31"){				
+				$("#31").css('background-color',"yellow")				
+				}
 		}
-		if(response[i].calendarEmotion == "보통"){
-			$("#"+i).css('background-color',"silver")
+			
+		 if(response[i].calendarEmotion == "보통"){
+			 if(code == "01"){				
+					$("#1").css('background-color',"silver")				
+					}
+					if(code == "02"){				
+						$("#2").css('background-color',"silver")				
+						}
+					if(code == "03"){				
+						$("#3").css('background-color',"silver")				
+						}
+					if(code == "04"){				
+						$("#4").css('background-color',"silver")				
+						}
+					if(code == "05"){				
+						$("#5").css('background-color',"silver")				
+						}
+					if(code == "06"){				
+						$("#6").css('background-color',"silver")				
+						}
+					if(code == "07"){				
+						$("#7").css('background-color',"silver")				
+						}
+					if(code == "08"){				
+						$("#8").css('background-color',"silver")				
+						}
+					if(code == "09"){				
+						$("#9").css('background-color',"silver")				
+						}
+					if(code == "10"){				
+						$("#10").css('background-color',"silver")				
+						}
+					if(code == "11"){				
+						$("#11").css('background-color',"silver")				
+						}
+					if(code == "12"){				
+						$("#12").css('background-color',"silver")				
+						}
+					if(code == "13"){				
+						$("#13").css('background-color',"silver")				
+						}
+					if(code == "14"){				
+						$("#14").css('background-color',"silver")				
+						}
+					if(code == "15"){				
+						$("#15").css('background-color',"silver")				
+						}
+					if(code == "16"){				
+						$("#16").css('background-color',"silver")				
+						}
+					if(code == "17"){				
+						$("#17").css('background-color',"silver")				
+						}
+					if(code == "18"){				
+						$("#18").css('background-color',"silver")				
+						}
+					if(code == "19"){				
+						$("#19").css('background-color',"silver")				
+						}
+					if(code == "20"){				
+						$("#20").css('background-color',"silver")				
+						}
+					if(code == "21"){				
+						$("#21").css('background-color',"silver")				
+						}
+					if(code == "22"){				
+						$("#22").css('background-color',"silver")				
+						}
+					if(code == "23"){				
+						$("#23").css('background-color',"silver")				
+						}
+					if(code == "24"){				
+						$("#24").css('background-color',"silver")				
+						}
+					if(code == "25"){				
+						$("#25").css('background-color',"silver")				
+						}
+					if(code == "26"){				
+						$("#26").css('background-color',"silver")				
+						}
+					if(code == "27"){				
+						$("#27").css('background-color',"silver")				
+						}
+					if(code == "28"){				
+						$("#28").css('background-color',"silver")				
+						}
+					if(code == "29"){				
+						$("#29").css('background-color',"silver")				
+						}
+					if(code == "30"){				
+						$("#30").css('background-color',"silver")				
+						}
+					if(code == "31"){				
+						$("#31").css('background-color',"silver")				
+						}
 		}
 		if(response[i].calendarEmotion == "설렘"){
-			$("#"+i).css('background-color',"pink")
+			if(code == "01"){				
+				$("#1").css('background-color',"pink")				
+				}
+				if(code == "02"){				
+					$("#2").css('background-color',"pink")				
+					}
+				if(code == "03"){				
+					$("#3").css('background-color',"pink")				
+					}
+				if(code == "04"){				
+					$("#4").css('background-color',"pink")			
+					}
+				if(code == "05"){				
+					$("#5").css('background-color',"pink")				
+					}
+				if(code == "06"){				
+					$("#6").css('background-color',"pink")				
+					}
+				if(code == "07"){				
+					$("#7").css('background-color',"pink")				
+					}
+				if(code == "08"){				
+					$("#8").css('background-color',"pink")				
+					}
+				if(code == "09"){				
+					$("#9").css('background-color',"pink")				
+					}
+				if(code == "10"){				
+					$("#10").css('background-color',"pink")				
+					}
+				if(code == "11"){				
+					$("#11").css('background-color',"pink")				
+					}
+				if(code == "12"){				
+					$("#12").css('background-color',"pink")				
+					}
+				if(code == "13"){				
+					$("#13").css('background-color',"pink")				
+					}
+				if(code == "14"){				
+					$("#14").css('background-color',"pink")				
+					}
+				if(code == "15"){				
+					$("#15").css('background-color',"pink")				
+					}
+				if(code == "16"){				
+					$("#16").css('background-color',"pink")				
+					}
+				if(code == "17"){				
+					$("#17").css('background-color',"pink")				
+					}
+				if(code == "18"){				
+					$("#18").css('background-color',"pink")				
+					}
+				if(code == "19"){				
+					$("#19").css('background-color',"pink")				
+					}
+				if(code == "20"){				
+					$("#20").css('background-color',"pink")				
+					}
+				if(code == "21"){				
+					$("#21").css('background-color',"pink")				
+					}
+				if(code == "22"){				
+					$("#22").css('background-color',"pink")				
+					}
+				if(code == "23"){				
+					$("#23").css('background-color',"pink")				
+					}
+				if(code == "24"){				
+					$("#24").css('background-color',"pink")				
+					}
+				if(code == "25"){				
+					$("#25").css('background-color',"pink")				
+					}
+				if(code == "26"){				
+					$("#26").css('background-color',"pink")				
+					}
+				if(code == "27"){				
+					$("#27").css('background-color',"pink")				
+					}
+				if(code == "28"){				
+					$("#28").css('background-color',"pink")				
+					}
+				if(code == "29"){				
+					$("#29").css('background-color',"pink")				
+					}
+				if(code == "30"){				
+					$("#30").css('background-color',"pink")				
+					}
+				if(code == "31"){				
+					$("#31").css('background-color',"pink")				
+					}
 		}
 		if(response[i].calendarEmotion == "분노"){
-			$("#"+i).css('background-color',"red")
+			if(code == "01"){				
+				$("#1").css('background-color',"red")				
+				}
+				if(code == "02"){				
+					$("#2").css('background-color',"red")				
+					}
+				if(code == "03"){				
+					$("#3").css('background-color',"red")				
+					}
+				if(code == "04"){				
+					$("#4").css('background-color',"red")			
+					}
+				if(code == "05"){				
+					$("#5").css('background-color',"red")				
+					}
+				if(code == "06"){				
+					$("#6").css('background-color',"red")				
+					}
+				if(code == "07"){				
+					$("#7").css('background-color',"red")				
+					}
+				if(code == "08"){				
+					$("#8").css('background-color',"red")				
+					}
+				if(code == "09"){				
+					$("#9").css('background-color',"red")				
+					}
+				if(code == "10"){				
+					$("#10").css('background-color',"red")				
+					}
+				if(code == "11"){				
+					$("#11").css('background-color',"red")				
+					}
+				if(code == "12"){				
+					$("#12").css('background-color',"red")				
+					}
+				if(code == "13"){				
+					$("#13").css('background-color',"red")				
+					}
+				if(code == "14"){				
+					$("#14").css('background-color',"red")				
+					}
+				if(code == "15"){				
+					$("#15").css('background-color',"red")				
+					}
+				if(code == "16"){				
+					$("#16").css('background-color',"red")				
+					}
+				if(code == "17"){				
+					$("#17").css('background-color',"red")				
+					}
+				if(code == "18"){				
+					$("#18").css('background-color',"red")				
+					}
+				if(code == "19"){				
+					$("#19").css('background-color',"red")				
+					}
+				if(code == "20"){				
+					$("#20").css('background-color',"red")				
+					}
+				if(code == "21"){				
+					$("#21").css('background-color',"red")				
+					}
+				if(code == "22"){				
+					$("#22").css('background-color',"red")				
+					}
+				if(code == "23"){				
+					$("#23").css('background-color',"red")				
+					}
+				if(code == "24"){				
+					$("#24").css('background-color',"red")				
+					}
+				if(code == "25"){				
+					$("#25").css('background-color',"red")				
+					}
+				if(code == "26"){				
+					$("#26").css('background-color',"red")				
+					}
+				if(code == "27"){				
+					$("#27").css('background-color',"red")				
+					}
+				if(code == "28"){				
+					$("#28").css('background-color',"red")				
+					}
+				if(code == "29"){				
+					$("#29").css('background-color',"red")				
+					}
+				if(code == "30"){				
+					$("#30").css('background-color',"red")				
+					}
+				if(code == "31"){				
+					$("#31").css('background-color',"red")				
+					}
 		}
 		if(response[i].calendarEmotion == "슬픔"){
-			$("#"+i).css('background-color',"blue")
+			if(code == "01"){				
+				$("#1").css('background-color',"blue")				
+				}
+				if(code == "02"){				
+					$("#2").css('background-color',"blue")				
+					}
+				if(code == "03"){				
+					$("#3").css('background-color',"blue")				
+					}
+				if(code == "04"){				
+					$("#4").css('background-color',"blue")			
+					}
+				if(code == "05"){				
+					$("#5").css('background-color',"blue")				
+					}
+				if(code == "06"){				
+					$("#6").css('background-color',"blue")				
+					}
+				if(code == "07"){				
+					$("#7").css('background-color',"blue")				
+					}
+				if(code == "08"){				
+					$("#8").css('background-color',"blue")				
+					}
+				if(code == "09"){				
+					$("#9").css('background-color',"blue")				
+					}
+				if(code == "10"){				
+					$("#10").css('background-color',"blue")				
+					}
+				if(code == "11"){				
+					$("#11").css('background-color',"blue")				
+					}
+				if(code == "12"){				
+					$("#12").css('background-color',"blue")				
+					}
+				if(code == "13"){				
+					$("#13").css('background-color',"blue")				
+					}
+				if(code == "14"){				
+					$("#14").css('background-color',"blue")				
+					}
+				if(code == "15"){				
+					$("#15").css('background-color',"blue")				
+					}
+				if(code == "16"){				
+					$("#16").css('background-color',"blue")				
+					}
+				if(code == "17"){				
+					$("#17").css('background-color',"blue")				
+					}
+				if(code == "18"){				
+					$("#18").css('background-color',"blue")				
+					}
+				if(code == "19"){				
+					$("#19").css('background-color',"blue")				
+					}
+				if(code == "20"){				
+					$("#20").css('background-color',"blue")				
+					}
+				if(code == "21"){				
+					$("#21").css('background-color',"blue")				
+					}
+				if(code == "22"){				
+					$("#22").css('background-color',"blue")				
+					}
+				if(code == "23"){				
+					$("#23").css('background-color',"blue")				
+					}
+				if(code == "24"){				
+					$("#24").css('background-color',"blue")				
+					}
+				if(code == "25"){				
+					$("#25").css('background-color',"blue")				
+					}
+				if(code == "26"){				
+					$("#26").css('background-color',"blue")				
+					}
+				if(code == "27"){				
+					$("#27").css('background-color',"blue")				
+					}
+				if(code == "28"){				
+					$("#28").css('background-color',"blue")				
+					}
+				if(code == "29"){				
+					$("#29").css('background-color',"blue")				
+					}
+				if(code == "30"){				
+					$("#30").css('background-color',"blue")				
+					}
+				if(code == "31"){				
+					$("#31").css('background-color',"blue")				
+					}
 		}
 		if(response[i].calendarEmotion == "짜증"){
-			$("#"+i).css('background-color',"orengered")
-		}
-		
+			if(code == "01"){				
+				$("#1").css('background-color',"orangered")				
+				}
+				if(code == "02"){				
+					$("#2").css('background-color',"orangered")				
+					}
+				if(code == "03"){				
+					$("#3").css('background-color',"orangered")				
+					}
+				if(code == "04"){				
+					$("#4").css('background-color',"orangered")			
+					}
+				if(code == "05"){				
+					$("#5").css('background-color',"orangered")				
+					}
+				if(code == "06"){				
+					$("#6").css('background-color',"orangered")				
+					}
+				if(code == "07"){				
+					$("#7").css('background-color',"orangered")				
+					}
+				if(code == "08"){				
+					$("#8").css('background-color',"orangered")				
+					}
+				if(code == "09"){				
+					$("#9").css('background-color',"orangered")				
+					}
+				if(code == "10"){				
+					$("#10").css('background-color',"orangered")				
+					}
+				if(code == "11"){				
+					$("#11").css('background-color',"orangered")				
+					}
+				if(code == "12"){				
+					$("#12").css('background-color',"orangered")				
+					}
+				if(code == "13"){				
+					$("#13").css('background-color',"orangered")				
+					}
+				if(code == "14"){				
+					$("#14").css('background-color',"orangered")				
+					}
+				if(code == "15"){				
+					$("#15").css('background-color',"orangered")				
+					}
+				if(code == "16"){				
+					$("#16").css('background-color',"orangered")				
+					}
+				if(code == "17"){				
+					$("#17").css('background-color',"orangered")				
+					}
+				if(code == "18"){				
+					$("#18").css('background-color',"orangered")				
+					}
+				if(code == "19"){				
+					$("#19").css('background-color',"orangered")				
+					}
+				if(code == "20"){				
+					$("#20").css('background-color',"orangered")				
+					}
+				if(code == "21"){				
+					$("#21").css('background-color',"orangered")				
+					}
+				if(code == "22"){				
+					$("#22").css('background-color',"orangered")				
+					}
+				if(code == "23"){				
+					$("#23").css('background-color',"orangered")				
+					}
+				if(code == "24"){				
+					$("#24").css('background-color',"orangered")				
+					}
+				if(code == "25"){				
+					$("#25").css('background-color',"orangered")				
+					}
+				if(code == "26"){				
+					$("#26").css('background-color',"orangered")				
+					}
+				if(code == "27"){				
+					$("#27").css('background-color',"orangered")				
+					}
+				if(code == "28"){				
+					$("#28").css('background-color',"orangered")				
+					}
+				if(code == "29"){				
+					$("#29").css('background-color',"orangered")				
+					}
+				if(code == "30"){				
+					$("#30").css('background-color',"orangered")				
+					}
+				if(code == "31"){				
+					$("#31").css('background-color',"orangered")				
+					}
+		} 
 		}
       },
     });
@@ -313,11 +870,12 @@
 
   function getcalendarEmotion(memberId){
     $.ajax({
-      url: "/calendar/statistics/"+memberId,
+      url: "/calendar/month/statistics/" + memberId +"/"+monthFirstday+"/"+time,
       type:"GET",
       dataType:"json",
       success: (data) =>{
         console.log(data)
+        console.log("1111")
         $('#happycnt').text(data.happy);
         $('#sosocnt').text(data.soso);
         $('#romancecnt').text(data.romance);

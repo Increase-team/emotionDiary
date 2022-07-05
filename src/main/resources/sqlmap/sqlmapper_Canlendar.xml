@@ -5,35 +5,44 @@
 
 	<select id="selectList" resultType="Map">
 		SELECT
-		c.calendar_id AS calendarId,
+		c.calendar_id AS
+		calendarId,
 		m.member_id AS memberId,
 		c.calendar_code AS calendarCode,
 		c.calendar_month_first_day as calendarMonthFirstDay,
 		c.calendar_emotion AS calendarEmotion,
-		date_format(c.create_at, '%Y-%m-%d')as createAt,
+		date_format(c.create_at,
+		'%Y-%m-%d')as createAt,
 		m.member_name AS memberName,
 		c.content
-		FROM calendar AS c 
+		FROM
+		calendar AS c
 		right JOIN member AS m
 		ON c.member_id = m.member_id
 		left join member as mm
-		on c.member_id = mm.member_id
+		on
+		c.member_id = mm.member_id
 		WHERE m.member_name = #{memberName}
-		order by calendarId asc
+		order by
+		calendarId asc
 	</select>
 
 	<select id="selectOne" resultType="CalendarVO">
 		SELECT
-		c.calendar_id AS calendarId,
+		c.calendar_id AS
+		calendarId,
 		c.member_id AS memberId,
-		c.calendar_emotion AS calendarEmotion,
+		c.calendar_emotion AS
+		calendarEmotion,
 		c.content,
 		c.create_at AS
 		createAt,
-		m.member_name AS memberName
+		m.member_name AS
+		memberName
 		FROM calendar AS c
 		INNER JOIN member AS m
-		ON c.member_id = m.member_id
+		ON c.member_id =
+		m.member_id
 		WHERE calendar_id = #{calendarId}
 	</select>
 
@@ -62,67 +71,74 @@
 
 	<select id="selectstatistics" resultType="map">
 
-	select
+		select
 		count(*) as happy,
 		(select
-			count(*)
+		count(*)
 		from calendar c7
 		where member_id = #{memberId}
-		and calendar_emotion = "보통") as soso,
+		and calendar_emotion =
+		"보통") as soso,
 		(
 		select
-			count(*)
+		count(*)
 		from calendar c2
 		where member_id = #{memberId}
-		and calendar_emotion = "설렘"
+		and calendar_emotion =
+		"설렘"
 		) as romance,
 		(select
-			count(*)
+		count(*)
 		from calendar c3
 		where member_id = #{memberId}
-		and calendar_emotion = "분노"
+		and calendar_emotion =
+		"분노"
 		) as angry,
 		(select
-			count(*)
+		count(*)
 		from calendar c4
 		where member_id = #{memberId}
-		and calendar_emotion = "슬픔"
+		and calendar_emotion =
+		"슬픔"
 		) as sad,
 		(select
-			count(*)
+		count(*)
 		from calendar c5
 		where member_id = #{memberId}
-		and calendar_emotion = "짜증"
+		and calendar_emotion =
+		"짜증"
 		) as irritation
-	from calendar c
-	where member_id = #{memberId}
-	and calendar_emotion = "기쁨"
+		from calendar c
+		where member_id = #{memberId}
+		and calendar_emotion = "기쁨"
 	</select>
-	
+
 	<update id="updateCalendar">
-	UPDATE calendar 
-	SET 
+		UPDATE calendar
+		SET
 		calendar_emotion = #{calendarEmotion},
 		content = #{content}
-	WHERE
+		WHERE
 		calendar_id = #{calendarId}
 	</update>
-	
+
 	<select id="selectMonth" resultType="map">
-	select 
+		select
 		c.calendar_id AS calendarId,
 		m.member_id AS memberId,
-		c.calendar_code AS calendarCode,
+		c.calendar_code AS
+		calendarCode,
 		c.calendar_emotion AS calendarEmotion,
 		c.calendar_month_first_day as calendarMonthFirstDay,
 		date_format(c.create_at, '%Y-%m-%d')as createAt,
-		m.member_name AS memberName,
+		m.member_name AS
+		memberName,
 		c.content
-	FROM calendar AS c 
-	right join member as m
-	ON c.member_id = m.member_id
-	left join member as mm
-	on c.member_id = mm.member_id
+		FROM calendar AS c
+		right join member as m
+		ON c.member_id = m.member_id
+		left join member as mm
+		on c.member_id = mm.member_id
 	<![CDATA[
 	where m.member_name  = #{memberName}
 	and
@@ -130,5 +146,79 @@
 	date_format(c.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
 	and date_format(c.create_at,'%Y%m%d') <= #{calendarCode}
 	)]]>
+
 	</select>
+	<select id="calendarStatistics" resultType="map">
+	<![CDATA[
+	select
+		count(*) as happy,
+		(select
+		count(*)
+		from calendar c7
+		where member_id = #{memberId}
+		and calendar_emotion = "보통"
+		and date_format(c7.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c7.create_at,'%Y%m%d') <= #{calendarCode}
+		) as soso,
+		(
+		select
+		count(*)
+		from calendar c2
+		where member_id = #{memberId}
+		and calendar_emotion = "설렘"
+		and date_format(c2.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c2.create_at,'%Y%m%d') <= #{calendarCode}
+		) as romance,
+		(select
+		count(*)
+		from calendar c3
+		where member_id = #{memberId}
+		and calendar_emotion = "분노"
+		and date_format(c3.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c3.create_at,'%Y%m%d') <= #{calendarCode}
+		) as angry,
+		(select
+		count(*)
+		from calendar c4
+		where member_id = #{memberId}
+		and calendar_emotion = "슬픔"
+		and date_format(c4.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c4.create_at,'%Y%m%d') <= #{calendarCode}
+		) as sad,
+		(select
+		count(*)
+		from calendar c5
+		where member_id = #{memberId}
+		and calendar_emotion = "짜증"
+		and date_format(c5.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c5.create_at,'%Y%m%d') <= #{calendarCode}
+		) as irritation
+		from calendar c
+		where member_id = #{memberId}
+		and calendar_emotion = "기쁨"
+		and date_format(c.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}
+		and date_format(c.create_at,'%Y%m%d') <= #{calendarCode}
+	]]>
+	</select>
+	
+	<select id="pagingSelect" resultType="Map">
+	SELECT
+		c.calendar_id AS calendarId,
+		m.member_id AS memberId,
+		c.calendar_code AS calendarCode,
+		c.calendar_month_first_day as calendarMonthFirstDay,
+		c.calendar_emotion AS calendarEmotion,
+		date_format(c.create_at,'%Y-%m-%d') as createAt,
+		m.member_name AS memberName,
+		c.content
+		FROM
+		calendar AS c
+		right JOIN member AS m
+		ON c.member_id = m.member_id
+		left join member as mm
+		on c.member_id = mm.member_id
+		WHERE m.member_name = #{memberName}
+		order by calendarId asc
+	</select>
+
 </mapper>

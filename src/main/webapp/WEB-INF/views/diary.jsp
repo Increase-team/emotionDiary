@@ -120,7 +120,7 @@
 			</div>
 			<ul class="list">
 				<li class="picture"><a
-					href="/calendar/list?memberid=${list[0].memberName}">달력</a></li>
+					href="/calendar/list?membername=${list[0].memberName}">달력</a></li>
 				<li class="statistics"><a href="#layer" id="player"
 					class="status">통계</a></li>
 				<li class="logout"><a href="/logout">Logout</a></li>
@@ -175,7 +175,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- 
+							
                             <tr>
                                 <td>1</td>
                                 <td>설렘</td>
@@ -194,9 +194,18 @@
                                 <td>특별할것 없는 하루</td>
                                 <td>2022-06-25</td>
                             </tr>
-                             		-->
+                             		
 						</tbody>
 					</table>
+					 <div class="pagination">
+            			<a href="#">Previous</a>
+            			<a href="#">1</a>
+            			<a href="#">2</a>
+            			<a href="#">3</a>
+            			<a href="#">4</a>
+            			<a href="#">5</a>
+            			<a href="#">Next</a>
+          			</div>
 				</div>
 			</div>
 		</main>
@@ -296,25 +305,29 @@ $('.btn-close').click(function(){
 	<script>
 
 		var memberName = $("#memberId").val();
-        
-        diaryList()
-        function diaryList(){
+        var pageNum = 1;
+        var pageSize = 20;
+		
+		
+        diaryList(pageNum,pageSize)
+        function diaryList(pageNum, pageSize){
             $.ajax({
-                url: "/calendar/"+memberName,
+                url: "/calendar/paging?membername="+memberName+"&pageNum="+pageNum+"&pageSize="+pageSize,
                 type: "Get",
                 dataType:"json",
                 success:(response) =>{
                     let html='';
-                    console.log(response.length)
-                    if(response.length > 0){
-                        for(let i=0; i<response.length;i++){
-                            html+="<tr onclick=getList("+response[i].calendarId+")><td>"+response[i].calendarCode+"</td><td>"+response[i].calendarEmotion+"</td><td>"+response[i].content+"</td><td>"+response[i].createAt+"</td></tr>"
+                    console.log(response.list.length)
+                    /* if(response.list.length > 0){
+                        for(let i=0; i<response.list.length; i++){
+                            html+="<tr onclick=getList("+response.list[i].calendarId+")><td>"+response.list[i].calendarCode+"</td><td>"+response.list[i].calendarEmotion+"</td><td>"+response.list[i].content+"</td><td>"+response.list[i].createAt+"</td></tr>"
                         }
+                      
                     }else{
                         html += '<tr><td colspan=6 style="text-align:center">게시판이 없습니다.</td></tr>'
                     }
                     $("tbody").children().remove();
-                    $("tbody").append(html);
+                    $("tbody").append(html); */
                 }
             })
         }

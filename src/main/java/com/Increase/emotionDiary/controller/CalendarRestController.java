@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Increase.emotionDiary.VO.CalendarVO;
 import com.Increase.emotionDiary.service.CalendarService;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 public class CalendarRestController {
@@ -64,6 +66,18 @@ public class CalendarRestController {
 	@GetMapping("/calendar/statistics/{memberid}")
 	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId){
 		return calendarService.selectstatistics(memberId);
+	}
+	//월별 통계
+	@CrossOrigin
+	@GetMapping("/calendar/month/statistics/{memberid}/{calendarMonthFirstDay}/{calendarCode}")
+	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId, @PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay, @PathVariable("calendarCode") int calendarCode){
+		return calendarService.calendarStatistics(memberId, calendarMonthFirstDay, calendarCode);
+	}
+	@CrossOrigin
+	@GetMapping("/calendar/paging")
+	public PageInfo<Map<String,Object>> callPaging(@RequestParam("memberName") String memberName, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize){
+		List<Map<String, Object>> list = calendarService.pagingSelect(memberName, pageNum, pageSize);
+		return new PageInfo<Map<String, Object>>(list);
 	}
 	
 }

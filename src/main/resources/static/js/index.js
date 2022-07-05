@@ -34,7 +34,9 @@ function showCalendar() {
 				var $div = document.createElement('div');
 				//$td.textContent = cnt;
 				$td.setAttribute('id', cnt);
-				$td.setAttribute('value',cnt);
+				var cntplus = "00"+cnt;
+				var cntslice = cntplus.slice(-2);
+				$td.setAttribute('value',cntslice);
 				$tr.appendChild($td);
 				$div.textContent = cnt;
 				$td.appendChild($div);
@@ -57,7 +59,7 @@ function removeCalendar() {
 }
 
 //전월 다음월 이동
-function prev() {
+/*function prev() {
 	// inputBox.value = "";
 	const $divs = document.querySelectorAll('#input-list > div');
 	$divs.forEach(function(e) {
@@ -121,7 +123,7 @@ function next() {
 	clickedDate1.classList.add('active');
 	clickStart();
 	reshowingList();
-}
+}*/
 
 currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
 

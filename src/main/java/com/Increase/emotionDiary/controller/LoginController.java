@@ -20,7 +20,7 @@ public class LoginController {
 	public String callLogout(HttpSession httpSession) {
 		httpSession.removeAttribute("memberId");
 		httpSession.removeAttribute("memberPassword");
-		return "login";
+		return "index";
 	}
 	@GetMapping("/main")
 	public String callMainPage() {

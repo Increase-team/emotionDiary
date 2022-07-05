@@ -25,4 +25,7 @@ public interface CalendarMapper {
 	
 	public List<Map<String, Object>> selectMonth(@Param("memberName") String memberName, @Param("calendarMonthFirstDay") int calendarMonthFirstDay, @Param("calendarCode") int calendarCode);
 	
+	public Map<String, Object> calendarStatistics(@Param("memberId") int memberId, @Param("calendarMonthFirstDay") int calendarMonthFirstDay, @Param("calendarCode") int calendarCode);
+
+	public List<Map<String, Object>> pagingSelect(@Param("memberName") String memberName);
 }
