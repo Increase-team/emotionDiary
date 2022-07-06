@@ -120,7 +120,7 @@
 				<input id="memberId" type="hidden" value="${list.list[0].memberId}">
 			</div>
 
-		<header>menu</header>
+		<header><i class="fa-solid fa-list" style="margin-right: 12px"></i>menu</header>
 		<ul class="list">
 			<li class="picture"><a
 				href="/calendar/list?membername=${list.list[0].memberName}"><i class="fa-solid fa-book" style="margin-right: 12px"></i>

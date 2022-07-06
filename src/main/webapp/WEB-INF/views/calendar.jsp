@@ -86,7 +86,7 @@
 
 		<input id="hidden" type="hidden" value="" /> <input id="memberName"
 			type="hidden" value="${list[0].memberName}" />
-		<header>menu</header>
+		<header><i class="fa-solid fa-list" style="margin-right: 12px"></i>menu</header>
 		<ul class="list">
 			<li class="picture"><a
 				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
@@ -98,7 +98,6 @@
 	</div>
 	</div>
 	<div class="main">
-		<div class=calendar-box>
 			<div class="content-wrap">
 				<div class="content-left">
 					<div class="main-wrap">
@@ -155,7 +154,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 <script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>

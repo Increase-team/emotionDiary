@@ -21,6 +21,9 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 25px;
+	position: relative;
+	top: 2%;
+	right: 8%;
 }
 
 #check{
@@ -70,7 +73,7 @@ label #cancel{
 }
 
 .list li {
-	padding: 10%;
+	padding: 15%;
 	font-size: 20px;
 	list-style: none;
 }
