@@ -77,49 +77,25 @@
 			<a href="#none" class="close">close</a>
 		</div>
 	</div>
+	<input type="checkbox" id="check" />
+	<label for="check">
+	<i class="fa-solid fa-bars" id="btn"></i>
+	<i class="fa-solid fa-times" id="cancel"></i>
+	</label>	
 	<div class="sideheader">
-		<!-- 시간 및 날짜 -->
-		<div id="date" class="date"></div>
-		<div id="time" class="time"></div>
+
 		<input id="hidden" type="hidden" value="" /> <input id="memberName"
 			type="hidden" value="${list[0].memberName}" />
-		<div class="emotion">
-			<div class="positive">
-				<div class="happy">
-					<p>기쁨</p>
-					<div class="happy-color"></div>
-				</div>
-				<div class="soso">
-					<p>보통</p>
-					<div class="soso-color"></div>
-				</div>
-				<div class="romance">
-					<p>설렘</p>
-					<div class="romance-color"></div>
-				</div>
-			</div>
-			<div class="negetive">
-				<div class="angry">
-					<p>분노</p>
-					<div class="angry-color"></div>
-				</div>
-				<div class="sad">
-					<p>슬픔</p>
-					<div class="sad-color"></div>
-				</div>
-				<div class="irritation">
-					<p>짜증</p>
-					<div class="irritation-color"></div>
-				</div>
-			</div>
-		</div>
+		<header>menu</header>
 		<ul class="list">
 			<li class="picture"><a
-				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15">일기장</a></li>
+				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
+일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
-				class="status">통계</a></li>
-			<li class="logout"><a href="/logout">Logout</a></li>
+				class="status"><i class="fa-solid fa-chart-column" style="margin-right: 12px"></i>통계</a></li>
+			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
 		</ul>
+	</div>
 	</div>
 	<div class="main">
 		<div class=calendar-box>
@@ -182,6 +158,7 @@
 		</div>
 	</div>
 </body>
+<script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
@@ -213,6 +190,8 @@
   		$("#selected-color")[0].defaultValue = plate;
 	});
 
+	
+	
   //달력 저장
   var time = new Date(+new Date() + 3240 * 10000)
     .toISOString()
@@ -228,6 +207,15 @@
   day = "00"+day.getDate();
   var dayslice =  day.slice(-2);
   console.log(dayslice)
+  
+/* 	if($("td").click(){
+for(var i=0; i<=dat;i++){
+	  if($("td").val() == i){
+		  alert("123156");
+		  location.reload();
+	  }
+	})
+  } */ 
   
   var memberId = $("#memberId").val();
   console.log("==>"+memberId)
@@ -270,9 +258,6 @@
     });
   });
   
-  
-	
-	
   getCalendarList(${list[0].memberName})
   //달력 조회
   function getCalendarList(memberName) {
@@ -285,9 +270,10 @@
 		for(i=0; i<=dat; i++){
 			var code = response[i].calendarCode;
 			code = code.toString().slice(-2);
+			
 		if(response[i].calendarEmotion == "기쁨"){
 			if(code == "01"){				
-			$("#1").css('background-color',"yellow")				
+			$("#1").css('background-color',"yellow")
 			}
 			if(code == "02"){				
 				$("#2").css('background-color',"yellow")				

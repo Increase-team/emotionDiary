@@ -14,110 +14,62 @@ html, body {
 /* sieheader */
 .sideheader {
 	position: fixed;
+	left: -250px;
 	width: 250px;
 	height: 100%;
 	background-color: skyblue;
 	transition: 0.5s;
 	overflow: hidden;
-	padding-top: 30px;
-}
-/* 시계및 날짜 */
-.date {
-	text-align: center;
-	font-size: 25px;
+	transition: all 1.5s ease;
 }
 
-.time {
-	text-align: center;
-	font-size: 20px;
-	padding-bottom: 10px;
-}
-/* 감정설명 */
-.emotion {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 20px;
-	font-size: 30px;
-	margin-bottom: 20px;
-	background-color: antiquewhite;
-	border-radius: 5px;
-	padding: 3%;
-	margin-left: 5%;
-	margin-right: 5%;
-}
 
-.happy {
-	display: flex;
-	justify-content: space-around;
-}
 
-.happy-color {
-	background-color: yellow;
-	width: 30px;
-	height: 30px;
-}
-
-.soso {
-	display: flex;
-	justify-content: space-around;
-}
-
-.soso-color {
-	background-color: silver;
-	width: 30px;
-	height: 30px;
-}
-
-.romance {
-	display: flex;
-	justify-content: space-around;
-}
-
-.romance-color {
-	background-color: pink;
-	width: 30px;
-	height: 30px;
-}
-
-.angry {
-	display: flex;
-	justify-content: space-around;
-}
-
-.angry-color {
-	background-color: red;
-	width: 30px;
-	height: 30px;
-}
-
-.sad {
-	display: flex;
-	justify-content: space-around;
-}
-
-.sad-color {
-	background-color: blue;
-	width: 30px;
-	height: 30px;
-}
-
-.irritation {
-	display: flex;
-	justify-content: space-around;
-}
-
-.irritation-color {
-	background-color: orangered;
-	width: 30px;
-	height: 30px;
-}
-
-.header {
+.sideheader header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 25px;
 }
 
+#check{
+	display: none;
+}
+
+label #btn, label #cancel{
+	position: absolute;
+	cursor: pointer;
+	color: white;
+}
+
+label #btn{
+	left: 40px;
+	top: 25px;
+	font-size: 35px;
+	padding: 6px, 12px;
+	transition: all 1.5s ease;
+}
+
+label #cancel{
+	z-index: 1111;
+	left: -180px;
+	top: 17px;
+	font-size: 35px;
+	padding: 4px 9px;
+	transition: all 1.5s ease;	
+}
+
+#check:checked ~ .sideheader{
+	left: 0;
+}
+#check:checked ~ label #btn {
+	left: 250px;
+	opacity: 0;
+	pointer-events: nones;
+}
+#check:checked ~ label #cancel {
+	left: 180px;
+}
 .list {
 	padding-left: 10%;
 	display: flex;
@@ -126,11 +78,12 @@ html, body {
 
 .list li {
 	padding: 10%;
-	font-size: 24px;
+	font-size: 20px;
 	list-style: none;
 }
 
 .list li a {
+	padding: 30px;
 	text-decoration: none;
 	color: black;
 }
@@ -138,6 +91,7 @@ html, body {
 .list li a:hover {
 	color: violet;
 	transition: 1.5s;
+	padding-left: 25px; 
 }
 
 .list  li:hover, .list li.hovered {

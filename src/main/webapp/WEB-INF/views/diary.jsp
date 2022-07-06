@@ -109,51 +109,26 @@
 		</div>
 		<div class="dim"></div>
 		<!-- 사이드 헤더 -->
+	<input type="checkbox" id="check" />
+		<label for="check">
+			<i class="fa-solid fa-bars" id="btn"></i>
+			<i class="fa-solid fa-times" id="cancel"></i>
+		</label>
 		<div class="sideheader">
-			<!-- 시간 및 날짜 -->
-			<div id="date" class="date"></div>
-			<div id="time" class="time"></div>
 			<div class="hello">
 				<input id="memberName" type="hidden" value="${list.list[0].memberName}"></input>
 				<input id="memberId" type="hidden" value="${list.list[0].memberId}">
 			</div>
-			<div class="emotion">
-				<div class="positive">
-					<div class="happy">
-						<p>기쁨</p>
-						<div class="happy-color"></div>
-					</div>
-					<div class="soso">
-						<p>보통</p>
-						<div class="soso-color"></div>
-					</div>
-					<div class="romance">
-						<p>설렘</p>
-						<div class="romance-color"></div>
-					</div>
-				</div>
-				<div class="negetive">
-					<div class="angry">
-						<p>분노</p>
-						<div class="angry-color"></div>
-					</div>
-					<div class="sad">
-						<p>슬픔</p>
-						<div class="sad-color"></div>
-					</div>
-					<div class="irritation">
-						<p>짜증</p>
-						<div class="irritation-color"></div>
-					</div>
-				</div>
-			</div>
-			<ul class="list">
-				<li class="picture"><a
-					href="/calendar/list?membername=${list.list[0].memberName}">달력</a></li>
-				<li class="statistics"><a href="#layer" id="player"
-					class="status">통계</a></li>
-				<li class="logout"><a href="/logout">Logout</a></li>
-			</ul>
+
+		<header>menu</header>
+		<ul class="list">
+			<li class="picture"><a
+				href="/calendar/list?membername=${list.list[0].memberName}"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
+일기장</a></li>
+			<li class="statistics"><a href="#layer" id="estimate"
+				class="status"><i class="fa-solid fa-chart-column" style="margin-right: 12px"></i>통계</a></li>
+			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
+		</ul>
 		</div>
 		<div class="update-popup">
 			<div class="editor">
@@ -308,6 +283,7 @@
 			</div>
 		</main>
 	</div>
+	<script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
@@ -404,7 +380,7 @@ $('.btn-close').click(function(){
 		
 		var memberName = $("#memberName").val();
 		var memberId = $("#memberId").val();
-        var pageNum = 1;
+        //var pageNum = 1;
         var pageSize = 15;
         
         
