@@ -136,10 +136,10 @@ showMain();
 
 var clickedDate1 = document.getElementById(today.getDate());
 clickedDate1.classList.add('active');
-var prevBtn = document.getElementById('prev');
+/*var prevBtn = document.getElementById('prev');
 var nextBtn = document.getElementById('next');
 prevBtn.addEventListener('click', prev);
-nextBtn.addEventListener('click', next);
+nextBtn.addEventListener('click', next);*/
 var tdGroup = [];
 function clickStart() {
 	for (let i = 1; i <= pageYear[first.getMonth()]; i++) {

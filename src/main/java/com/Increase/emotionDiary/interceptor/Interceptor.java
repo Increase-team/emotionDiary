@@ -22,7 +22,7 @@ public class Interceptor implements HandlerInterceptor{
 
 		if(session.getAttribute("MemberId") == null) {
 			logger.info("session MemberId: "+session.getAttribute("MemberId"));
-			response.sendRedirect("/main");
+			response.sendRedirect("/login");
 			return false;
 		}
 		return true;

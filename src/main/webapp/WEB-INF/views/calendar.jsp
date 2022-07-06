@@ -115,7 +115,7 @@
 		</div>
 		<ul class="list">
 			<li class="picture"><a
-				href="/calendar/diary?membername=${list[0].memberName}&pageNum=1&pageSize=20">일기장</a></li>
+				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15">일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
 				class="status">통계</a></li>
 			<li class="logout"><a href="/logout">Logout</a></li>
@@ -224,6 +224,7 @@
   console.log(monthFirstday);
   var day = new Date()
   console.log(day)
+  var dat = day.getDate();
   day = "00"+day.getDate();
   var dayslice =  day.slice(-2);
   console.log(dayslice)
@@ -281,13 +282,9 @@
       type: "GET",
       dataType: "json",
       success: (response) => {
-        console.log("---->"+response[0].calendarEmotion);
-		for(i=0; i<=31; i++){
-			console.log(response[i].calendarEmotion)
+		for(i=0; i<=dat; i++){
 			var code = response[i].calendarCode;
-			console.log(code)
 			code = code.toString().slice(-2);
-			console.log(code);
 		if(response[i].calendarEmotion == "기쁨"){
 			if(code == "01"){				
 			$("#1").css('background-color',"yellow")				

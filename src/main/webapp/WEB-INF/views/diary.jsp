@@ -9,6 +9,34 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<style>
+.pagination{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.pagination a{
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    background-color: white;
+    color: blue;
+    border: 1px solid #dddfeb;
+    line-height: 1.45;
+    font-size: 18px;
+}
+.pagination a:hover{
+    background-color: blue;
+    color: white;
+}
+#searchBar{
+	position: relative;
+	left: 85%;
+}
+.search button{
+	position: relative;
+	left: 85%;
+}
+    </style>
 <link rel="stylesheet" href="/resources/static/css/calendar.css">
 </head>
 <body>
@@ -21,7 +49,7 @@
 						<div class="cardBox">
 							<div class="card">
 								<div>
-									<div id="happycnt" class="numbers">1,400</div>
+									<div id="happycnt" class="numbers">0</div>
 									<div class="cardName">기쁨</div>
 								</div>
 								<div class="iconBx">
@@ -30,7 +58,7 @@
 							</div>
 							<div class="card">
 								<div>
-									<div id="sosocnt" class="numbers">500</div>
+									<div id="sosocnt" class="numbers">0</div>
 									<div class="cardName">보통</div>
 								</div>
 								<div class="iconBx">
@@ -39,7 +67,7 @@
 							</div>
 							<div class="card">
 								<div>
-									<div id="romancecnt" class="numbers">300</div>
+									<div id="romancecnt" class="numbers">0</div>
 									<div class="cardName">설렘</div>
 								</div>
 								<div class="iconBx">
@@ -48,7 +76,7 @@
 							</div>
 							<div class="card">
 								<div>
-									<div id="angrycnt" class="numbers">2,800</div>
+									<div id="angrycnt" class="numbers">0</div>
 									<div class="cardName">분노</div>
 								</div>
 								<div class="iconBx">
@@ -57,7 +85,7 @@
 							</div>
 							<div class="card">
 								<div>
-									<div id="sadcnt" class="numbers">2,800</div>
+									<div id="sadcnt" class="numbers">0</div>
 									<div class="cardName">슬픔</div>
 								</div>
 								<div class="iconBx">
@@ -66,7 +94,7 @@
 							</div>
 							<div class="card">
 								<div>
-									<div id="irritationcnt" class="numbers">2,800</div>
+									<div id="irritationcnt" class="numbers">0</div>
 									<div class="cardName">짜증</div>
 								</div>
 								<div class="iconBx">
@@ -86,7 +114,8 @@
 			<div id="date" class="date"></div>
 			<div id="time" class="time"></div>
 			<div class="hello">
-				<input id="memberId" type="hidden" value="${list[0].memberName}"></input>
+				<input id="memberName" type="hidden" value="${list.list[0].memberName}"></input>
+				<input id="memberId" type="hidden" value="${list.list[0].memberId}">
 			</div>
 			<div class="emotion">
 				<div class="positive">
@@ -120,7 +149,7 @@
 			</div>
 			<ul class="list">
 				<li class="picture"><a
-					href="/calendar/list?membername=${list[0].memberName}">달력</a></li>
+					href="/calendar/list?membername=${list.list[0].memberName}">달력</a></li>
 				<li class="statistics"><a href="#layer" id="player"
 					class="status">통계</a></li>
 				<li class="logout"><a href="/logout">Logout</a></li>
@@ -163,6 +192,18 @@
 			<div class="diary">
 				<div class="diary-title">
 					<h2>Diary-List</h2>
+			<div class="search">
+          		<label>
+            		<input
+              			type="text"
+              			id="searchBar"
+              			placeholder="감정을 검색해보세요"
+            		/>
+            		<input id="keyword" type="hidden" value="null" />
+          		</label>
+          		<button onclick="getDiaryList(${list.list[0].memberName},1,15)">첫페이지</button>
+        	</div>
+        	
 				</div>
 				<div class="diary-content">
 					<table>
@@ -175,8 +216,24 @@
 							</tr>
 						</thead>
 						<tbody>
-							
-                            <tr>
+							<c:choose>
+								<c:when test="${fn:length(list.list) > 0}">
+									<c:forEach items="${list.list}" var="item">
+										<tr onclick="getList(${item.calendarId})">
+											<td>${item.calendarCode}</td>
+											<td>${item.calendarEmotion}</td>
+											<td>${item.content}</td>
+											<td>${item.createAt}</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td colspan=4 style="text-align: center">작성글이 없습니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>설렘</td>
                                 <td>나는전설이다</td>
@@ -193,19 +250,60 @@
                                 <td>보통</td>
                                 <td>특별할것 없는 하루</td>
                                 <td>2022-06-25</td>
-                            </tr>
+                            </tr> -->
                              		
 						</tbody>
 					</table>
 					 <div class="pagination">
-            			<a href="#">Previous</a>
+            			<!-- <a href="#">Previous</a>
             			<a href="#">1</a>
             			<a href="#">2</a>
             			<a href="#">3</a>
             			<a href="#">4</a>
             			<a href="#">5</a>
-            			<a href="#">Next</a>
-          			</div>
+            			<a href="#">Next</a> -->
+						<%-- <c:if test="${list.hasPreviousPage}">
+		                	<!-- <a onclick="getLogsList(1, 20)">처음</a> -->
+		                 	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pageNum - 1}, 20)">이전</a>
+		                </c:if>
+		         		<c:forEach begin="${list.navigateFirstPage}" end="${list.navigateLastPage}" var="pageNum">
+		          			<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum}, 20)">${pageNum}</a>
+		         		</c:forEach>
+		         		<c:if test="${list.hasNextPage}">
+		                	<a onclick="getLogsList(${list.pageNum + 1}, 20)"> > </a>
+		                	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pages}, 20)">다음</a>
+		                </c:if> --%>
+		                <c:choose>
+						<c:when test="list.list.calendarEmotion.equals('null')">
+							<c:if test="${list.hasPreviousPage}">
+								<a onclick="getDiaryList(${list.list[0].memberName}, ${pageNum-1} ,15)">Previous</a>
+							</c:if>
+							<c:forEach begin="${list.navigateFirstPage}"
+								end="${list.navigateLastPage}" var="pageNum">
+								<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum},15)">${pageNum}</a>
+							</c:forEach>
+							<c:if test="${list.hasNextPage}">
+								<a onclick="getDiaryList(${list.list[0].memberName},${list.pageNum+1},15)">Next</a>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${list.hasPreviousPage}">
+								<a onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum-1},15,'${param.search}')">Previous</a>
+							</c:if>
+							<c:forEach begin="${list.navigateFirstPage}"
+								end="${list.navigateLastPage}" var="pageNum">
+								<a id="pageNum${pageNum}"
+									onclick="getSearchFirstPage(${list.list[0].memberName},${pageNum},15,'${param.search}')">${pageNum}
+								</a>
+							</c:forEach>
+							<c:if test="${list.hasNextPage}">
+								<a
+									onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum+1},15,'${param.search}')">Next</a>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+ 				</div>
+			<input id="nowPageNum" type="hidden" value="${list.pageNum}">
 				</div>
 			</div>
 		</main>
@@ -303,35 +401,25 @@ $('.btn-close').click(function(){
    
     </script>
 	<script>
-
-		var memberName = $("#memberId").val();
+		
+		var memberName = $("#memberName").val();
+		var memberId = $("#memberId").val();
         var pageNum = 1;
-        var pageSize = 20;
-		
-		
-        diaryList(pageNum,pageSize)
-        function diaryList(pageNum, pageSize){
-            $.ajax({
-                url: "/calendar/paging?membername="+memberName+"&pageNum="+pageNum+"&pageSize="+pageSize,
-                type: "Get",
-                dataType:"json",
-                success:(response) =>{
-                    let html='';
-                    console.log(response.list.length)
-                    /* if(response.list.length > 0){
-                        for(let i=0; i<response.list.length; i++){
-                            html+="<tr onclick=getList("+response.list[i].calendarId+")><td>"+response.list[i].calendarCode+"</td><td>"+response.list[i].calendarEmotion+"</td><td>"+response.list[i].content+"</td><td>"+response.list[i].createAt+"</td></tr>"
-                        }
-                      
-                    }else{
-                        html += '<tr><td colspan=6 style="text-align:center">게시판이 없습니다.</td></tr>'
-                    }
-                    $("tbody").children().remove();
-                    $("tbody").append(html); */
-                }
-            })
+        var pageSize = 15;
+        
+        
+        var search = $('#searchBar').val().trim();
+    	$('#keyword').val(search);
+    	var keyword = $('#keyword').val();
+        function getSearchFirstPage(memberName,pageNum, pageSize,keyword) {
+        	location.href = "/calendar/search?memberName=" + memberName + "&pageNum=" + pageNum + "&pageSize=" + pageSize+"&search="+keyword;
         }
         
+        function getDiaryList(memberName, pageNum, pageSize) {
+        	location.href = "/calendar/diary?memberName="+memberName+"&pageNum=" + pageNum + "&pageSize=" + pageSize;
+        }
+		
+        //내용 확인
         function getList(calendarId){
             $('.update-popup').css('display', 'block');
             $.ajax({
@@ -381,7 +469,7 @@ $('.btn-close').click(function(){
                 }
             })
         })
-              getcalendarEmotion(${list[0].memberId});
+              getcalendarEmotion(memberId);
 
       function getcalendarEmotion(memberId){
         $.ajax({
@@ -396,9 +484,25 @@ $('.btn-close').click(function(){
             $('#angrycnt').text(data.angry);
             $('#sadcnt').text(data.sad);
             $('#irritationcnt').text(data.irritation);
+            if(data.length == 0){
+            	alert("검색결과가 없습니다.")
+            	history.back();
+            }
           }
         })
       }
+      $('#searchBar').keyup(function (key) {
+          var pageNum = 1;
+          var pageSize = 15;
+          if (key.keyCode == 13) {
+            var search = $('#searchBar').val().trim();
+            if (search != '') {
+              location.href = "/calendar/search?memberName=" + memberName + "&pageNum=" + pageNum + "&pageSize=" + pageSize+"&search="+search;
+            	
+            }
+            console.log(search);
+          }
+      })
     </script>
 </body>
 </html>

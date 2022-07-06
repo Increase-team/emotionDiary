@@ -57,4 +57,8 @@ public class CalendarService {
 		PageHelper.startPage(pageNum, pageSize);
 		return calendarMapper.pagingSelect(memberName);
 	}
+	public List<Map<String, Object>> searchPaging(String memberName, int pageNum, int pageSize, String calendarEmotion){
+		PageHelper.startPage(pageNum, pageSize);
+		return calendarMapper.searchPaging(memberName, calendarEmotion);
+	}
 }

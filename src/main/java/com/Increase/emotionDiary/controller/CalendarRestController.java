@@ -79,5 +79,11 @@ public class CalendarRestController {
 		List<Map<String, Object>> list = calendarService.pagingSelect(memberName, pageNum, pageSize);
 		return new PageInfo<Map<String, Object>>(list);
 	}
+	@CrossOrigin
+	@GetMapping("/calendar/diary/search")
+	public PageInfo<Map<String,Object>> callSearchPaging(@RequestParam("memberName") String memberName, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize, @RequestParam("search") String search){
+		List<Map<String, Object>> list = calendarService.searchPaging(memberName, pageNum, pageSize, search);
+		return new PageInfo<Map<String, Object>>(list);
+	}
 	
 }
