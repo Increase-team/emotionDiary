@@ -412,7 +412,7 @@ main {
 }
 
 .diary-content table tbody tr:hover {
-	background-color: slateblue;
+	background-color: #ccccff;
 	cursor: pointer;
 }
 /* 일기장 팝업 */
@@ -500,13 +500,13 @@ main {
     padding: 0.5rem 0.75rem;
     text-decoration: none;
     background-color: white;
-    color: blue;
+    color: 	#006600;
     border: 1px solid #dddfeb;
     line-height: 1.45;
     font-size: 18px;
 }
 .pagination a:hover{
-    background-color: blue;
+    background-color: #a8e4a0;
     color: white;
 }
 #searchBar{
@@ -519,4 +519,6 @@ main {
 	position: relative;
 	left: 80%;
 	padding: 8px 16px;
+	background-color: white;
+	border: 1px solid black;
 }

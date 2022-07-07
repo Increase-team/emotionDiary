@@ -10,8 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
-
-    </style>
+</style>
 <link rel="stylesheet" href="/resources/static/css/calendar.css">
 </head>
 <body>
@@ -78,7 +77,7 @@
 							</div>
 						</div>
 						<div class="graph-box">
-						 	<canvas id="myChart"></canvas>
+							<canvas id="myChart"></canvas>
 						</div>
 					</div>
 				</div>
@@ -87,26 +86,29 @@
 		</div>
 		<div class="dim"></div>
 		<!-- 사이드 헤더 -->
-	<input type="checkbox" id="check" />
-		<label for="check">
-			<i class="fa-solid fa-bars" id="btn"></i>
-			<i class="fa-solid fa-times" id="cancel"></i>
+		<input type="checkbox" id="check" /> <label for="check"> <i
+			class="fa-solid fa-bars" id="btn"></i> <i class="fa-solid fa-times"
+			id="cancel"></i>
 		</label>
 		<div class="sideheader">
 			<div class="hello">
-				<input id="memberName" type="hidden" value="${list.list[0].memberName}"></input>
-				<input id="memberId" type="hidden" value="${list.list[0].memberId}">
+				<input id="memberName" type="hidden"
+					value="${list.list[0].memberName}"></input> <input id="memberId"
+					type="hidden" value="${list.list[0].memberId}">
 			</div>
 
-		<header>menu</header>
-		<ul class="list">
-			<li class="picture"><a
-				href="/calendar/list?membername=${list.list[0].memberName}"><i class="fa-solid fa-calendar-days" ></i>
-			달력</a></li>
-			<li class="statistics"><a href="#layer" id="estimate"
-				class="status"><i class="fa-solid fa-chart-column" style="margin-right: 12px"></i>통계</a></li>
-			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
-		</ul>
+			<header>menu</header>
+			<ul class="list">
+				<li class="picture"><a
+					href="/calendar/list?membername=${list.list[0].memberName}"><i
+						class="fa-solid fa-calendar-days"></i> 달력</a></li>
+				<li class="statistics"><a href="#layer" id="estimate"
+					class="status"><i class="fa-solid fa-chart-column"
+						style="margin-right: 12px"></i>통계</a></li>
+				<li class="logout"><a href="/logout"><i
+						class="fa-solid fa-arrow-right-from-bracket"
+						style="margin-right: 12px"></i>Logout</a></li>
+			</ul>
 		</div>
 		<div class="update-popup">
 			<div class="editor">
@@ -145,18 +147,14 @@
 				<div class="diary">
 					<div class="diary-title">
 						<h2>Diary-List</h2>
-				<div class="search">
-	          		<label>
-	            		<input
-	              			type="text"
-	              			id="searchBar"
-	              			placeholder="감정을 검색해보세요"
-	            		/>
-	            		<input id="keyword" type="hidden" value="null" />
-	          		</label>
-	          		<button onclick="getDiaryList(${list.list[0].memberName},1,15)">첫페이지</button>
-	        	</div>
-	        	
+						<div class="search">
+							<label> <input type="text" id="searchBar"
+								placeholder="감정을 검색해보세요" /> <input id="keyword"
+								type="hidden" value="null" />
+							</label>
+							<button onclick="getDiaryList(${list.list[0].memberName},1,15)">첫페이지</button>
+						</div>
+
 					</div>
 					<div class="diary-content">
 						<table>
@@ -186,7 +184,7 @@
 										</tr>
 									</c:otherwise>
 								</c:choose>
-	                            <!-- <tr>
+								<!-- <tr>
 	                                <td>1</td>
 	                                <td>설렘</td>
 	                                <td>나는전설이다</td>
@@ -204,55 +202,60 @@
 	                                <td>특별할것 없는 하루</td>
 	                                <td>2022-06-25</td>
 	                            </tr> -->
-	                             		
+
 							</tbody>
 						</table>
-						 <div class="pagination">
-	            			<!-- <a href="#">Previous</a>
+						<div class="pagination">
+							<!-- <a href="#">Previous</a>
 	            			<a href="#">1</a>
 	            			<a href="#">2</a>
 	            			<a href="#">3</a>
 	            			<a href="#">4</a>
 	            			<a href="#">5</a>
 	            			<a href="#">Next</a> -->
-							
-			                <c:choose>
-							<c:when test="list.list.calendarEmotion.equals('null')">
-								<c:if test="${list.hasPreviousPage}">
-									<a onclick="getDiaryList(${list.list[0].memberName}, ${pageNum-1} ,15)">Previous</a>
-								</c:if>
-								<c:forEach begin="${list.navigateFirstPage}"
-									end="${list.navigateLastPage}" var="pageNum">
-									<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum},15)">${pageNum}</a>
-								</c:forEach>
-								<c:if test="${list.hasNextPage}">
-									<a onclick="getDiaryList(${list.list[0].memberName},${list.pageNum+1},15)">Next</a>
-								</c:if>
-							</c:when>
-							<c:otherwise>
-								<c:if test="${list.hasPreviousPage}">
-									<a onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum-1},15,'${param.search}')">Previous</a>
-								</c:if>
-								<c:forEach begin="${list.navigateFirstPage}"
-									end="${list.navigateLastPage}" var="pageNum">
-									<a id="pageNum${pageNum}"
-										onclick="getSearchFirstPage(${list.list[0].memberName},${pageNum},15,'${param.search}')">${pageNum}
-									</a>
-								</c:forEach>
-								<c:if test="${list.hasNextPage}">
-									<a
-										onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum+1},15,'${param.search}')">Next</a>
-								</c:if>
-							</c:otherwise>
-						</c:choose>
-	 				</div>
-				<input id="nowPageNum" type="hidden" value="${list.pageNum}">
+
+							<c:choose>
+								<c:when test="list.list.calendarEmotion.equals('null')">
+									<c:if test="${list.hasPreviousPage}">
+										<a
+											onclick="getDiaryList(${list.list[0].memberName}, ${pageNum-1} ,15)">Previous</a>
+									</c:if>
+									<c:forEach begin="${list.navigateFirstPage}"
+										end="${list.navigateLastPage}" var="pageNum">
+										<a id="pageNum${pageNum}"
+											onclick="getDiaryList(${list.list[0].memberName}, ${pageNum},15)">${pageNum}</a>
+									</c:forEach>
+									<c:if test="${list.hasNextPage}">
+										<a
+											onclick="getDiaryList(${list.list[0].memberName},${list.pageNum+1},15)">Next</a>
+									</c:if>
+								</c:when>
+								<c:otherwise>
+									<c:if test="${list.hasPreviousPage}">
+										<a
+											onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum-1},15,'${param.search}')">Previous</a>
+									</c:if>
+									<c:forEach begin="${list.navigateFirstPage}"
+										end="${list.navigateLastPage}" var="pageNum">
+										<a id="pageNum${pageNum}"
+											onclick="getSearchFirstPage(${list.list[0].memberName},${pageNum},15,'${param.search}')">${pageNum}
+										</a>
+									</c:forEach>
+									<c:if test="${list.hasNextPage}">
+										<a
+											onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum+1},15,'${param.search}')">Next</a>
+									</c:if>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<input id="nowPageNum" type="hidden" value="${list.pageNum}">
 					</div>
 				</div>
 			</main>
 		</div>
 	</div>
-	<script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/7f3a427fdf.js"
+		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>

@@ -125,7 +125,7 @@
 					</div>
 					<div class="todo-wrap">
 						<input id="boardIdHidden" type="hidden" />
-						<div class="todo-title">그날의 기분을 적어보세요</div>
+						<div class="todo-title">오늘의 기분을 적어보세요</div>
 						<div class="input-wrap">
 							<input type="text" placeholder="please write here!!"
 								id="input-box" class="input-box" value="" />
@@ -212,14 +212,6 @@
   var dayslice =  day.slice(-2);
   console.log(dayslice)
   
-/* 	if($("td").click(){
-for(var i=0; i<=dat;i++){
-	  if($("td").val() == i){
-		  alert("123156");
-		  location.reload();
-	  }
-	})
-  } */ 
   
   var memberId = $("#memberId").val();
   console.log("==>"+memberId)
@@ -253,7 +245,7 @@ for(var i=0; i<=dat;i++){
       dataType: "json",
       data: JSON.stringify(jsonData),
       success: function (response) {
-        if (response) {
+        if (response>0) {
           alert("등록되었습니다.")
         } else {
           alert("이미 오늘은 등록을 하였습니다.");
