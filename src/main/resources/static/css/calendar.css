@@ -491,3 +491,32 @@ main {
 .btn-area {
 	text-align: center;
 }
+.pagination{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.pagination a{
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    background-color: white;
+    color: blue;
+    border: 1px solid #dddfeb;
+    line-height: 1.45;
+    font-size: 18px;
+}
+.pagination a:hover{
+    background-color: blue;
+    color: white;
+}
+#searchBar{
+	position: relative;
+	left: 80%;
+	padding: 10px 24px;
+	text-align: left;
+}
+.search button{
+	position: relative;
+	left: 80%;
+	padding: 8px 16px;
+}

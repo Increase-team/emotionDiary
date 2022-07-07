@@ -10,32 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
-.pagination{
-    text-align: center;
-    margin-top: 50px;
-}
 
-.pagination a{
-    padding: 0.5rem 0.75rem;
-    text-decoration: none;
-    background-color: white;
-    color: blue;
-    border: 1px solid #dddfeb;
-    line-height: 1.45;
-    font-size: 18px;
-}
-.pagination a:hover{
-    background-color: blue;
-    color: white;
-}
-#searchBar{
-	position: relative;
-	left: 85%;
-}
-.search button{
-	position: relative;
-	left: 85%;
-}
     </style>
 <link rel="stylesheet" href="/resources/static/css/calendar.css">
 </head>
@@ -103,7 +78,7 @@
 							</div>
 						</div>
 						<div class="graph-box">
-							승섭,승섭승섭,승섭승섭승섭,승섭승섭승섭승섭,승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭승섭승섭
+						 	<canvas id="myChart"></canvas>
 						</div>
 					</div>
 				</div>
@@ -240,17 +215,7 @@
 	            			<a href="#">4</a>
 	            			<a href="#">5</a>
 	            			<a href="#">Next</a> -->
-							<%-- <c:if test="${list.hasPreviousPage}">
-			                	<!-- <a onclick="getLogsList(1, 20)">처음</a> -->
-			                 	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pageNum - 1}, 20)">이전</a>
-			                </c:if>
-			         		<c:forEach begin="${list.navigateFirstPage}" end="${list.navigateLastPage}" var="pageNum">
-			          			<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum}, 20)">${pageNum}</a>
-			         		</c:forEach>
-			         		<c:if test="${list.hasNextPage}">
-			                	<a onclick="getLogsList(${list.pageNum + 1}, 20)"> > </a>
-			                	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pages}, 20)">다음</a>
-			                </c:if> --%>
+							
 			                <c:choose>
 							<c:when test="list.list.calendarEmotion.equals('null')">
 								<c:if test="${list.hasPreviousPage}">
@@ -291,6 +256,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
       $('.btn-close').click(function(){
           $('.update-popup').css('display', 'none');
@@ -394,6 +360,9 @@ $('.btn-close').click(function(){
             var calendarId = $("#inputHidden").val();
             var calendarEmotion = $("#upt-title").val();
             var content = $("#upt-content").val();
+            if(calendarEmotion == ""){
+            	calendarEmotion = $("#DBemotion").val();
+            }
             
             var jsonData={
                 calendarId : calendarId,
@@ -433,14 +402,49 @@ $('.btn-close').click(function(){
           url: "/calendar/statistics/"+memberId,
           type:"GET",
           dataType:"json",
-          success: (data) =>{
-            console.log(data)
-            $('#happycnt').text(data.happy);
-            $('#sosocnt').text(data.soso);
-            $('#romancecnt').text(data.romance);
-            $('#angrycnt').text(data.angry);
-            $('#sadcnt').text(data.sad);
-            $('#irritationcnt').text(data.irritation);
+          success: (response) =>{
+            console.log(response)
+            $('#happycnt').text(response.happy);
+            $('#sosocnt').text(response.soso);
+            $('#romancecnt').text(response.romance);
+            $('#angrycnt').text(response.angry);
+            $('#sadcnt').text(response.sad);
+            $('#irritationcnt').text(response.irritation);
+            
+            const labels = ["기쁨", "보통", "설렘", "분노", "슬픔", "짜증"];
+
+            const data = {
+              labels: labels,
+              datasets: [
+                {
+                  label: "통계",
+                  backgroundColor: [
+                    "#fdee00",
+                    "#ccccff",
+                    "#ffc1cc",
+                    "#ff0028",
+                    "#4166f5",
+                    "#ff7518",
+                  ],
+                  borderColor: "rgb(255, 99, 132)",
+                  data: [response.happy, response.soso, response.romance, response.angry, response.sad, response.irritation],
+                },
+              ],
+            };
+
+            const bar = {
+              type: "bar",
+              data: data,
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
+                },
+              },
+            };
+            const myChart = new Chart(document.getElementById("myChart"), bar);
+            
             if(data.length == 0){
             	alert("검색결과가 없습니다.")
             	history.back();
@@ -460,6 +464,8 @@ $('.btn-close').click(function(){
             console.log(search);
           }
       })
+      
+     
     </script>
 </body>
 </html>

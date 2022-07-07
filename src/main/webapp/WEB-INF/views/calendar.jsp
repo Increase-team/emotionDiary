@@ -73,7 +73,7 @@
 						</div>
 					</div>
 					<div class="graph-box">
-					승섭,승섭승섭,승섭승섭승섭,승섭승섭승섭승섭,승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭승섭승섭
+						<canvas id="myChart"></canvas>
 					</div>
 				</div>
 			</div>
@@ -165,6 +165,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/resources/static/js/index.js"></script>
 <script type="text/javascript">
 //버튼클릭시 감정확인
@@ -859,15 +860,48 @@ for(var i=0; i<=dat;i++){
       url: "/calendar/month/statistics/" + memberId +"/"+monthFirstday+"/"+time,
       type:"GET",
       dataType:"json",
-      success: (data) =>{
-        console.log(data)
-        console.log("1111")
-        $('#happycnt').text(data.happy);
-        $('#sosocnt').text(data.soso);
-        $('#romancecnt').text(data.romance);
-        $('#angrycnt').text(data.angry);
-        $('#sadcnt').text(data.sad);
-        $('#irritationcnt').text(data.irritation);
+      success: (response) =>{
+          console.log(response)
+          $('#happycnt').text(response.happy);
+          $('#sosocnt').text(response.soso);
+          $('#romancecnt').text(response.romance);
+          $('#angrycnt').text(response.angry);
+          $('#sadcnt').text(response.sad);
+          $('#irritationcnt').text(response.irritation);
+          
+          const labels = ["기쁨", "보통", "설렘", "분노", "슬픔", "짜증"];
+
+          const data = {
+            labels: labels,
+            datasets: [
+              {
+                label: "통계",
+                backgroundColor: [
+                  "#fdee00",
+                  "#ccccff",
+                  "#ffc1cc",
+                  "#ff0028",
+                  "#4166f5",
+                  "#ff7518",
+                ],
+                borderColor: "rgb(255, 99, 132)",
+                data: [response.happy, response.soso, response.romance, response.angry, response.sad, response.irritation],
+              },
+            ],
+          };
+
+          const bar = {
+            type: "bar",
+            data: data,
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          };
+          const myChart = new Chart(document.getElementById("myChart"), bar);
       }
     })
   }
