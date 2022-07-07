@@ -102,6 +102,9 @@
 								</div>
 							</div>
 						</div>
+						<div class="graph-box">
+							승섭,승섭승섭,승섭승섭승섭,승섭승섭승섭승섭,승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭승섭승섭
+						</div>
 					</div>
 				</div>
 				<a href="#none" class="close">close</a>
@@ -120,11 +123,11 @@
 				<input id="memberId" type="hidden" value="${list.list[0].memberId}">
 			</div>
 
-		<header><i class="fa-solid fa-list" style="margin-right: 12px"></i>menu</header>
+		<header>menu</header>
 		<ul class="list">
 			<li class="picture"><a
-				href="/calendar/list?membername=${list.list[0].memberName}"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
-일기장</a></li>
+				href="/calendar/list?membername=${list.list[0].memberName}"><i class="fa-solid fa-calendar-days" ></i>
+			달력</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
 				class="status"><i class="fa-solid fa-chart-column" style="margin-right: 12px"></i>통계</a></li>
 			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
@@ -162,155 +165,133 @@
 				</div>
 			</div>
 		</div>
-
-		<main>
-			<div class="diary">
-				<div class="diary-title">
-					<h2>Diary-List</h2>
-			<div class="search">
-          		<label>
-            		<input
-              			type="text"
-              			id="searchBar"
-              			placeholder="감정을 검색해보세요"
-            		/>
-            		<input id="keyword" type="hidden" value="null" />
-          		</label>
-          		<button onclick="getDiaryList(${list.list[0].memberName},1,15)">첫페이지</button>
-        	</div>
-        	
-				</div>
-				<div class="diary-content">
-					<table>
-						<thead>
-							<tr>
-								<th>코드번호</th>
-								<th>감정</th>
-								<th>내용</th>
-								<th>작성날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:choose>
-								<c:when test="${fn:length(list.list) > 0}">
-									<c:forEach items="${list.list}" var="item">
-										<tr onclick="getList(${item.calendarId})">
-											<td>${item.calendarCode}</td>
-											<td>${item.calendarEmotion}</td>
-											<td>${item.content}</td>
-											<td>${item.createAt}</td>
+		<div class="diary-box">
+			<main>
+				<div class="diary">
+					<div class="diary-title">
+						<h2>Diary-List</h2>
+				<div class="search">
+	          		<label>
+	            		<input
+	              			type="text"
+	              			id="searchBar"
+	              			placeholder="감정을 검색해보세요"
+	            		/>
+	            		<input id="keyword" type="hidden" value="null" />
+	          		</label>
+	          		<button onclick="getDiaryList(${list.list[0].memberName},1,15)">첫페이지</button>
+	        	</div>
+	        	
+					</div>
+					<div class="diary-content">
+						<table>
+							<thead>
+								<tr>
+									<th>코드번호</th>
+									<th>감정</th>
+									<th>내용</th>
+									<th>작성날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:choose>
+									<c:when test="${fn:length(list.list) > 0}">
+										<c:forEach items="${list.list}" var="item">
+											<tr onclick="getList(${item.calendarId})">
+												<td>${item.calendarCode}</td>
+												<td>${item.calendarEmotion}</td>
+												<td>${item.content}</td>
+												<td>${item.createAt}</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan=4 style="text-align: center">작성글이 없습니다.</td>
 										</tr>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<tr>
-										<td colspan=4 style="text-align: center">작성글이 없습니다.</td>
-									</tr>
-								</c:otherwise>
-							</c:choose>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>설렘</td>
-                                <td>나는전설이다</td>
-                                <td>2022-06-06</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>분노</td>
-                                <td>운빨X망겜</td>
-                                <td>2022-06-22</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td>보통</td>
-                                <td>특별할것 없는 하루</td>
-                                <td>2022-06-25</td>
-                            </tr> -->
-                             		
-						</tbody>
-					</table>
-					 <div class="pagination">
-            			<!-- <a href="#">Previous</a>
-            			<a href="#">1</a>
-            			<a href="#">2</a>
-            			<a href="#">3</a>
-            			<a href="#">4</a>
-            			<a href="#">5</a>
-            			<a href="#">Next</a> -->
-						<%-- <c:if test="${list.hasPreviousPage}">
-		                	<!-- <a onclick="getLogsList(1, 20)">처음</a> -->
-		                 	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pageNum - 1}, 20)">이전</a>
-		                </c:if>
-		         		<c:forEach begin="${list.navigateFirstPage}" end="${list.navigateLastPage}" var="pageNum">
-		          			<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum}, 20)">${pageNum}</a>
-		         		</c:forEach>
-		         		<c:if test="${list.hasNextPage}">
-		                	<a onclick="getLogsList(${list.pageNum + 1}, 20)"> > </a>
-		                	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pages}, 20)">다음</a>
-		                </c:if> --%>
-		                <c:choose>
-						<c:when test="list.list.calendarEmotion.equals('null')">
-							<c:if test="${list.hasPreviousPage}">
-								<a onclick="getDiaryList(${list.list[0].memberName}, ${pageNum-1} ,15)">Previous</a>
-							</c:if>
-							<c:forEach begin="${list.navigateFirstPage}"
-								end="${list.navigateLastPage}" var="pageNum">
-								<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum},15)">${pageNum}</a>
-							</c:forEach>
-							<c:if test="${list.hasNextPage}">
-								<a onclick="getDiaryList(${list.list[0].memberName},${list.pageNum+1},15)">Next</a>
-							</c:if>
-						</c:when>
-						<c:otherwise>
-							<c:if test="${list.hasPreviousPage}">
-								<a onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum-1},15,'${param.search}')">Previous</a>
-							</c:if>
-							<c:forEach begin="${list.navigateFirstPage}"
-								end="${list.navigateLastPage}" var="pageNum">
-								<a id="pageNum${pageNum}"
-									onclick="getSearchFirstPage(${list.list[0].memberName},${pageNum},15,'${param.search}')">${pageNum}
-								</a>
-							</c:forEach>
-							<c:if test="${list.hasNextPage}">
-								<a
-									onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum+1},15,'${param.search}')">Next</a>
-							</c:if>
-						</c:otherwise>
-					</c:choose>
- 				</div>
-			<input id="nowPageNum" type="hidden" value="${list.pageNum}">
+									</c:otherwise>
+								</c:choose>
+	                            <!-- <tr>
+	                                <td>1</td>
+	                                <td>설렘</td>
+	                                <td>나는전설이다</td>
+	                                <td>2022-06-06</td>
+	                            </tr>
+	                            <tr>
+	                                <td>12</td>
+	                                <td>분노</td>
+	                                <td>운빨X망겜</td>
+	                                <td>2022-06-22</td>
+	                            </tr>
+	                            <tr>
+	                                <td>29</td>
+	                                <td>보통</td>
+	                                <td>특별할것 없는 하루</td>
+	                                <td>2022-06-25</td>
+	                            </tr> -->
+	                             		
+							</tbody>
+						</table>
+						 <div class="pagination">
+	            			<!-- <a href="#">Previous</a>
+	            			<a href="#">1</a>
+	            			<a href="#">2</a>
+	            			<a href="#">3</a>
+	            			<a href="#">4</a>
+	            			<a href="#">5</a>
+	            			<a href="#">Next</a> -->
+							<%-- <c:if test="${list.hasPreviousPage}">
+			                	<!-- <a onclick="getLogsList(1, 20)">처음</a> -->
+			                 	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pageNum - 1}, 20)">이전</a>
+			                </c:if>
+			         		<c:forEach begin="${list.navigateFirstPage}" end="${list.navigateLastPage}" var="pageNum">
+			          			<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum}, 20)">${pageNum}</a>
+			         		</c:forEach>
+			         		<c:if test="${list.hasNextPage}">
+			                	<a onclick="getLogsList(${list.pageNum + 1}, 20)"> > </a>
+			                	<a onclick="getDiaryList(${list.list[0].memberName}, ${list.pages}, 20)">다음</a>
+			                </c:if> --%>
+			                <c:choose>
+							<c:when test="list.list.calendarEmotion.equals('null')">
+								<c:if test="${list.hasPreviousPage}">
+									<a onclick="getDiaryList(${list.list[0].memberName}, ${pageNum-1} ,15)">Previous</a>
+								</c:if>
+								<c:forEach begin="${list.navigateFirstPage}"
+									end="${list.navigateLastPage}" var="pageNum">
+									<a id="pageNum${pageNum}" onclick="getDiaryList(${list.list[0].memberName}, ${pageNum},15)">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${list.hasNextPage}">
+									<a onclick="getDiaryList(${list.list[0].memberName},${list.pageNum+1},15)">Next</a>
+								</c:if>
+							</c:when>
+							<c:otherwise>
+								<c:if test="${list.hasPreviousPage}">
+									<a onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum-1},15,'${param.search}')">Previous</a>
+								</c:if>
+								<c:forEach begin="${list.navigateFirstPage}"
+									end="${list.navigateLastPage}" var="pageNum">
+									<a id="pageNum${pageNum}"
+										onclick="getSearchFirstPage(${list.list[0].memberName},${pageNum},15,'${param.search}')">${pageNum}
+									</a>
+								</c:forEach>
+								<c:if test="${list.hasNextPage}">
+									<a
+										onclick="getSearchFirstPage(${list.list[0].memberName},${list.pageNum+1},15,'${param.search}')">Next</a>
+								</c:if>
+							</c:otherwise>
+						</c:choose>
+	 				</div>
+				<input id="nowPageNum" type="hidden" value="${list.pageNum}">
+					</div>
 				</div>
-			</div>
-		</main>
+			</main>
+		</div>
 	</div>
 	<script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
 	<script>
-  		//시계 함수
-      function setClock(){
-      var dateInfo = new Date(); 
-      var hour = modifyNumber(dateInfo.getHours());
-      var min = modifyNumber(dateInfo.getMinutes());
-      var sec = modifyNumber(dateInfo.getSeconds());
-      var year = dateInfo.getFullYear();
-      var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
-      var date = dateInfo.getDate();
-      document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
-      document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
-      }
-      function modifyNumber(time){
-          if(parseInt(time)<10){
-              return "0"+ time;
-          }
-          else
-              return time;
-      }
-      window.onload = function(){
-          setClock();
-          setInterval(setClock,1000); //1초마다 setClock 함수 실행
-      }
       $('.btn-close').click(function(){
           $('.update-popup').css('display', 'none');
       })

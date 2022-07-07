@@ -72,6 +72,9 @@
 							</div>
 						</div>
 					</div>
+					<div class="graph-box">
+					승섭,승섭승섭,승섭승섭승섭,승섭승섭승섭승섭,승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭,승섭승섭승섭승섭승섭승섭승섭승섭
+					</div>
 				</div>
 			</div>
 			<a href="#none" class="close">close</a>
@@ -86,7 +89,7 @@
 
 		<input id="hidden" type="hidden" value="" /> <input id="memberName"
 			type="hidden" value="${list[0].memberName}" />
-		<header><i class="fa-solid fa-list" style="margin-right: 12px"></i>menu</header>
+		<header>menu</header>
 		<ul class="list">
 			<li class="picture"><a
 				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
@@ -96,7 +99,8 @@
 			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
 		</ul>
 	</div>
-	</div>
+	<section>
+	
 	<div class="main">
 			<div class="content-wrap">
 				<div class="content-left">
@@ -155,6 +159,7 @@
 				</div>
 			</div>
 	</div>
+	</section>
 </body>
 <script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -271,573 +276,573 @@ for(var i=0; i<=dat;i++){
 			
 		if(response[i].calendarEmotion == "기쁨"){
 			if(code == "01"){				
-			$("#1").css('background-color',"yellow")
+			$("#1").css('background-color',"#fcf75e")
 			}
 			if(code == "02"){				
-				$("#2").css('background-color',"yellow")				
+				$("#2").css('background-color',"#fcf75e")				
 				}
 			if(code == "03"){				
-				$("#3").css('background-color',"yellow")				
+				$("#3").css('background-color',"#fcf75e")				
 				}
 			if(code == "04"){				
-				$("#4").css('background-color',"yellow")				
+				$("#4").css('background-color',"#fcf75e")				
 				}
 			if(code == "05"){				
-				$("#5").css('background-color',"yellow")				
+				$("#5").css('background-color',"#fdee00")				
 				}
 			if(code == "06"){				
-				$("#6").css('background-color',"yellow")				
+				$("#6").css('background-color',"#fcf75e")				
 				}
 			if(code == "07"){				
-				$("#7").css('background-color',"yellow")				
+				$("#7").css('background-color',"#fcf75e")				
 				}
 			if(code == "08"){				
-				$("#8").css('background-color',"yellow")				
+				$("#8").css('background-color',"#fcf75e")				
 				}
 			if(code == "09"){				
-				$("#9").css('background-color',"yellow")				
+				$("#9").css('background-color',"#fcf75e")				
 				}
 			if(code == "10"){				
-				$("#10").css('background-color',"yellow")				
+				$("#10").css('background-color',"#fcf75e")				
 				}
 			if(code == "11"){				
-				$("#11").css('background-color',"yellow")				
+				$("#11").css('background-color',"#fcf75e")				
 				}
 			if(code == "12"){				
-				$("#12").css('background-color',"yellow")				
+				$("#12").css('background-color',"#fcf75e")				
 				}
 			if(code == "13"){				
-				$("#13").css('background-color',"yellow")				
+				$("#13").css('background-color',"#fcf75e")				
 				}
 			if(code == "14"){				
-				$("#14").css('background-color',"yellow")				
+				$("#14").css('background-color',"#fcf75e")				
 				}
 			if(code == "15"){				
-				$("#15").css('background-color',"yellow")				
+				$("#15").css('background-color',"#fcf75e")				
 				}
 			if(code == "16"){				
-				$("#16").css('background-color',"yellow")				
+				$("#16").css('background-color',"#fcf75e")				
 				}
 			if(code == "17"){				
-				$("#17").css('background-color',"yellow")				
+				$("#17").css('background-color',"#fcf75e")				
 				}
 			if(code == "18"){				
-				$("#18").css('background-color',"yellow")				
+				$("#18").css('background-color',"#fcf75e")				
 				}
 			if(code == "19"){				
-				$("#19").css('background-color',"yellow")				
+				$("#19").css('background-color',"#fcf75e")				
 				}
 			if(code == "20"){				
-				$("#20").css('background-color',"yellow")				
+				$("#20").css('background-color',"#fcf75e")				
 				}
 			if(code == "21"){				
-				$("#21").css('background-color',"yellow")				
+				$("#21").css('background-color',"#fcf75e")				
 				}
 			if(code == "22"){				
-				$("#22").css('background-color',"yellow")				
+				$("#22").css('background-color',"#fcf75e")				
 				}
 			if(code == "23"){				
-				$("#23").css('background-color',"yellow")				
+				$("#23").css('background-color',"#fcf75e")				
 				}
 			if(code == "24"){				
-				$("#24").css('background-color',"yellow")				
+				$("#24").css('background-color',"#fcf75e")				
 				}
 			if(code == "25"){				
-				$("#25").css('background-color',"yellow")				
+				$("#25").css('background-color',"#fcf75e")				
 				}
 			if(code == "26"){				
-				$("#26").css('background-color',"yellow")				
+				$("#26").css('background-color',"#fcf75e")				
 				}
 			if(code == "27"){				
-				$("#27").css('background-color',"yellow")				
+				$("#27").css('background-color',"#fcf75e")				
 				}
 			if(code == "28"){				
-				$("#28").css('background-color',"yellow")				
+				$("#28").css('background-color',"#fcf75e")				
 				}
 			if(code == "29"){				
-				$("#29").css('background-color',"yellow")				
+				$("#29").css('background-color',"#fcf75e")				
 				}
 			if(code == "30"){				
-				$("#30").css('background-color',"yellow")				
+				$("#30").css('background-color',"#fcf75e")				
 				}
 			if(code == "31"){				
-				$("#31").css('background-color',"yellow")				
+				$("#31").css('background-color',"#fcf75e")				
 				}
 		}
 			
 		 if(response[i].calendarEmotion == "보통"){
 			 if(code == "01"){				
-					$("#1").css('background-color',"silver")				
+					$("#1").css('background-color',"#ccccff")				
 					}
 					if(code == "02"){				
-						$("#2").css('background-color',"silver")				
+						$("#2").css('background-color',"#ccccff")				
 						}
 					if(code == "03"){				
-						$("#3").css('background-color',"silver")				
+						$("#3").css('background-color',"#ccccff")				
 						}
 					if(code == "04"){				
-						$("#4").css('background-color',"silver")				
+						$("#4").css('background-color',"#ccccff")				
 						}
 					if(code == "05"){				
-						$("#5").css('background-color',"silver")				
+						$("#5").css('background-color',"#ccccff")				
 						}
 					if(code == "06"){				
-						$("#6").css('background-color',"silver")				
+						$("#6").css('background-color',"#ccccff")				
 						}
 					if(code == "07"){				
-						$("#7").css('background-color',"silver")				
+						$("#7").css('background-color',"#ccccff")				
 						}
 					if(code == "08"){				
-						$("#8").css('background-color',"silver")				
+						$("#8").css('background-color',"#ccccff")				
 						}
 					if(code == "09"){				
-						$("#9").css('background-color',"silver")				
+						$("#9").css('background-color',"#ccccff")				
 						}
 					if(code == "10"){				
-						$("#10").css('background-color',"silver")				
+						$("#10").css('background-color',"#ccccff")				
 						}
 					if(code == "11"){				
-						$("#11").css('background-color',"silver")				
+						$("#11").css('background-color',"#ccccff")				
 						}
 					if(code == "12"){				
-						$("#12").css('background-color',"silver")				
+						$("#12").css('background-color',"#ccccff")				
 						}
 					if(code == "13"){				
-						$("#13").css('background-color',"silver")				
+						$("#13").css('background-color',"#ccccff")				
 						}
 					if(code == "14"){				
-						$("#14").css('background-color',"silver")				
+						$("#14").css('background-color',"#ccccff")				
 						}
 					if(code == "15"){				
-						$("#15").css('background-color',"silver")				
+						$("#15").css('background-color',"#ccccff")				
 						}
 					if(code == "16"){				
-						$("#16").css('background-color',"silver")				
+						$("#16").css('background-color',"#ccccff")				
 						}
 					if(code == "17"){				
-						$("#17").css('background-color',"silver")				
+						$("#17").css('background-color',"#ccccff")				
 						}
 					if(code == "18"){				
-						$("#18").css('background-color',"silver")				
+						$("#18").css('background-color',"#ccccff")				
 						}
 					if(code == "19"){				
-						$("#19").css('background-color',"silver")				
+						$("#19").css('background-color',"#ccccff")				
 						}
 					if(code == "20"){				
-						$("#20").css('background-color',"silver")				
+						$("#20").css('background-color',"#ccccff")				
 						}
 					if(code == "21"){				
-						$("#21").css('background-color',"silver")				
+						$("#21").css('background-color',"#ccccff")				
 						}
 					if(code == "22"){				
-						$("#22").css('background-color',"silver")				
+						$("#22").css('background-color',"#ccccff")				
 						}
 					if(code == "23"){				
-						$("#23").css('background-color',"silver")				
+						$("#23").css('background-color',"#ccccff")				
 						}
 					if(code == "24"){				
-						$("#24").css('background-color',"silver")				
+						$("#24").css('background-color',"#ccccff")				
 						}
 					if(code == "25"){				
-						$("#25").css('background-color',"silver")				
+						$("#25").css('background-color',"#ccccff")				
 						}
 					if(code == "26"){				
-						$("#26").css('background-color',"silver")				
+						$("#26").css('background-color',"#ccccff")				
 						}
 					if(code == "27"){				
-						$("#27").css('background-color',"silver")				
+						$("#27").css('background-color',"#ccccff")				
 						}
 					if(code == "28"){				
-						$("#28").css('background-color',"silver")				
+						$("#28").css('background-color',"#ccccff")				
 						}
 					if(code == "29"){				
-						$("#29").css('background-color',"silver")				
+						$("#29").css('background-color',"#ccccff")				
 						}
 					if(code == "30"){				
-						$("#30").css('background-color',"silver")				
+						$("#30").css('background-color',"#ccccff")				
 						}
 					if(code == "31"){				
-						$("#31").css('background-color',"silver")				
+						$("#31").css('background-color',"#ccccff")				
 						}
 		}
 		if(response[i].calendarEmotion == "설렘"){
 			if(code == "01"){				
-				$("#1").css('background-color',"pink")				
+				$("#1").css('background-color',"#fc74fd")				
 				}
 				if(code == "02"){				
-					$("#2").css('background-color',"pink")				
+					$("#2").css('background-color',"#fc74fd")				
 					}
 				if(code == "03"){				
-					$("#3").css('background-color',"pink")				
+					$("#3").css('background-color',"#fc74fd")				
 					}
 				if(code == "04"){				
-					$("#4").css('background-color',"pink")			
+					$("#4").css('background-color',"#fc74fd")			
 					}
 				if(code == "05"){				
-					$("#5").css('background-color',"pink")				
+					$("#5").css('background-color',"#fc74fd")				
 					}
 				if(code == "06"){				
-					$("#6").css('background-color',"pink")				
+					$("#6").css('background-color',"#fc74fd")				
 					}
 				if(code == "07"){				
-					$("#7").css('background-color',"pink")				
+					$("#7").css('background-color',"#fc74fd")				
 					}
 				if(code == "08"){				
-					$("#8").css('background-color',"pink")				
+					$("#8").css('background-color',"#fc74fd")				
 					}
 				if(code == "09"){				
-					$("#9").css('background-color',"pink")				
+					$("#9").css('background-color',"#fc74fd")				
 					}
 				if(code == "10"){				
-					$("#10").css('background-color',"pink")				
+					$("#10").css('background-color',"#fc74fd")				
 					}
 				if(code == "11"){				
-					$("#11").css('background-color',"pink")				
+					$("#11").css('background-color',"#fc74fd")				
 					}
 				if(code == "12"){				
-					$("#12").css('background-color',"pink")				
+					$("#12").css('background-color',"#fc74fd")				
 					}
 				if(code == "13"){				
-					$("#13").css('background-color',"pink")				
+					$("#13").css('background-color',"#fc74fd")				
 					}
 				if(code == "14"){				
-					$("#14").css('background-color',"pink")				
+					$("#14").css('background-color',"#fc74fd")				
 					}
 				if(code == "15"){				
-					$("#15").css('background-color',"pink")				
+					$("#15").css('background-color',"#fc74fd")				
 					}
 				if(code == "16"){				
-					$("#16").css('background-color',"pink")				
+					$("#16").css('background-color',"#fc74fd")				
 					}
 				if(code == "17"){				
-					$("#17").css('background-color',"pink")				
+					$("#17").css('background-color',"#fc74fd")				
 					}
 				if(code == "18"){				
-					$("#18").css('background-color',"pink")				
+					$("#18").css('background-color',"#fc74fd")				
 					}
 				if(code == "19"){				
-					$("#19").css('background-color',"pink")				
+					$("#19").css('background-color',"#fc74fd")				
 					}
 				if(code == "20"){				
-					$("#20").css('background-color',"pink")				
+					$("#20").css('background-color',"#fc74fd")				
 					}
 				if(code == "21"){				
-					$("#21").css('background-color',"pink")				
+					$("#21").css('background-color',"#fc74fd")				
 					}
 				if(code == "22"){				
-					$("#22").css('background-color',"pink")				
+					$("#22").css('background-color',"#fc74fd")				
 					}
 				if(code == "23"){				
-					$("#23").css('background-color',"pink")				
+					$("#23").css('background-color',"#fc74fd")				
 					}
 				if(code == "24"){				
-					$("#24").css('background-color',"pink")				
+					$("#24").css('background-color',"#fc74fd")				
 					}
 				if(code == "25"){				
-					$("#25").css('background-color',"pink")				
+					$("#25").css('background-color',"#fc74fd")				
 					}
 				if(code == "26"){				
-					$("#26").css('background-color',"pink")				
+					$("#26").css('background-color',"#fc74fd")				
 					}
 				if(code == "27"){				
-					$("#27").css('background-color',"pink")				
+					$("#27").css('background-color',"#fc74fd")				
 					}
 				if(code == "28"){				
-					$("#28").css('background-color',"pink")				
+					$("#28").css('background-color',"#fc74fd")				
 					}
 				if(code == "29"){				
-					$("#29").css('background-color',"pink")				
+					$("#29").css('background-color',"#fc74fd")				
 					}
 				if(code == "30"){				
-					$("#30").css('background-color',"pink")				
+					$("#30").css('background-color',"#fc74fd")				
 					}
 				if(code == "31"){				
-					$("#31").css('background-color',"pink")				
+					$("#31").css('background-color',"#fc74fd")				
 					}
 		}
 		if(response[i].calendarEmotion == "분노"){
 			if(code == "01"){				
-				$("#1").css('background-color',"red")				
+				$("#1").css('background-color',"#ff0028")				
 				}
 				if(code == "02"){				
-					$("#2").css('background-color',"red")				
+					$("#2").css('background-color',"#ff0028")				
 					}
 				if(code == "03"){				
-					$("#3").css('background-color',"red")				
+					$("#3").css('background-color',"#ff0028")				
 					}
 				if(code == "04"){				
-					$("#4").css('background-color',"red")			
+					$("#4").css('background-color',"#ff0028")			
 					}
 				if(code == "05"){				
-					$("#5").css('background-color',"red")				
+					$("#5").css('background-color',"#ff0028")				
 					}
 				if(code == "06"){				
-					$("#6").css('background-color',"red")				
+					$("#6").css('background-color',"#ff0028")				
 					}
 				if(code == "07"){				
-					$("#7").css('background-color',"red")				
+					$("#7").css('background-color',"#ff0028")				
 					}
 				if(code == "08"){				
-					$("#8").css('background-color',"red")				
+					$("#8").css('background-color',"#ff0028")				
 					}
 				if(code == "09"){				
-					$("#9").css('background-color',"red")				
+					$("#9").css('background-color',"#ff0028")				
 					}
 				if(code == "10"){				
-					$("#10").css('background-color',"red")				
+					$("#10").css('background-color',"#ff0028")				
 					}
 				if(code == "11"){				
-					$("#11").css('background-color',"red")				
+					$("#11").css('background-color',"#ff0028")				
 					}
 				if(code == "12"){				
-					$("#12").css('background-color',"red")				
+					$("#12").css('background-color',"#ff0028")				
 					}
 				if(code == "13"){				
-					$("#13").css('background-color',"red")				
+					$("#13").css('background-color',"#ff0028")				
 					}
 				if(code == "14"){				
-					$("#14").css('background-color',"red")				
+					$("#14").css('background-color',"#ff0028")				
 					}
 				if(code == "15"){				
-					$("#15").css('background-color',"red")				
+					$("#15").css('background-color',"#ff0028")				
 					}
 				if(code == "16"){				
-					$("#16").css('background-color',"red")				
+					$("#16").css('background-color',"#ff0028")				
 					}
 				if(code == "17"){				
-					$("#17").css('background-color',"red")				
+					$("#17").css('background-color',"#ff0028")				
 					}
 				if(code == "18"){				
-					$("#18").css('background-color',"red")				
+					$("#18").css('background-color',"#ff0028")				
 					}
 				if(code == "19"){				
-					$("#19").css('background-color',"red")				
+					$("#19").css('background-color',"#ff0028")				
 					}
 				if(code == "20"){				
-					$("#20").css('background-color',"red")				
+					$("#20").css('background-color',"#ff0028")				
 					}
 				if(code == "21"){				
-					$("#21").css('background-color',"red")				
+					$("#21").css('background-color',"#ff0028")				
 					}
 				if(code == "22"){				
-					$("#22").css('background-color',"red")				
+					$("#22").css('background-color',"#ff0028")				
 					}
 				if(code == "23"){				
-					$("#23").css('background-color',"red")				
+					$("#23").css('background-color',"#ff0028")				
 					}
 				if(code == "24"){				
-					$("#24").css('background-color',"red")				
+					$("#24").css('background-color',"#ff0028")				
 					}
 				if(code == "25"){				
-					$("#25").css('background-color',"red")				
+					$("#25").css('background-color',"#ff0028")				
 					}
 				if(code == "26"){				
-					$("#26").css('background-color',"red")				
+					$("#26").css('background-color',"#ff0028")				
 					}
 				if(code == "27"){				
-					$("#27").css('background-color',"red")				
+					$("#27").css('background-color',"#ff0028")				
 					}
 				if(code == "28"){				
-					$("#28").css('background-color',"red")				
+					$("#28").css('background-color',"#ff0028")				
 					}
 				if(code == "29"){				
-					$("#29").css('background-color',"red")				
+					$("#29").css('background-color',"#ff0028")				
 					}
 				if(code == "30"){				
-					$("#30").css('background-color',"red")				
+					$("#30").css('background-color',"#ff0028")				
 					}
 				if(code == "31"){				
-					$("#31").css('background-color',"red")				
+					$("#31").css('background-color',"#ff0028")				
 					}
 		}
 		if(response[i].calendarEmotion == "슬픔"){
 			if(code == "01"){				
-				$("#1").css('background-color',"blue")				
+				$("#1").css('background-color',"#4166f5")				
 				}
 				if(code == "02"){				
-					$("#2").css('background-color',"blue")				
+					$("#2").css('background-color',"#4166f5")				
 					}
 				if(code == "03"){				
-					$("#3").css('background-color',"blue")				
+					$("#3").css('background-color',"#4166f5")				
 					}
 				if(code == "04"){				
-					$("#4").css('background-color',"blue")			
+					$("#4").css('background-color',"#4166f5")			
 					}
 				if(code == "05"){				
-					$("#5").css('background-color',"blue")				
+					$("#5").css('background-color',"#4166f5")				
 					}
 				if(code == "06"){				
-					$("#6").css('background-color',"blue")				
+					$("#6").css('background-color',"#4166f5")				
 					}
 				if(code == "07"){				
-					$("#7").css('background-color',"blue")				
+					$("#7").css('background-color',"#4166f5")				
 					}
 				if(code == "08"){				
-					$("#8").css('background-color',"blue")				
+					$("#8").css('background-color',"#4166f5")				
 					}
 				if(code == "09"){				
-					$("#9").css('background-color',"blue")				
+					$("#9").css('background-color',"#4166f5")				
 					}
 				if(code == "10"){				
-					$("#10").css('background-color',"blue")				
+					$("#10").css('background-color',"#4166f5")				
 					}
 				if(code == "11"){				
-					$("#11").css('background-color',"blue")				
+					$("#11").css('background-color',"#4166f5")				
 					}
 				if(code == "12"){				
-					$("#12").css('background-color',"blue")				
+					$("#12").css('background-color',"#4166f5")				
 					}
 				if(code == "13"){				
-					$("#13").css('background-color',"blue")				
+					$("#13").css('background-color',"#4166f5")				
 					}
 				if(code == "14"){				
-					$("#14").css('background-color',"blue")				
+					$("#14").css('background-color',"#4166f5")				
 					}
 				if(code == "15"){				
-					$("#15").css('background-color',"blue")				
+					$("#15").css('background-color',"#4166f5")				
 					}
 				if(code == "16"){				
-					$("#16").css('background-color',"blue")				
+					$("#16").css('background-color',"#4166f5")				
 					}
 				if(code == "17"){				
-					$("#17").css('background-color',"blue")				
+					$("#17").css('background-color',"#4166f5")				
 					}
 				if(code == "18"){				
-					$("#18").css('background-color',"blue")				
+					$("#18").css('background-color',"#4166f5")				
 					}
 				if(code == "19"){				
-					$("#19").css('background-color',"blue")				
+					$("#19").css('background-color',"#4166f5")				
 					}
 				if(code == "20"){				
-					$("#20").css('background-color',"blue")				
+					$("#20").css('background-color',"#4166f5")				
 					}
 				if(code == "21"){				
-					$("#21").css('background-color',"blue")				
+					$("#21").css('background-color',"#4166f5")				
 					}
 				if(code == "22"){				
-					$("#22").css('background-color',"blue")				
+					$("#22").css('background-color',"#4166f5")				
 					}
 				if(code == "23"){				
-					$("#23").css('background-color',"blue")				
+					$("#23").css('background-color',"#4166f5")				
 					}
 				if(code == "24"){				
-					$("#24").css('background-color',"blue")				
+					$("#24").css('background-color',"#4166f5")				
 					}
 				if(code == "25"){				
-					$("#25").css('background-color',"blue")				
+					$("#25").css('background-color',"#4166f5")				
 					}
 				if(code == "26"){				
-					$("#26").css('background-color',"blue")				
+					$("#26").css('background-color',"#4166f5")				
 					}
 				if(code == "27"){				
-					$("#27").css('background-color',"blue")				
+					$("#27").css('background-color',"#4166f5")				
 					}
 				if(code == "28"){				
-					$("#28").css('background-color',"blue")				
+					$("#28").css('background-color',"#4166f5")				
 					}
 				if(code == "29"){				
-					$("#29").css('background-color',"blue")				
+					$("#29").css('background-color',"#4166f5")				
 					}
 				if(code == "30"){				
-					$("#30").css('background-color',"blue")				
+					$("#30").css('background-color',"#4166f5")				
 					}
 				if(code == "31"){				
-					$("#31").css('background-color',"blue")				
+					$("#31").css('background-color',"#4166f5")				
 					}
 		}
 		if(response[i].calendarEmotion == "짜증"){
 			if(code == "01"){				
-				$("#1").css('background-color',"orangered")				
+				$("#1").css('background-color',"#ff7518")				
 				}
 				if(code == "02"){				
-					$("#2").css('background-color',"orangered")				
+					$("#2").css('background-color',"#ff7518")				
 					}
 				if(code == "03"){				
-					$("#3").css('background-color',"orangered")				
+					$("#3").css('background-color',"#ff7518")				
 					}
 				if(code == "04"){				
-					$("#4").css('background-color',"orangered")			
+					$("#4").css('background-color',"#ff7518")			
 					}
 				if(code == "05"){				
-					$("#5").css('background-color',"orangered")				
+					$("#5").css('background-color',"#ff7518")				
 					}
 				if(code == "06"){				
-					$("#6").css('background-color',"orangered")				
+					$("#6").css('background-color',"#ff7518")				
 					}
 				if(code == "07"){				
-					$("#7").css('background-color',"orangered")				
+					$("#7").css('background-color',"#ff7518")				
 					}
 				if(code == "08"){				
-					$("#8").css('background-color',"orangered")				
+					$("#8").css('background-color',"#ff7518")				
 					}
 				if(code == "09"){				
-					$("#9").css('background-color',"orangered")				
+					$("#9").css('background-color',"#ff7518")				
 					}
 				if(code == "10"){				
-					$("#10").css('background-color',"orangered")				
+					$("#10").css('background-color',"#ff7518")				
 					}
 				if(code == "11"){				
-					$("#11").css('background-color',"orangered")				
+					$("#11").css('background-color',"#ff7518")				
 					}
 				if(code == "12"){				
-					$("#12").css('background-color',"orangered")				
+					$("#12").css('background-color',"#ff7518")				
 					}
 				if(code == "13"){				
-					$("#13").css('background-color',"orangered")				
+					$("#13").css('background-color',"#ff7518")				
 					}
 				if(code == "14"){				
-					$("#14").css('background-color',"orangered")				
+					$("#14").css('background-color',"#ff7518")				
 					}
 				if(code == "15"){				
-					$("#15").css('background-color',"orangered")				
+					$("#15").css('background-color',"#ff7518")				
 					}
 				if(code == "16"){				
-					$("#16").css('background-color',"orangered")				
+					$("#16").css('background-color',"#ff7518")				
 					}
 				if(code == "17"){				
-					$("#17").css('background-color',"orangered")				
+					$("#17").css('background-color',"#ff7518")				
 					}
 				if(code == "18"){				
-					$("#18").css('background-color',"orangered")				
+					$("#18").css('background-color',"#ff7518")				
 					}
 				if(code == "19"){				
-					$("#19").css('background-color',"orangered")				
+					$("#19").css('background-color',"#ff7518")				
 					}
 				if(code == "20"){				
-					$("#20").css('background-color',"orangered")				
+					$("#20").css('background-color',"#ff7518")				
 					}
 				if(code == "21"){				
-					$("#21").css('background-color',"orangered")				
+					$("#21").css('background-color',"#ff7518")				
 					}
 				if(code == "22"){				
-					$("#22").css('background-color',"orangered")				
+					$("#22").css('background-color',"#ff7518")				
 					}
 				if(code == "23"){				
-					$("#23").css('background-color',"orangered")				
+					$("#23").css('background-color',"#ff7518")				
 					}
 				if(code == "24"){				
-					$("#24").css('background-color',"orangered")				
+					$("#24").css('background-color',"#ff7518")				
 					}
 				if(code == "25"){				
-					$("#25").css('background-color',"orangered")				
+					$("#25").css('background-color',"#ff7518")				
 					}
 				if(code == "26"){				
-					$("#26").css('background-color',"orangered")				
+					$("#26").css('background-color',"#ff7518")				
 					}
 				if(code == "27"){				
-					$("#27").css('background-color',"orangered")				
+					$("#27").css('background-color',"#ff7518")				
 					}
 				if(code == "28"){				
-					$("#28").css('background-color',"orangered")				
+					$("#28").css('background-color',"#ff7518")				
 					}
 				if(code == "29"){				
-					$("#29").css('background-color',"orangered")				
+					$("#29").css('background-color',"#ff7518")				
 					}
 				if(code == "30"){				
-					$("#30").css('background-color',"orangered")				
+					$("#30").css('background-color',"#ff7518")				
 					}
 				if(code == "31"){				
-					$("#31").css('background-color',"orangered")				
+					$("#31").css('background-color',"#ff7518")				
 					}
 		} 
 		}
@@ -868,7 +873,7 @@ for(var i=0; i<=dat;i++){
   }
   
   $(function () {
-      var embed = $("#player"); //동영상 코드
+      var embed = $("#estimate"); //팝업 코드
 
       $(".status").on("click", function () {
         //레이어 열때
@@ -883,7 +888,6 @@ for(var i=0; i<=dat;i++){
         $(this).parents("#layer").hide();
         $(".dim").hide();
         $(".cont").empty();
-        location.reload();
       });
 
       $(".dim").on("click", function () {

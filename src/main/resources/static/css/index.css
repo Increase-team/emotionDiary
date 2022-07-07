@@ -7,8 +7,9 @@
 }
 
 html, body {
-	background-color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 /* sieheader */
@@ -17,7 +18,7 @@ html, body {
 	left: -250px;
 	width: 250px;
 	height: 100%;
-	background-color: skyblue;
+	background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 	overflow: hidden;
 	transition: all 1.5s ease;
 }
@@ -71,6 +72,11 @@ label #cancel{
 #check:checked ~ label #cancel {
 	left: 180px;
 }
+
+#check:checked ~ section .main {
+	margin-left: 120px;
+	transition: all 1.5s ease;
+}
 .list {
 	position: relative;
 	top: 8%;
@@ -91,7 +97,7 @@ label #cancel{
 }
 
 .list li a:hover {
-	color: violet;
+	color: #509589;
 	transition: 1.5s;
 	padding-left: 25px; 
 }
@@ -130,42 +136,42 @@ label #cancel{
 #happy {
 	width: 45px;
 	height: 45px;
-	background-color: yellow;
+	background-color: #fdee00;
 	cursor: pointer;
 }
 
 #soso {
 	width: 45px;
 	height: 45px;
-	background-color: silver;
+	background-color: #ccccff;
 	cursor: pointer;
 }
 
 #romance {
 	width: 45px;
 	height: 45px;
-	background-color: pink;
+	background-color: #ffc1cc;
 	cursor: pointer;
 }
 
 #angry {
 	width: 45px;
 	height: 45px;
-	background-color: red;
+	background-color: #ff0028;
 	cursor: pointer;
 }
 
 #sad {
 	width: 45px;
 	height: 45px;
-	background-color: blue;
+	background-color: #4166f5;
 	cursor: pointer;
 }
 
 #irritation {
 	width: 45px;
 	height: 45px;
-	background-color: orangered;
+	background-color: #ff7518;
 	cursor: pointer;
 }
 
@@ -182,29 +188,40 @@ label #cancel{
 	padding-top: 15px;
 }
 
+
+section{
+	width: 100%;
+	height: 100vh;
+	background: #e6e8fa;
+}
+
 .main {
-	padding: 15px;
 	position: absolute;
 	left: 250px;
-	width: calc(97% - 250px);
+	width: calc(100% - 250px);
 	height: 95%;
-	margin-top: 30px;
-	margin-left: 30px;
+	margin-top: 15px;
+	transition: all 1.5s ease;
+	background-position: center;
+ 	background-size: cover;
+ 	
 }
 	.content-wrap {
+		background: white no-repeat;
+		position: relative;
+		left: -6%;
 		display: flex;
 		width: 1560px;
-		height: 930px;
+		height: 900px;
 		margin: 0 auto;
-		border: 4px solid rgba(161, 161, 161, 0.5);
 		overflow: hidden;
-		background-color: white;
+		box-shadow: 5px 6px 7px 8px rgba(0, 0, 0, 0.3);
 	}
 	.content-left {
 		background: #0b0809;
 		display: flex;
 		flex-direction: column;
-		color: #ddccee;
+		color: 	#f0ffff;
 		width: 600px;
 		height: 930px;
 		padding: 90px 20px 20px 0;
@@ -299,7 +316,7 @@ label #cancel{
 		display: flex;
 		position: relative;
 		left: 6.5%;
-		top: -9%;
+		top: -11%;
 		width: 800px;
 		height: 930px;
 		padding: 100px 20px 20px 20px;
@@ -317,7 +334,7 @@ label #cancel{
 		font-size: 25px;
 		font-weight: bold;
 		cursor: pointer;
-		border-radius: 50%;
+		border-radius: 25%;
 	}
 	#selected-color {
 		position: relative;
@@ -334,18 +351,18 @@ label #cancel{
 	#layer {
 		display: none;
 		position: absolute;
-		top: 35%;
-		left: 28.7%;
-		width: 750px;
-		height: 550px;
+		top: 20%;
+		left: 28.8%;
+		width: 1670px;
+		height: 1000px;
 		margin: -188px 0 0 -300px;
 		padding: 20px;
-		background: #eee;
+		background: #e6e8fa;
 		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 		border: 1px solid #dadada;
 		z-index: 21;
 	}
-	#layer #player {
+	#layer #estimate {
 		display: block;
 		margin: 20px auto 0;
 	}
@@ -382,30 +399,32 @@ label #cancel{
 	.cardBox {
 		position: relative;
 		width: 95%;
-		padding: 20px;
+		left: 17%;
 		display: grid;
-		grid-template-columns: repeat(3, 2fr);
-		grid-gap: 30px;
+		grid-template-columns: repeat(6, 160px);
+		grid-template-rows: repeat(1, 130px);
+		grid-gap: 35px;
+
+
 	}
 	.cardBox .card {
 		position: relative;
 		background-color: snow;
-		padding: 30px;
 		border-radius: 20px;
-		display: flex;
+		display: gird;
+		text-align: center;
 		justify-content: space-between;
 		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 	}
 	.cardBox .card .numbers {
 		position: relative;
+		height: 70px;
 		font-weight: 500;
-		font-size: 2.5em;
+		font-size: 3rem;
 		color: aquamarine;
 	}
 	.cardBox .card .cardName {
-		color: var(- -black2);
-		font-size: 1.1em;
-		margin-top: 5px;
+		font-size: 1.8rem;
 	}
 	.cardBox .card .iconBx {
 		font-size: 3.5em;
@@ -418,6 +437,8 @@ label #cancel{
 		{
 		color: snow;
 	}
+	
+
 /* pagination css*/
 .pagination{
     text-align: center;

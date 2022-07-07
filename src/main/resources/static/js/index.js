@@ -255,24 +255,24 @@ function checkList(e) {
 
 //클릭시 색 넣기
 $("#happy").click(function() {
-	$(".active").css("background-color", "yellow");
+	$(".active").css("background-color", "#fcf75e");
 });
 $("#soso").click(function() {
-	$(".active").css("background-color", "silver");
+	$(".active").css("background-color", "#ccccff");
 });
 $("#romance").click(function() {
-	$(".active").css("background-color", "pink");
+	$(".active").css("background-color", "#ffc1cc");
 });
 $("#angry").click(function() {
-	$(".active").css("background-color", "red");
+	$(".active").css("background-color", "#ff0028");
 
 });
 $("#sad").click(function() {
-	$(".active").css("background-color", "blue");
+	$(".active").css("background-color", "#4166f5");
 
 });
 $("#irritation").click(function() {
-	$(".active").css("background-color", "orangered");
+	$(".active").css("background-color", "#ff7518");
 
 });
 

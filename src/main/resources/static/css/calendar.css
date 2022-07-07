@@ -4,13 +4,18 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
 /* sieheader */
 .sideheader {
 	position: fixed;
 	left: -250px;
 	width: 250px;
 	height: 100%;
-	background-color: skyblue;
+	background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 	overflow: hidden;
 	transition: all 1.5s ease;
 }
@@ -64,6 +69,10 @@ label #cancel{
 #check:checked ~ label #cancel {
 	left: 180px;
 }
+#check:checked ~ .diary-box main {
+	margin-left: 120px;
+	transition: all 1.5s ease;
+}
 .list {
 	position: relative;
 	top: 8%;
@@ -84,7 +93,7 @@ label #cancel{
 }
 
 .list li a:hover {
-	color: violet;
+	color: #509589;
 	transition: 1.5s;
 	padding-left: 25px; 
 }
@@ -173,42 +182,42 @@ label #cancel{
 #happy {
 	width: 60px;
 	height: 60px;
-	background-color: yellow;
+	background-color: #fdee00;
 	cursor: pointer;
 }
 
 #soso {
 	width: 60px;
 	height: 60px;
-	background-color: silver;
+	background-color: #ccccff;
 	cursor: pointer;
 }
 
 #romance {
 	width: 60px;
 	height: 60px;
-	background-color: pink;
+	background-color: #ffc1cc;
 	cursor: pointer;
 }
 
 #angry {
 	width: 60px;
 	height: 60px;
-	background-color: red;
+	background-color: #ff0028;
 	cursor: pointer;
 }
 
 #sad {
 	width: 60px;
 	height: 60px;
-	background-color: blue;
+	background-color: #4166f5;
 	cursor: pointer;
 }
 
 #irritation {
 	width: 60px;
 	height: 60px;
-	background-color: orangered;
+	background-color: #ff7518;
 	cursor: pointer;
 }
 
@@ -266,116 +275,116 @@ label #cancel{
 
 /* 통계 팝업 */
 #layer {
-	display: none;
-	position: absolute;
-	top: 35%;
-	left: 28.7%;
-	width: 750px;
-	height: 500px;
-	margin: -188px 0 0 -300px;
-	padding: 20px;
-	background: #eee;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-	border: 1px solid #dadada;
-	z-index: 21;
-}
-
-#layer #player {
-	display: block;
-	margin: 20px auto 0;
-}
-
-#layer .inner {
-	position: relative;
-}
-
-#layer .inner .close {
-	position: absolute;
-	top: -10px;
-	right: 0;
-	display: block;
-	width: 20px;
-	height: 20px;
-	background:
-		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt18SOam3wUX0wExC6ji5-lY732vA2fEPBscikPQaLbT_tJd7Y7g")
-		no-repeat 0 0;
-	text-indent: -999em;
-	background-size: 20px 20px;
-}
-
-.dim {
-	display: none;
-	position: fixed;
-	_position: absolute;
-	top: 0;
-	left: 0;
-	background: #000;
-	width: 100%;
-	height: 100%;
-	filter: Alpha(opacity = 40);
-	opacity: 0.4;
-	-moz-opacity: 0.4;
-	z-index: 20;
-}
+		display: none;
+		position: absolute;
+		top: 20%;
+		left: 28.8%;
+		width: 1670px;
+		height: 1000px;
+		margin: -188px 0 0 -300px;
+		padding: 20px;
+		background: #e6e8fa;
+		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+		border: 1px solid #dadada;
+		z-index: 21;
+	}
+	#layer #estimate {
+		display: block;
+		margin: 20px auto 0;
+	}
+	#layer .inner {
+		position: relative;
+	}
+	#layer .inner .close {
+		position: absolute;
+		top: -10px;
+		right: 0;
+		display: block;
+		width: 20px;
+		height: 20px;
+		background:
+			url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt18SOam3wUX0wExC6ji5-lY732vA2fEPBscikPQaLbT_tJd7Y7g")
+			no-repeat 0 0;
+		text-indent: -999em;
+		background-size: 20px 20px;
+	}
+	.dim {
+		display: none;
+		position: fixed;
+		_position: absolute;
+		top: 0;
+		left: 0;
+		background: #000;
+		width: 100%;
+		height: 100%;
+		filter: Alpha(opacity = 40);
+		opacity: 0.4;
+		-moz-opacity: 0.4;
+		z-index: 20;
+	}
 
 .cardBox {
-	position: relative;
-	width: 95%;
-	padding: 20px;
-	display: grid;
-	grid-template-columns: repeat(3, 2fr);
-	grid-gap: 30px;
-}
+		position: relative;
+		width: 95%;
+		left: 17%;
+		display: grid;
+		grid-template-columns: repeat(6, 160px);
+		grid-template-rows: repeat(1, 130px);
+		grid-gap: 35px;
 
-.cardBox .card {
-	position: relative;
-	background-color: snow;
-	padding: 30px;
-	border-radius: 20px;
-	display: flex;
-	justify-content: space-between;
-	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-}
 
-.cardBox .card .numbers {
-	position: relative;
-	font-weight: 500;
-	font-size: 2.5em;
-	color: aquamarine;
-}
-
-.cardBox .card .cardName {
-	color: var(- -black2);
-	font-size: 1.1em;
-	margin-top: 5px;
-}
-
-.cardBox .card .iconBx {
-	font-size: 3.5em;
-	color: grey;
-}
-
-.cardBox .card:hover {
-	background-color: aquamarine;
-}
-
-.cardBox .card:hover .numbers, .cardBox .card:hover .cardName, .cardBox .card:hover .iconBx
-	{
-	color: snow;
-}
+	}
+	.cardBox .card {
+		position: relative;
+		background-color: snow;
+		border-radius: 20px;
+		display: gird;
+		text-align: center;
+		justify-content: space-between;
+		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+	}
+	.cardBox .card .numbers {
+		position: relative;
+		height: 70px;
+		font-weight: 500;
+		font-size: 3rem;
+		color: aquamarine;
+	}
+	.cardBox .card .cardName {
+		font-size: 1.8rem;
+	}
+	.cardBox .card .iconBx {
+		font-size: 3.5em;
+		color: grey;
+	}
+	.cardBox .card:hover {
+		background-color: aquamarine;
+	}
+	.cardBox .card:hover .numbers, .cardBox .card:hover .cardName, .cardBox .card:hover .iconBx
+		{
+		color: snow;
+	}
 
 
 /* 일기장 css  */
+
+.diary-box{
+	width: 100%;
+	height: 100vh;
+	background-color: #e6e8fa;
+}
 main {
+	background-color: snow;
 	padding: 15px;
 	position: absolute;
-	left: 250px;
+	left: 8%;
 	width: calc(97% - 250px);
 	height: 95%;
 	box-shadow: 5px 10px 15px 5px gray;
 	margin-top: 30px;
 	margin-left: 30px;
 	border-radius: 15px;
+	transition: all 1.5s ease;	
 }
 
 .diary-title {
