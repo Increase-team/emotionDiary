@@ -9,8 +9,8 @@ import com.Increase.emotionDiary.VO.MemberVO;
 public interface MemberMapper {
 
 	public int insertMember(MemberVO vo);
-	
+
 	public MemberVO selectLoginMember(MemberVO vo);
-	
+
 	public int deleteMember(int memberId);
 }

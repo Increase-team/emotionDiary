@@ -8,7 +8,8 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>회원가입</title>
+<link rel="shortcut icon" href="/resources/static/images/favicon.ico">
 <link rel="stylesheet" href="/resources/static/css/style.css" />
 </head>
 <body>
@@ -33,42 +34,42 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
 	<script>
-      function join() {
-        var password = $("#userPassword").val();
-        var rePassword = $("#userrePassword").val();
-        var userId = $("#userId").val();
+		function join() {
+			var password = $("#userPassword").val();
+			var rePassword = $("#userrePassword").val();
+			var userId = $("#userId").val();
 
-        if (password == "" || rePassword == "" || userId == "") {
-        	alert("양식을 모두 적어주세요.");
-          return false;
-        }
+			if (password == "" || rePassword == "" || userId == "") {
+				alert("양식을 모두 적어주세요.");
+				return false;
+			}
 
-        if (password !== rePassword) {
-        	alert("입력한 비밀번호가 다릅니다.");
-          $("#rePassword").focus();
-          return false;
-        }
+			if (password !== rePassword) {
+				alert("입력한 비밀번호가 다릅니다.");
+				$("#rePassword").focus();
+				return false;
+			}
 
-        var jsonData = {
-          memberName: userId,
-          memberPassword: rePassword,
-        };
+			var jsonData = {
+				memberName : userId,
+				memberPassword : rePassword,
+			};
 
-        $.ajax({
-          url: "/members",
-          type: "POST",
-          contentType: "application/json",
-          dataType: "json",
-          data: JSON.stringify(jsonData),
-          success: function (response) {
-            if (response) {
-              location.href="/login"
-            } else {
-            	alert("비밀번호 혹은 이름이 틀렸습니다.");
-            }
-          },
-        });
-      }
-    </script>
+			$.ajax({
+				url : "/members",
+				type : "POST",
+				contentType : "application/json",
+				dataType : "json",
+				data : JSON.stringify(jsonData),
+				success : function(response) {
+					if (response) {
+						location.href = "/login"
+					} else {
+						alert("비밀번호 혹은 이름이 틀렸습니다.");
+					}
+				},
+			});
+		}
+	</script>
 </body>
 </html>

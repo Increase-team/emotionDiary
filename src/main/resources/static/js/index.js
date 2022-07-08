@@ -34,9 +34,9 @@ function showCalendar() {
 				var $div = document.createElement('div');
 				//$td.textContent = cnt;
 				$td.setAttribute('id', cnt);
-				var cntplus = "00"+cnt;
+				var cntplus = "00" + cnt;
 				var cntslice = cntplus.slice(-2);
-				$td.setAttribute('value',cntslice);
+				$td.setAttribute('value', cntslice);
 				$tr.appendChild($td);
 				$div.textContent = cnt;
 				$td.appendChild($div);

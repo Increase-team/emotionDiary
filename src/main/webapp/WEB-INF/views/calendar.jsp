@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" href="/resources/static/css/index.css"/>
-<title>calendar todo</title>
+<link rel="shortcut icon" href="/resources/static/images/favicon.ico">
+<link rel="stylesheet" href="/resources/static/css/index.css" />
+<title>emotionDiary</title>
 </head>
 <body>
 	<!-- 통계 팝업 -->
@@ -81,10 +82,9 @@
 		</div>
 	</div>
 	<input type="checkbox" id="check" />
-	<label for="check">
-	<i class="fa-solid fa-bars" id="btn"></i>
-	<i class="fa-solid fa-times" id="cancel"></i>
-	</label>	
+	<label for="check"> <i class="fa-solid fa-bars" id="btn"></i> <i
+		class="fa-solid fa-times" id="cancel"></i>
+	</label>
 	<div class="sideheader">
 
 		<input id="hidden" type="hidden" value="" /> <input id="memberName"
@@ -92,16 +92,19 @@
 		<header>menu</header>
 		<ul class="list">
 			<li class="picture"><a
-				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15"><i class="fa-solid fa-book" style="margin-right: 12px"></i>
-일기장</a></li>
+				href="/calendar/diary?memberName=${list[0].memberName}&pageNum=1&pageSize=15"><i
+					class="fa-solid fa-book" style="margin-right: 12px"></i> 일기장</a></li>
 			<li class="statistics"><a href="#layer" id="estimate"
-				class="status"><i class="fa-solid fa-chart-column" style="margin-right: 12px"></i>통계</a></li>
-			<li class="logout"><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 12px"></i>Logout</a></li>
+				class="status"><i class="fa-solid fa-chart-column"
+					style="margin-right: 12px"></i>통계</a></li>
+			<li class="logout"><a href="/logout"><i
+					class="fa-solid fa-arrow-right-from-bracket"
+					style="margin-right: 12px"></i>Logout</a></li>
 		</ul>
 	</div>
 	<section>
-	
-	<div class="main">
+
+		<div class="main">
 			<div class="content-wrap">
 				<div class="content-left">
 					<div class="main-wrap">
@@ -158,14 +161,15 @@
 					</table>
 				</div>
 			</div>
-	</div>
+		</div>
 	</section>
 </body>
-<script src="https://kit.fontawesome.com/7f3a427fdf.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7f3a427fdf.js"
+	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/resources/static/js/index.js"></script>
 <script type="text/javascript">
 //버튼클릭시 감정확인

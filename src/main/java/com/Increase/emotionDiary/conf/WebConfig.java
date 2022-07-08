@@ -15,16 +15,11 @@ public class WebConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(interceptor).excludePathPatterns("/login", "/join", "/main",
-				"/resources/static/css/*",
-				"/resources/static/js/*",
-				"/resources/static/images/*",
-				"/resources/static/video/*",
-				"/members", "/member/id/*",
-				"/calendar/id/*","/calendar/statistics/*", "/calendar/save","/calendar/*",
-				"/calendar/delete/*", "/calendar/month/statistics/*",
-				"/calendar/paging/*","/calendar/diary?*","/calendar/diary/search?*"
-				);
+		registry.addInterceptor(interceptor).excludePathPatterns("/login", "/join", "/main", "/resources/static/css/*",
+				"/resources/static/js/*", "/resources/static/images/*", "/resources/static/video/*", "/members",
+				"/member/id/*", "/calendar/id/*", "/calendar/statistics/*", "/calendar/save", "/calendar/*",
+				"/calendar/delete/*", "/calendar/month/statistics/*", "/calendar/paging/*", "/calendar/diary?*",
+				"/calendar/diary/search?*");
 	}
 
 }

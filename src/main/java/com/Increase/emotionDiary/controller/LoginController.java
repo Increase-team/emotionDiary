@@ -12,16 +12,19 @@ public class LoginController {
 	public String callLoginPage() {
 		return "login";
 	}
+
 	@GetMapping("/join")
 	public String callJoinPage() {
 		return "join";
 	}
+
 	@GetMapping("/logout")
 	public String callLogout(HttpSession httpSession) {
 		httpSession.removeAttribute("memberId");
 		httpSession.removeAttribute("memberPassword");
 		return "login";
 	}
+
 	@GetMapping("/main")
 	public String callMainPage() {
 		return "index";

@@ -23,67 +23,82 @@ public class CalendarRestController {
 
 	@Autowired
 	private CalendarService calendarService;
-	
-	//일기장호출
+
+	// 일기장호출
 	@CrossOrigin
 	@GetMapping("/calendar/{memberName}")
-	public List<Map<String,Object>> callCalendar(@PathVariable("memberName") String memberName){
+	public List<Map<String, Object>> callCalendar(@PathVariable("memberName") String memberName) {
 		return calendarService.selectList(memberName);
 	}
-	//월별 정보호출
+
+	// 월별 정보호출
 	@CrossOrigin
 	@GetMapping("/calendar/{memberName}/{calendarMonthFirstDay}/{calendarCode}")
-	public List<Map<String,Object>> callCalendarMonth(@PathVariable("memberName") String memberName, @PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay, @PathVariable("calendarCode") int calendarCode){
+	public List<Map<String, Object>> callCalendarMonth(@PathVariable("memberName") String memberName,
+			@PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay,
+			@PathVariable("calendarCode") int calendarCode) {
 		return calendarService.selectMonth(memberName, calendarMonthFirstDay, calendarCode);
 	}
-	
-	//개인 달력 기록 확인
+
+	// 개인 달력 기록 확인
 	@CrossOrigin
 	@GetMapping("/calendar/id/{calendarid}")
 	public CalendarVO callOneCalendar(@PathVariable("calendarid") int calendarId) {
 		return calendarService.selectOne(calendarId);
 	}
-	//달력 저장
+
+	// 달력 저장
 	@CrossOrigin
 	@PostMapping("/calendar/save")
 	public int callInsertCalendar(@RequestBody CalendarVO vo) {
 		return calendarService.setCalendar(vo);
 	}
-	//달력 수정
+
+	// 달력 수정
 	@CrossOrigin
 	@PatchMapping("/calendar/update/{id}")
 	public int callUpdateCalendar(@PathVariable("id") int calendarId, @RequestBody CalendarVO vo) {
 		return calendarService.updateCalendar(calendarId, vo);
 	}
-	//달력 삭제
+
+	// 달력 삭제
 	@CrossOrigin
 	@DeleteMapping("/calendar/delete/{calendarid}")
-	public int callDeleteCalendar(@PathVariable("calendarid")int calendarId) {
+	public int callDeleteCalendar(@PathVariable("calendarid") int calendarId) {
 		return calendarService.deleteCalendar(calendarId);
 	}
-	//통계
+
+	// 통계
 	@CrossOrigin
 	@GetMapping("/calendar/statistics/{memberid}")
-	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId){
+	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId) {
 		return calendarService.selectstatistics(memberId);
 	}
-	//월별 통계
+
+	// 월별 통계
 	@CrossOrigin
 	@GetMapping("/calendar/month/statistics/{memberid}/{calendarMonthFirstDay}/{calendarCode}")
-	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId, @PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay, @PathVariable("calendarCode") int calendarCode){
+	public Map<String, Object> callstatistics(@PathVariable("memberid") int memberId,
+			@PathVariable("calendarMonthFirstDay") int calendarMonthFirstDay,
+			@PathVariable("calendarCode") int calendarCode) {
 		return calendarService.calendarStatistics(memberId, calendarMonthFirstDay, calendarCode);
 	}
+
 	@CrossOrigin
 	@GetMapping("/calendar/paging")
-	public PageInfo<Map<String,Object>> callPaging(@RequestParam("memberName") String memberName, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize){
+	public PageInfo<Map<String, Object>> callPaging(@RequestParam("memberName") String memberName,
+			@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
 		List<Map<String, Object>> list = calendarService.pagingSelect(memberName, pageNum, pageSize);
 		return new PageInfo<Map<String, Object>>(list);
 	}
+
 	@CrossOrigin
 	@GetMapping("/calendar/diary/search")
-	public PageInfo<Map<String,Object>> callSearchPaging(@RequestParam("memberName") String memberName, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize, @RequestParam("search") String search){
+	public PageInfo<Map<String, Object>> callSearchPaging(@RequestParam("memberName") String memberName,
+			@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
+			@RequestParam("search") String search) {
 		List<Map<String, Object>> list = calendarService.searchPaging(memberName, pageNum, pageSize, search);
 		return new PageInfo<Map<String, Object>>(list);
 	}
-	
+
 }

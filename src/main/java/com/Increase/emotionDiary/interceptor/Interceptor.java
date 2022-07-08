@@ -11,7 +11,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 @Component
-public class Interceptor implements HandlerInterceptor{
+public class Interceptor implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(Interceptor.class);
 
@@ -20,9 +20,9 @@ public class Interceptor implements HandlerInterceptor{
 			throws Exception {
 		HttpSession session = request.getSession();
 
-		if(session.getAttribute("MemberId") == null) {
-			logger.info("session MemberId: "+session.getAttribute("MemberId"));
-			response.sendRedirect("/login");
+		if (session.getAttribute("MemberId") == null) {
+			logger.info("session MemberId: " + session.getAttribute("MemberId"));
+			response.sendRedirect("/main");
 			return false;
 		}
 		return true;

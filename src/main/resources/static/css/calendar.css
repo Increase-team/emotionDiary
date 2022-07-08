@@ -20,7 +20,6 @@ html, body {
 	transition: all 1.5s ease;
 }
 
-
 .sideheader header {
 	display: flex;
 	justify-content: center;
@@ -31,17 +30,17 @@ html, body {
 	right: 8%;
 }
 
-#check{
+#check {
 	display: none;
 }
 
-label #btn, label #cancel{
+label #btn, label #cancel {
 	position: absolute;
 	cursor: pointer;
 	color: black;
 }
 
-label #btn{
+label #btn {
 	left: 40px;
 	top: 25px;
 	font-size: 35px;
@@ -49,30 +48,34 @@ label #btn{
 	transition: all 1.5s ease;
 }
 
-label #cancel{
+label #cancel {
 	z-index: 1111;
 	left: -180px;
 	top: 17px;
 	font-size: 35px;
 	padding: 4px 9px;
-	transition: all 1.5s ease;	
+	transition: all 1.5s ease;
 }
 
-#check:checked ~ .sideheader{
+#check:checked ~ .sideheader {
 	left: 0;
 }
+
 #check:checked ~ label #btn {
 	left: 250px;
 	opacity: 0;
 	pointer-events: nones;
 }
+
 #check:checked ~ label #cancel {
 	left: 180px;
 }
+
 #check:checked ~ .diary-box main {
 	margin-left: 120px;
 	transition: all 1.5s ease;
 }
+
 .list {
 	position: relative;
 	top: 8%;
@@ -95,7 +98,7 @@ label #cancel{
 .list li a:hover {
 	color: #509589;
 	transition: 1.5s;
-	padding-left: 25px; 
+	padding-left: 25px;
 }
 
 .list  li:hover, .list li.hovered {
@@ -111,12 +114,6 @@ label #cancel{
 }
 
 .statistics:hover {
-	background-color: white;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
-}
-
-.question:hover {
 	background-color: white;
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
@@ -235,144 +232,113 @@ label #cancel{
 	padding-top: 15px;
 }
 
-.btn-area {
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 15px;
-}
-
-.cancel {
-	font-size: 18px;
-	background-color: #e74a3b;
-	padding: 2%;
-	text-decoration: none;
-	border-radius: 3px;
-	margin-right: 10px;
-}
-
-.update {
-	font-size: 18px;
-	background-color: green;
-	padding: 2%;
-	text-decoration: none;
-	border-radius: 3px;
-	margin-right: 10px;
-}
-
-.success {
-	font-size: 18px;
-	background-color: #1cc88a;
-	padding: 2%;
-	text-decoration: none;
-	border-radius: 3px;
-}
-
-/* 달력 popup input box */
-.input-box {
-	display: flex;
-	justify-content: space-around;
-}
-
 /* 통계 팝업 */
 #layer {
-		display: none;
-		position: absolute;
-		top: 20%;
-		left: 28.8%;
-		width: 1670px;
-		height: 1000px;
-		margin: -188px 0 0 -300px;
-		padding: 20px;
-		background: #e6e8fa;
-		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-		border: 1px solid #dadada;
-		z-index: 21;
-	}
-	#layer #estimate {
-		display: block;
-		margin: 20px auto 0;
-	}
-	#layer .inner {
-		position: relative;
-	}
-	#layer .inner .close {
-		position: absolute;
-		top: -10px;
-		right: 0;
-		display: block;
-		width: 20px;
-		height: 20px;
-		background:
-			url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt18SOam3wUX0wExC6ji5-lY732vA2fEPBscikPQaLbT_tJd7Y7g")
-			no-repeat 0 0;
-		text-indent: -999em;
-		background-size: 20px 20px;
-	}
-	.dim {
-		display: none;
-		position: fixed;
-		_position: absolute;
-		top: 0;
-		left: 0;
-		background: #000;
-		width: 100%;
-		height: 100%;
-		filter: Alpha(opacity = 40);
-		opacity: 0.4;
-		-moz-opacity: 0.4;
-		z-index: 20;
-	}
+	display: none;
+	position: absolute;
+	top: 20%;
+	left: 28.8%;
+	width: 1670px;
+	height: 1000px;
+	margin: -188px 0 0 -300px;
+	padding: 20px;
+	background: #e6e8fa;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid #dadada;
+	z-index: 21;
+}
+
+#layer #estimate {
+	display: block;
+	margin: 20px auto 0;
+}
+
+#layer .inner {
+	position: relative;
+}
+
+#layer .inner .close {
+	position: absolute;
+	top: -10px;
+	right: 0;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background:
+		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt18SOam3wUX0wExC6ji5-lY732vA2fEPBscikPQaLbT_tJd7Y7g")
+		no-repeat 0 0;
+	text-indent: -999em;
+	background-size: 20px 20px;
+}
+
+.dim {
+	display: none;
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	left: 0;
+	background: #000;
+	width: 100%;
+	height: 100%;
+	filter: Alpha(opacity = 40);
+	opacity: 0.4;
+	-moz-opacity: 0.4;
+	z-index: 20;
+}
 
 .cardBox {
-		position: relative;
-		width: 95%;
-		left: 17%;
-		display: grid;
-		grid-template-columns: repeat(6, 160px);
-		grid-template-rows: repeat(1, 130px);
-		grid-gap: 35px;
+	position: relative;
+	width: 95%;
+	left: 17%;
+	display: grid;
+	grid-template-columns: repeat(6, 160px);
+	grid-template-rows: repeat(1, 130px);
+	grid-gap: 35px;
+}
 
+.cardBox .card {
+	position: relative;
+	background-color: snow;
+	border-radius: 20px;
+	display: gird;
+	text-align: center;
+	justify-content: space-between;
+	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
 
-	}
-	.cardBox .card {
-		position: relative;
-		background-color: snow;
-		border-radius: 20px;
-		display: gird;
-		text-align: center;
-		justify-content: space-between;
-		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-	}
-	.cardBox .card .numbers {
-		position: relative;
-		height: 70px;
-		font-weight: 500;
-		font-size: 3rem;
-		color: aquamarine;
-	}
-	.cardBox .card .cardName {
-		font-size: 1.8rem;
-	}
-	.cardBox .card .iconBx {
-		font-size: 3.5em;
-		color: grey;
-	}
-	.cardBox .card:hover {
-		background-color: aquamarine;
-	}
-	.cardBox .card:hover .numbers, .cardBox .card:hover .cardName, .cardBox .card:hover .iconBx
-		{
-		color: snow;
-	}
+.cardBox .card .numbers {
+	position: relative;
+	height: 70px;
+	font-weight: 500;
+	font-size: 3rem;
+	color: aquamarine;
+}
 
+.cardBox .card .cardName {
+	font-size: 1.8rem;
+}
+
+.cardBox .card .iconBx {
+	font-size: 3.5em;
+	color: grey;
+}
+
+.cardBox .card:hover {
+	background-color: aquamarine;
+}
+
+.cardBox .card:hover .numbers, .cardBox .card:hover .cardName, .cardBox .card:hover .iconBx
+	{
+	color: snow;
+}
 
 /* 일기장 css  */
-
-.diary-box{
+.diary-box {
 	width: 100%;
 	height: 100vh;
 	background-color: #e6e8fa;
 }
+
 main {
 	background-color: snow;
 	padding: 15px;
@@ -384,7 +350,7 @@ main {
 	margin-top: 30px;
 	margin-left: 30px;
 	border-radius: 15px;
-	transition: all 1.5s ease;	
+	transition: all 1.5s ease;
 }
 
 .diary-title {
@@ -491,31 +457,35 @@ main {
 .btn-area {
 	text-align: center;
 }
-.pagination{
-    text-align: center;
-    margin-top: 50px;
+
+.pagination {
+	text-align: center;
+	margin-top: 50px;
 }
 
-.pagination a{
-    padding: 0.5rem 0.75rem;
-    text-decoration: none;
-    background-color: white;
-    color: 	#006600;
-    border: 1px solid #dddfeb;
-    line-height: 1.45;
-    font-size: 18px;
+.pagination a {
+	padding: 0.5rem 0.75rem;
+	text-decoration: none;
+	background-color: white;
+	color: #006600;
+	border: 1px solid #dddfeb;
+	line-height: 1.45;
+	font-size: 18px;
 }
-.pagination a:hover{
-    background-color: #a8e4a0;
-    color: white;
+
+.pagination a:hover {
+	background-color: #a8e4a0;
+	color: white;
 }
-#searchBar{
+
+#searchBar {
 	position: relative;
 	left: 80%;
 	padding: 10px 24px;
 	text-align: left;
 }
-.search button{
+
+.search button {
 	position: relative;
 	left: 80%;
 	padding: 8px 16px;
