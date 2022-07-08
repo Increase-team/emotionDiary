@@ -206,21 +206,21 @@
     .split("T")[0]
     .replace("-", "")
     .replace("-", "");
-  console.log(time);
+  //console.log(time);
   var monthFirstday = time.slice(0,6) + "01";
-  console.log(monthFirstday);
+  //console.log(monthFirstday);
   var day = new Date()
-  console.log(day)
+  //console.log(day)
   var dat = day.getDate();
   day = "00"+day.getDate();
   var dayslice =  day.slice(-2);
-  console.log(dayslice)
+  //console.log(dayslice)
   
   
   var memberId = $("#memberId").val();
-  console.log("==>"+memberId)
+  //console.log("==>"+memberId)
   var memberName = $("#memberName").val();
-  console.log("=>"+memberName);
+  //console.log("=>"+memberName);
   
   $("#input-data").click(function () {
 	  
@@ -258,7 +258,7 @@
     });
   });
   
-  getCalendarList(${list[0].memberName})
+  getCalendarList(memberName)
   //달력 조회
   function getCalendarList(memberName) {
 	  var calendarList = '';
@@ -273,97 +273,97 @@
 			
 		if(response[i].calendarEmotion == "기쁨"){
 			if(code == "01"){				
-			$("#1").css('background-color',"#fcf75e")
+			$("#1").css('background-color',"#fdee00")
 			}
 			if(code == "02"){				
-				$("#2").css('background-color',"#fcf75e")				
+				$("#2").css('background-color',"#fdee00")				
 				}
 			if(code == "03"){				
-				$("#3").css('background-color',"#fcf75e")				
+				$("#3").css('background-color',"#fdee00")				
 				}
 			if(code == "04"){				
-				$("#4").css('background-color',"#fcf75e")				
+				$("#4").css('background-color',"#fdee00")				
 				}
 			if(code == "05"){				
 				$("#5").css('background-color',"#fdee00")				
 				}
 			if(code == "06"){				
-				$("#6").css('background-color',"#fcf75e")				
+				$("#6").css('background-color',"#fdee00")				
 				}
 			if(code == "07"){				
-				$("#7").css('background-color',"#fcf75e")				
+				$("#7").css('background-color',"#fdee00")				
 				}
 			if(code == "08"){				
-				$("#8").css('background-color',"#fcf75e")				
+				$("#8").css('background-color',"#fdee00")				
 				}
 			if(code == "09"){				
-				$("#9").css('background-color',"#fcf75e")				
+				$("#9").css('background-color',"#fdee00")				
 				}
 			if(code == "10"){				
-				$("#10").css('background-color',"#fcf75e")				
+				$("#10").css('background-color',"#fdee00")				
 				}
 			if(code == "11"){				
-				$("#11").css('background-color',"#fcf75e")				
+				$("#11").css('background-color',"#fdee00")				
 				}
 			if(code == "12"){				
-				$("#12").css('background-color',"#fcf75e")				
+				$("#12").css('background-color',"#fdee00")				
 				}
 			if(code == "13"){				
-				$("#13").css('background-color',"#fcf75e")				
+				$("#13").css('background-color',"#fdee00")				
 				}
 			if(code == "14"){				
-				$("#14").css('background-color',"#fcf75e")				
+				$("#14").css('background-color',"#fdee00")				
 				}
 			if(code == "15"){				
-				$("#15").css('background-color',"#fcf75e")				
+				$("#15").css('background-color',"#fdee00")				
 				}
 			if(code == "16"){				
-				$("#16").css('background-color',"#fcf75e")				
+				$("#16").css('background-color',"#fdee00")				
 				}
 			if(code == "17"){				
-				$("#17").css('background-color',"#fcf75e")				
+				$("#17").css('background-color',"#fdee00")				
 				}
 			if(code == "18"){				
-				$("#18").css('background-color',"#fcf75e")				
+				$("#18").css('background-color',"#fdee00")				
 				}
 			if(code == "19"){				
-				$("#19").css('background-color',"#fcf75e")				
+				$("#19").css('background-color',"#fdee00")				
 				}
 			if(code == "20"){				
-				$("#20").css('background-color',"#fcf75e")				
+				$("#20").css('background-color',"#fdee00")				
 				}
 			if(code == "21"){				
-				$("#21").css('background-color',"#fcf75e")				
+				$("#21").css('background-color',"#fdee00")				
 				}
 			if(code == "22"){				
-				$("#22").css('background-color',"#fcf75e")				
+				$("#22").css('background-color',"#fdee00")				
 				}
 			if(code == "23"){				
-				$("#23").css('background-color',"#fcf75e")				
+				$("#23").css('background-color',"#fdee00")				
 				}
 			if(code == "24"){				
-				$("#24").css('background-color',"#fcf75e")				
+				$("#24").css('background-color',"#fdee00")				
 				}
 			if(code == "25"){				
-				$("#25").css('background-color',"#fcf75e")				
+				$("#25").css('background-color',"#fdee00")				
 				}
 			if(code == "26"){				
-				$("#26").css('background-color',"#fcf75e")				
+				$("#26").css('background-color',"#fdee00")				
 				}
 			if(code == "27"){				
-				$("#27").css('background-color',"#fcf75e")				
+				$("#27").css('background-color',"#fdee00")				
 				}
 			if(code == "28"){				
-				$("#28").css('background-color',"#fcf75e")				
+				$("#28").css('background-color',"#fdee00")				
 				}
 			if(code == "29"){				
-				$("#29").css('background-color',"#fcf75e")				
+				$("#29").css('background-color',"#fdee00")				
 				}
 			if(code == "30"){				
-				$("#30").css('background-color',"#fcf75e")				
+				$("#30").css('background-color',"#fdee00")				
 				}
 			if(code == "31"){				
-				$("#31").css('background-color',"#fcf75e")				
+				$("#31").css('background-color',"#fdee00")				
 				}
 		}
 			
@@ -464,97 +464,97 @@
 		}
 		if(response[i].calendarEmotion == "설렘"){
 			if(code == "01"){				
-				$("#1").css('background-color',"#fc74fd")				
+				$("#1").css('background-color',"#ffc1cc")				
 				}
 				if(code == "02"){				
-					$("#2").css('background-color',"#fc74fd")				
+					$("#2").css('background-color',"#ffc1cc")				
 					}
 				if(code == "03"){				
-					$("#3").css('background-color',"#fc74fd")				
+					$("#3").css('background-color',"#ffc1cc")				
 					}
 				if(code == "04"){				
-					$("#4").css('background-color',"#fc74fd")			
+					$("#4").css('background-color',"#ffc1cc")			
 					}
 				if(code == "05"){				
-					$("#5").css('background-color',"#fc74fd")				
+					$("#5").css('background-color',"#ffc1cc")				
 					}
 				if(code == "06"){				
-					$("#6").css('background-color',"#fc74fd")				
+					$("#6").css('background-color',"#ffc1cc")				
 					}
 				if(code == "07"){				
-					$("#7").css('background-color',"#fc74fd")				
+					$("#7").css('background-color',"#ffc1cc")				
 					}
 				if(code == "08"){				
-					$("#8").css('background-color',"#fc74fd")				
+					$("#8").css('background-color',"#ffc1cc")				
 					}
 				if(code == "09"){				
-					$("#9").css('background-color',"#fc74fd")				
+					$("#9").css('background-color',"#ffc1cc")				
 					}
 				if(code == "10"){				
-					$("#10").css('background-color',"#fc74fd")				
+					$("#10").css('background-color',"#ffc1cc")				
 					}
 				if(code == "11"){				
-					$("#11").css('background-color',"#fc74fd")				
+					$("#11").css('background-color',"#ffc1cc")				
 					}
 				if(code == "12"){				
-					$("#12").css('background-color',"#fc74fd")				
+					$("#12").css('background-color',"#ffc1cc")				
 					}
 				if(code == "13"){				
-					$("#13").css('background-color',"#fc74fd")				
+					$("#13").css('background-color',"#ffc1cc")				
 					}
 				if(code == "14"){				
-					$("#14").css('background-color',"#fc74fd")				
+					$("#14").css('background-color',"#ffc1cc")				
 					}
 				if(code == "15"){				
-					$("#15").css('background-color',"#fc74fd")				
+					$("#15").css('background-color',"#ffc1cc")				
 					}
 				if(code == "16"){				
-					$("#16").css('background-color',"#fc74fd")				
+					$("#16").css('background-color',"#ffc1cc")				
 					}
 				if(code == "17"){				
-					$("#17").css('background-color',"#fc74fd")				
+					$("#17").css('background-color',"#ffc1cc")				
 					}
 				if(code == "18"){				
-					$("#18").css('background-color',"#fc74fd")				
+					$("#18").css('background-color',"#ffc1cc")				
 					}
 				if(code == "19"){				
-					$("#19").css('background-color',"#fc74fd")				
+					$("#19").css('background-color',"#ffc1cc")				
 					}
 				if(code == "20"){				
-					$("#20").css('background-color',"#fc74fd")				
+					$("#20").css('background-color',"#ffc1cc")				
 					}
 				if(code == "21"){				
-					$("#21").css('background-color',"#fc74fd")				
+					$("#21").css('background-color',"#ffc1cc")				
 					}
 				if(code == "22"){				
-					$("#22").css('background-color',"#fc74fd")				
+					$("#22").css('background-color',"#ffc1cc")				
 					}
 				if(code == "23"){				
-					$("#23").css('background-color',"#fc74fd")				
+					$("#23").css('background-color',"#ffc1cc")				
 					}
 				if(code == "24"){				
-					$("#24").css('background-color',"#fc74fd")				
+					$("#24").css('background-color',"#ffc1cc")				
 					}
 				if(code == "25"){				
-					$("#25").css('background-color',"#fc74fd")				
+					$("#25").css('background-color',"#ffc1cc")				
 					}
 				if(code == "26"){				
-					$("#26").css('background-color',"#fc74fd")				
+					$("#26").css('background-color',"#ffc1cc")				
 					}
 				if(code == "27"){				
-					$("#27").css('background-color',"#fc74fd")				
+					$("#27").css('background-color',"#ffc1cc")				
 					}
 				if(code == "28"){				
-					$("#28").css('background-color',"#fc74fd")				
+					$("#28").css('background-color',"#ffc1cc")				
 					}
 				if(code == "29"){				
-					$("#29").css('background-color',"#fc74fd")				
+					$("#29").css('background-color',"#ffc1cc")				
 					}
 				if(code == "30"){				
-					$("#30").css('background-color',"#fc74fd")				
+					$("#30").css('background-color',"#ffc1cc")				
 					}
 				if(code == "31"){				
-					$("#31").css('background-color',"#fc74fd")				
+					$("#31").css('background-color',"#ffc1cc")				
 					}
 		}
 		if(response[i].calendarEmotion == "분노"){
@@ -857,7 +857,7 @@
       type:"GET",
       dataType:"json",
       success: (response) =>{
-          console.log(response)
+          //console.log(response)
           $('#happycnt').text(response.happy);
           $('#sosocnt').text(response.soso);
           $('#romancecnt').text(response.romance);
@@ -904,7 +904,6 @@
   
   $(function () {
       var embed = $("#estimate"); //팝업 코드
-
       $(".status").on("click", function () {
         //레이어 열때
         var path = $(this).attr("href");

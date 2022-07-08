@@ -140,7 +140,7 @@
 		left join member as mm
 		on c.member_id = mm.member_id
 	<![CDATA[
-	where m.member_name  = #{memberName}
+	where m.member_name  like CONCAT('%',#{memberName},'%')
 	and
 	(
 	date_format(c.create_at,'%Y%m%d') >= #{calendarMonthFirstDay}

@@ -183,7 +183,7 @@ function checkList(e) {
 
 //클릭시 색 넣기
 $("#happy").click(function() {
-	$(".active").css("background-color", "#fcf75e");
+	$(".active").css("background-color", "#fdee00");
 });
 $("#soso").click(function() {
 	$(".active").css("background-color", "#ccccff");

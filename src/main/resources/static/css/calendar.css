@@ -96,7 +96,7 @@ label #cancel {
 }
 
 .list li a:hover {
-	color: #509589;
+	color: #4f7942;
 	transition: 1.5s;
 	padding-left: 25px;
 }
@@ -489,6 +489,13 @@ main {
 	position: relative;
 	left: 80%;
 	padding: 8px 16px;
-	background-color: white;
-	border: 1px solid black;
+	background-color: #99badd;
+	border: none;
+	color: #0b0809;
+	border-radius: 10px;
+}
+.graph-box{
+	position: relative;
+	left: 2%;
+	width: 95%;
 }
